@@ -39,7 +39,7 @@ public class CameraFollow2D : MonoBehaviour
         // Posición objetivo
         Vector3 targetPosition = new Vector3(
             player.position.x + currentLookAhead,
-            player.position.y,
+            player.position.y + 0.5f,
             transform.position.z
         );
 
