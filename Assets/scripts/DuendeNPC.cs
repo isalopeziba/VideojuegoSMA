@@ -3,19 +3,19 @@ using UnityEngine.InputSystem;
 
 public class DuendeNPC : MonoBehaviour
 {
-    // Referencia al sistema de acciones (clase generada)
+    
     private InputSystem_Actions inputActions;
 
-    [Header("Seguimiento")]
+   
     public Transform jugador;
-    public float distanciaSeguimiento = 1.5f; // Qué tan atrás se queda
-    public float suavizado = 5f;              // Qué tan rápido lo alcanza
-    public float alturaOffset = 0f;           // Ajuste de altura respecto al jugador
+    public float distanciaSeguimiento = 1.5f; 
+    public float suavizado = 5f;              
+    public float alturaOffset = 0f;           
 
-    [Header("Visual")]
+    
     public SpriteRenderer spriteDuende;
 
-    [Header("Panel de ayuda")]
+   
     public GameObject panelAyuda;
 
     private void Awake()
@@ -25,7 +25,7 @@ public class DuendeNPC : MonoBehaviour
 
     private void Start()
     {
-        // El panel empieza oculto
+       
         if (panelAyuda != null) panelAyuda.SetActive(false);
     }
 
@@ -43,7 +43,7 @@ public class DuendeNPC : MonoBehaviour
 
     private void OnAyuda(InputAction.CallbackContext context)
     {
-        // Abre o cierra el panel
+        
         panelAyuda.SetActive(!panelAyuda.activeSelf);
     }
 
@@ -51,12 +51,12 @@ public class DuendeNPC : MonoBehaviour
     {
         if (jugador == null) return;
 
-        // Dirección del duende hacia el jugador (ignorando la altura)
+        // Dirección del duende hacia el jugador 
         Vector3 haciaJugador = jugador.position - transform.position;
         haciaJugador.y = 0f;
         float distancia = haciaJugador.magnitude;
 
-        // Solo se mueve si el jugador se alejó más de la distancia de seguimiento
+        
         if (distancia > distanciaSeguimiento)
         {
             Vector3 objetivo = jugador.position - haciaJugador.normalized * distanciaSeguimiento;
