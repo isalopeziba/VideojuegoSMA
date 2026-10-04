@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMov : MonoBehaviour
 {
-    
     private InputSystem_Actions inputActions;
 
     private Vector2 moveInput;
@@ -11,7 +10,11 @@ public class PlayerMov : MonoBehaviour
     public float groundDist = 0.5f;
 
     public LayerMask terrainLayer;
-    public SpriteRenderer spriteJugador;
+
+    [Header("Referencias del Hijo")]
+    public SpriteRenderer spriteJugador; // Arrastra aquí el SpriteRenderer del hijo
+    public Animator animator;           // Arrastra aquí el Animator del hijo
+
     private Rigidbody rb;
 
     private void Awake()
@@ -43,7 +46,6 @@ public class PlayerMov : MonoBehaviour
 
     private void Update()
     {
-        
         RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
@@ -54,14 +56,23 @@ public class PlayerMov : MonoBehaviour
             transform.position = movePos;
         }
 
-        // Voltear el sprite según la dirección, falta poner la aniamcon correcta la de correr, que puse la de idle solo para probar
-        if (moveInput.x < 0) spriteJugador.flipX = true;
-        else if (moveInput.x > 0) spriteJugador.flipX = false;
+        // Voltear el sprite del hijo según la dirección horizontal
+        if (spriteJugador != null)
+        {
+            if (moveInput.x < 0) spriteJugador.flipX = true;
+            else if (moveInput.x > 0) spriteJugador.flipX = false;
+        }
+
+        // Control de Animaciones en el hijo
+        if (animator != null)
+        {
+            bool isWalking = (moveInput != Vector2.zero);
+            animator.SetBool("isWalking", isWalking);
+        }
     }
 
     private void FixedUpdate()
     {
-        
         Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
         rb.linearVelocity = movement * speed;
     }
