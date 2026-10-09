@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,8 +93,21 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,13 +126,14 @@ TextureImporter:
       name: duende_idle_espaciado_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 640
-        height: 640
+        x: 147
+        y: 58
+        width: 336
+        height: 502
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -134,13 +148,14 @@ TextureImporter:
       name: duende_idle_espaciado_1
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 640
-        height: 640
+        x: 787
+        y: 57
+        width: 337
+        height: 505
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -155,13 +170,14 @@ TextureImporter:
       name: duende_idle_espaciado_2
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 640
-        height: 640
+        x: 1402
+        y: 57
+        width: 387
+        height: 505
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -173,37 +189,17 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duende_idle_espaciado_3
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 640
-        height: 640
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d88dda1051249f4bb1449557f40c78f
-      internalID: 2145255671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: duende_idle_espaciado_4
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 0
-        width: 640
-        height: 640
+        x: 2067
+        y: 57
+        width: 335
+        height: 505
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -218,24 +214,48 @@ TextureImporter:
       name: duende_idle_espaciado_5
       rect:
         serializedVersion: 2
-        x: 3200
-        y: 0
-        width: 640
-        height: 640
+        x: 2703
+        y: 57
+        width: 347
+        height: 488
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9da599da9e582c148bbbecfed6a6fd55
-      internalID: -1979064679
+      spriteID: 8813b9e42772ba94f81dd9fff17b1713
+      internalID: -354354138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duende_idle_espaciado_6
+      rect:
+        serializedVersion: 2
+        x: 3348
+        y: 57
+        width: 334
+        height: 505
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a5b8250582b2b4ead8e0b01000c745
+      internalID: -949113433
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -245,13 +265,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":614.0,"y":523.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       duende_idle_espaciado_0: -1661100238
       duende_idle_espaciado_1: -290883951
       duende_idle_espaciado_2: 521334142
       duende_idle_espaciado_3: 2145255671
       duende_idle_espaciado_4: 860464854
-      duende_idle_espaciado_5: -1979064679
+      duende_idle_espaciado_5: -354354138
+      duende_idle_espaciado_6: -949113433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
