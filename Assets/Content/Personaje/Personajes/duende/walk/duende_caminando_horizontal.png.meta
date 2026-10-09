@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 784c2aab50fb80649b4bcf4278a7a02b
+guid: a7ca50710df7baf42ba84d3fb05965fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,12 +34,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,34 +93,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,205 +110,192 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk 1_0
+      name: duende_caminando_horizontal_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 231385d92c330de4bb18b492757d2c9d
-      internalID: -1095436000
+      spriteID: 752fa02f51ab66a40930a3480abd0d72
+      internalID: -866998946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_1
+      name: duende_caminando_horizontal_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 576
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5485b433355b65468a33d95ddc5fcf0
-      internalID: -1997031761
+      spriteID: a50c72f8be548a240b033b0f9c343f6d
+      internalID: 158576216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_2
+      name: duende_caminando_horizontal_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 1152
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e013d9bd3e6b775488c8b9cad0075263
-      internalID: 379705608
+      spriteID: fe67ab96e487cf148a52f7fcbc5cb638
+      internalID: -393168666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_3
+      name: duende_caminando_horizontal_3
       rect:
         serializedVersion: 2
-        x: 900
+        x: 1728
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 135574dc20f4a4848b757d88e0ae36e5
-      internalID: 154542529
+      spriteID: 8875e6cedea5ba147bb467f42523833e
+      internalID: -260007508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_4
+      name: duende_caminando_horizontal_4
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 2304
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428a9551c347da34488aaf65dd1bcb12
-      internalID: -118765055
+      spriteID: 9b085700da868ed4ea2abbcb449d4f2d
+      internalID: 525096202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_5
+      name: duende_caminando_horizontal_5
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 2880
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7daf4ac3cba9a594f9b20523eae1c9bb
-      internalID: 91350474
+      spriteID: 9883786074800e9428bba7040e625e5c
+      internalID: 1085765768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_6
+      name: duende_caminando_horizontal_6
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 3456
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e53fa93cf9ec0b748a29e003b34f4b8e
-      internalID: 1328519794
+      spriteID: 4e18844ac2900c44993d641c27cdfd87
+      internalID: -806427073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_7
+      name: duende_caminando_horizontal_7
       rect:
         serializedVersion: 2
-        x: 2100
+        x: 4032
         y: 0
-        width: 300
-        height: 640
+        width: 576
+        height: 576
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1729d46a6600395489a3355a497ad8c0
-      internalID: 1262141135
+      spriteID: 5902cc0bf2e5c44418dc3a31762513d7
+      internalID: 142956700
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
-    spriteID: b3dcb22faafbb3840803bb892351e5b7
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      walk 1_0: -1095436000
-      walk 1_1: -1997031761
-      walk 1_2: 379705608
-      walk 1_3: 154542529
-      walk 1_4: -118765055
-      walk 1_5: 91350474
-      walk 1_6: 1328519794
-      walk 1_7: 1262141135
+      duende_caminando_horizontal_0: -866998946
+      duende_caminando_horizontal_1: 158576216
+      duende_caminando_horizontal_2: -393168666
+      duende_caminando_horizontal_3: -260007508
+      duende_caminando_horizontal_4: 525096202
+      duende_caminando_horizontal_5: 1085765768
+      duende_caminando_horizontal_6: -806427073
+      duende_caminando_horizontal_7: 142956700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

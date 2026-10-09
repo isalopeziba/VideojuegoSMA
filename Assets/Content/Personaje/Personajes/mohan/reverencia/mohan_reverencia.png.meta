@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 784c2aab50fb80649b4bcf4278a7a02b
+guid: ea77910fd55e663499d3688b1b9478f1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,12 +34,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,34 +93,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,205 +110,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk 1_0
+      name: mohan_reverencia_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 231385d92c330de4bb18b492757d2c9d
-      internalID: -1095436000
+      spriteID: 1f58ff75d5f818541849357f19d952dc
+      internalID: -1436598916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_1
+      name: mohan_reverencia_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 362
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5485b433355b65468a33d95ddc5fcf0
-      internalID: -1997031761
+      spriteID: ded0f7e93d4666b4a9e6e8dc62658f14
+      internalID: -1867045042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_2
+      name: mohan_reverencia_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 724
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e013d9bd3e6b775488c8b9cad0075263
-      internalID: 379705608
+      spriteID: 40dbcc8013faf8743b3fc4f185340154
+      internalID: -602364014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_3
+      name: mohan_reverencia_3
       rect:
         serializedVersion: 2
-        x: 900
+        x: 1086
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 135574dc20f4a4848b757d88e0ae36e5
-      internalID: 154542529
+      spriteID: 03c1a1b0d9c389b4786e4fb4c1be8657
+      internalID: -756110422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_4
+      name: mohan_reverencia_4
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1448
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428a9551c347da34488aaf65dd1bcb12
-      internalID: -118765055
+      spriteID: 002d5058341d2ed40ac6dc9e6c0ab13c
+      internalID: 2053279965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_5
+      name: mohan_reverencia_5
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 1810
         y: 0
-        width: 300
-        height: 640
+        width: 362
+        height: 532
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7daf4ac3cba9a594f9b20523eae1c9bb
-      internalID: 91350474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk 1_6
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 300
-        height: 640
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e53fa93cf9ec0b748a29e003b34f4b8e
-      internalID: 1328519794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk 1_7
-      rect:
-        serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 300
-        height: 640
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1729d46a6600395489a3355a497ad8c0
-      internalID: 1262141135
+      spriteID: d2ad903c823f7c545a6bf20a40ffbcdb
+      internalID: 1607615148
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
-    spriteID: b3dcb22faafbb3840803bb892351e5b7
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      walk 1_0: -1095436000
-      walk 1_1: -1997031761
-      walk 1_2: 379705608
-      walk 1_3: 154542529
-      walk 1_4: -118765055
-      walk 1_5: 91350474
-      walk 1_6: 1328519794
-      walk 1_7: 1262141135
+      mohan_reverencia_0: -1436598916
+      mohan_reverencia_1: -1867045042
+      mohan_reverencia_2: -602364014
+      mohan_reverencia_3: -756110422
+      mohan_reverencia_4: 2053279965
+      mohan_reverencia_5: 1607615148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

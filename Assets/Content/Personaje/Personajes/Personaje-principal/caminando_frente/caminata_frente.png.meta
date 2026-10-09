@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 784c2aab50fb80649b4bcf4278a7a02b
+guid: 4ed89e262f3b6ff4fa4a251548211cea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,12 +34,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,34 +93,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,205 +110,192 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk 1_0
+      name: caminata_frente_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 231385d92c330de4bb18b492757d2c9d
-      internalID: -1095436000
+      spriteID: d0015b3a55cad544e94e0696a2a73538
+      internalID: 739056512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_1
+      name: caminata_frente_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 271
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5485b433355b65468a33d95ddc5fcf0
-      internalID: -1997031761
+      spriteID: c3a8f2841ae78c6419a9ed1b77069545
+      internalID: -1959234161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_2
+      name: caminata_frente_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 542
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e013d9bd3e6b775488c8b9cad0075263
-      internalID: 379705608
+      spriteID: f7ff34a52c10fc5488797be5ace353a7
+      internalID: -925530693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_3
+      name: caminata_frente_3
       rect:
         serializedVersion: 2
-        x: 900
+        x: 813
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 135574dc20f4a4848b757d88e0ae36e5
-      internalID: 154542529
+      spriteID: 208fc8a42b80c244f9451d22d3a3b050
+      internalID: -1294222186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_4
+      name: caminata_frente_4
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1084
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428a9551c347da34488aaf65dd1bcb12
-      internalID: -118765055
+      spriteID: cb80ee64dc140fb4585bdfe46e76952e
+      internalID: 1990164814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_5
+      name: caminata_frente_5
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 1355
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7daf4ac3cba9a594f9b20523eae1c9bb
-      internalID: 91350474
+      spriteID: 6d457aa3fb8bcef4eb1284cee4ae9bc7
+      internalID: -1534071431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_6
+      name: caminata_frente_6
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 1626
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e53fa93cf9ec0b748a29e003b34f4b8e
-      internalID: 1328519794
+      spriteID: de887af15086a184da76f2bd6bb6d4cf
+      internalID: 1041558219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk 1_7
+      name: caminata_frente_7
       rect:
         serializedVersion: 2
-        x: 2100
+        x: 1897
         y: 0
-        width: 300
-        height: 640
+        width: 271.5
+        height: 434
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1729d46a6600395489a3355a497ad8c0
-      internalID: 1262141135
+      spriteID: 07871005f2a220b468c0c76e9cdcfd1a
+      internalID: -1718551464
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    customData: 
     physicsShape: []
     bones: []
-    spriteID: b3dcb22faafbb3840803bb892351e5b7
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      walk 1_0: -1095436000
-      walk 1_1: -1997031761
-      walk 1_2: 379705608
-      walk 1_3: 154542529
-      walk 1_4: -118765055
-      walk 1_5: 91350474
-      walk 1_6: 1328519794
-      walk 1_7: 1262141135
+      caminata_frente_0: 739056512
+      caminata_frente_1: -1959234161
+      caminata_frente_2: -925530693
+      caminata_frente_3: -1294222186
+      caminata_frente_4: 1990164814
+      caminata_frente_5: -1534071431
+      caminata_frente_6: 1041558219
+      caminata_frente_7: -1718551464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
