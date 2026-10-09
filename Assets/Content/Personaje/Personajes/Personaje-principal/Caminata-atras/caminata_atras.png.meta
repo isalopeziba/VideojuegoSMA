@@ -67,7 +67,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +80,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,8 +93,21 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -115,11 +128,12 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -134,13 +148,14 @@ TextureImporter:
       name: caminata_atras_1
       rect:
         serializedVersion: 2
-        x: 271
+        x: 306
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -155,13 +170,14 @@ TextureImporter:
       name: caminata_atras_2
       rect:
         serializedVersion: 2
-        x: 542
+        x: 612
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -176,13 +192,14 @@ TextureImporter:
       name: caminata_atras_3
       rect:
         serializedVersion: 2
-        x: 813
+        x: 918
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -197,13 +214,14 @@ TextureImporter:
       name: caminata_atras_4
       rect:
         serializedVersion: 2
-        x: 1084
+        x: 1224
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -218,13 +236,14 @@ TextureImporter:
       name: caminata_atras_5
       rect:
         serializedVersion: 2
-        x: 1355
+        x: 1530
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -239,13 +258,14 @@ TextureImporter:
       name: caminata_atras_6
       rect:
         serializedVersion: 2
-        x: 1626
+        x: 1836
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -260,13 +280,14 @@ TextureImporter:
       name: caminata_atras_7
       rect:
         serializedVersion: 2
-        x: 1897
+        x: 2142
         y: 0
-        width: 271.5
-        height: 510
+        width: 306
+        height: 600
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -278,6 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -287,6 +309,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":306.0,"y":600.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       caminata_atras_0: -466667051
       caminata_atras_1: 1760650801
