@@ -156,32 +156,33 @@ public class PreguntasMohan : MonoBehaviour
 
     private void Update()
     {
-        if (simularRecogerConTecla1 && Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
-            SimularRecoger();
+        if (simularRecogerConTecla1 && Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame);
+            //SimularRecoger();
     }
 
     // SIMULACIÓN DE RECOGER (tecla 1)
-
-    private void SimularRecoger()
-    {
+      
+    
+    //private void SimularRecoger()
+    //{
        
-        foreach (GameObject g in basurasPendientes)
-        {
-            if (g != null && g.activeSelf)
-            {
-                g.SetActive(false);
-                if (BarraRio.Instancia != null)
-                    BarraRio.Instancia.Sumar(puntosFallo / Mathf.Max(1, basurasPorFallo)); // devuelve lo que se quitó
-                return;
-            }
-        }
+    //    foreach (GameObject g in basurasPendientes)
+    //    {
+    //        if (g != null && g.activeSelf)
+    //        {
+    //            g.SetActive(false);
+    //            if (BarraRio.Instancia != null)
+    //                BarraRio.Instancia.Sumar(puntosFallo / Mathf.Max(1, basurasPorFallo)); // devuelve lo que se quitó
+    //            return;
+    //        }
+    //    }
 
       
-        if (!enCurso && BarraRio.Instancia != null)
-            BarraRio.Instancia.Sumar(puntosSimulacionLlenar);
-    }
+    //    if (!enCurso && BarraRio.Instancia != null)
+    //        BarraRio.Instancia.Sumar(puntosSimulacionLlenar);
+    //}
+    
 
-   
 
     [ContextMenu("Probar: iniciar preguntas")]
     public void IniciarPreguntas()
