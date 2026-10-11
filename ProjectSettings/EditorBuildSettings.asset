@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/ContentUX/Personaje/idle/LibroRelatos.unity
+    guid: 9c2e017d5c479424b98aa3fac286c8c3
+  - enabled: 1
+    path: Assets/ContentUX/Personaje/idle/1.unity
+    guid: 088fc33ed5f479a42bbe168e42ced209
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

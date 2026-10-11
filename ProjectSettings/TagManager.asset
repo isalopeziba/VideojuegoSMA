@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Agua
-  - Hierba
-  - Tierra
-  - Piedra
+  - terrain
   layers:
   - Default
   - TransparentFX
