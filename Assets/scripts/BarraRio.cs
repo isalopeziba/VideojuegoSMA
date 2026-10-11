@@ -7,14 +7,14 @@ public class BarraRio : MonoBehaviour
 {
     public static BarraRio Instancia { get; private set; }
 
-    [Header("UI")]
+  
     public Image relleno;                 
     public float velocidadAnimacion = 1f; 
 
-    [Header("Valor")]
+    
     [Range(0f, 100f)] public float valor = 0f;
 
-    [Header("Evento al llegar a 100 %")]
+   
     public UnityEvent alLlenarse;         
 
     private bool yaSeLleno = false;      

@@ -3,55 +3,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using TMPro;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class PreguntaMohan
 {
     [TextArea(2, 4)] public string enunciado;
-    [TextArea(1, 3)] public string[] opciones = new string[3];   // en orden A, B, C original
-    [Tooltip("0 = A, 1 = B, 2 = C (según el orden original)")]
+    [TextArea(1, 3)] public string[] opciones = new string[3];   
+
     public int correcta;
     [TextArea(2, 4)] public string textoAcierto;
     [TextArea(2, 4)] public string textoFallo;
 
-    [Header("Pista del Duende")]
-    [Tooltip("Opción INCORRECTA que el Duende descarta (0 = A, 1 = B, 2 = C)")]
+    
+    
     public int opcionQueDescarta;
     [TextArea(1, 3)] public string textoPista;
 }
 
 public class PreguntasMohan : MonoBehaviour
 {
-    [Header("Mohán")]
-    public Text textoMohan;                 // texto del canvas sobre la cabeza del Mohán
+   
+    public Text textoMohan;                
     public Animator animatorMohan;
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
 
-    [Header("Botones A, B, C")]
-    public GameObject panelBotones;             
-    public Button[] botones = new Button[3];    
+
+    public GameObject panelBotones;
+    public Button[] botones = new Button[3];
+
+   
+    public Color colorNormal = Color.white;
+    public Color colorCorrecto = new Color(0.35f, 0.85f, 0.35f);   
+    public Color colorIncorrecto = new Color(0.9f, 0.3f, 0.3f);    
+    public float tiempoColorBoton = 1.2f;   
+
+    
+    public AudioSource audioSource;        
+    public AudioClip sonidoCorrecto;
+    public AudioClip sonidoIncorrecto;
+    [Range(0f, 1f)] public float volumenSonidos = 1f;
 
     [Header("Duende (pista con la Q)")]
-    public Text textoDuende;                // texto del canvas sobre la cabeza del Duende
+    public Text textoDuende;               
     public float duracionTextoDuende = 4f;
 
-    [Header("Basura que reaparece al fallar")]
-    public List<GameObject> basurasError = new List<GameObject>(); 
+   
+    public List<GameObject> basurasError = new List<GameObject>();
     public int basurasPorFallo = 2;
 
     [Header("Barra del río (puntos fijos sobre 100)")]
     public float puntosAcierto = 4f;
     public float puntosFallo = 8f;
 
-    [Header("Tiempos (segundos)")]
+  
     public float esperaTrasAcierto = 3f;
     public float esperaTrasFallo = 3f;
 
+    [Header("SIMULACIÓN  mecánica de recoger)")]
+    public bool simularRecogerConTecla1 = true;
+   
+    public float puntosSimulacionLlenar = 20f;
+
     [Header("Final")]
-    [TextArea(2, 4)] public string textoFinal = "Gracias, joven. Cuida mi río y cuéntaselo a los demás.";
-    public UnityEvent alTerminar;               
+    public string textoFinal = "Gracias, joven. Cuida mi río y cuéntaselo a los demás.";
+    public UnityEvent alTerminar;
 
     [Header("Preguntas")]
     public List<PreguntaMohan> preguntas = new List<PreguntaMohan>
@@ -103,25 +120,31 @@ public class PreguntasMohan : MonoBehaviour
         }
     };
 
-    // true mientras los botones están esperando respuesta (el Duende lo usa para la pista)
+   
     public bool PreguntaActiva { get; private set; }
 
-    private static readonly string[] letras = { "A", "B", "C" };
     private int indicePregunta = 0;
-    private int[] ordenActual = { 0, 1, 2 };   
+    private int[] ordenActual = { 0, 1, 2 };
     private bool pistaUsada = false;
     private bool enCurso = false;
     private Coroutine rutinaDuende;
+    private List<GameObject> basurasPendientes = new List<GameObject>(); 
 
     private void Awake()
     {
-       
         for (int i = 0; i < botones.Length; i++)
         {
             int indiceBoton = i;
             if (botones[i] != null)
                 botones[i].onClick.AddListener(() => Responder(indiceBoton));
         }
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
     }
 
     private void Start()
@@ -131,10 +154,36 @@ public class PreguntasMohan : MonoBehaviour
         if (textoDuende != null) textoDuende.text = "";
     }
 
+    private void Update()
+    {
+        if (simularRecogerConTecla1 && Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
+            SimularRecoger();
+    }
+
+    // SIMULACIÓN DE RECOGER (tecla 1)
+
+    private void SimularRecoger()
+    {
+       
+        foreach (GameObject g in basurasPendientes)
+        {
+            if (g != null && g.activeSelf)
+            {
+                g.SetActive(false);
+                if (BarraRio.Instancia != null)
+                    BarraRio.Instancia.Sumar(puntosFallo / Mathf.Max(1, basurasPorFallo)); // devuelve lo que se quitó
+                return;
+            }
+        }
+
+      
+        if (!enCurso && BarraRio.Instancia != null)
+            BarraRio.Instancia.Sumar(puntosSimulacionLlenar);
+    }
+
    
 
-    // Se llama cuando la barra llega a 100 % (evento de BarraRio) o desde otro script
-    
+    [ContextMenu("Probar: iniciar preguntas")]
     public void IniciarPreguntas()
     {
         if (enCurso || preguntas.Count == 0) return;
@@ -143,7 +192,7 @@ public class PreguntasMohan : MonoBehaviour
         MostrarPregunta(false);
     }
 
-    // ================== MOSTRAR PREGUNTA ==================
+   
 
     private void MostrarPregunta(bool mezclar)
     {
@@ -162,6 +211,7 @@ public class PreguntasMohan : MonoBehaviour
             Text texto = botones[b].GetComponentInChildren<Text>();
             if (texto != null) texto.text = p.opciones[opcion];
 
+            PintarBoton(b, colorNormal);
             MostrarBoton(b, true);
             botones[b].interactable = true;
         }
@@ -171,7 +221,6 @@ public class PreguntasMohan : MonoBehaviour
         PreguntaActiva = true;
     }
 
-    // Cambia el orden de las opciones, asegurando que quede distinto al anterior
     private void MezclarOrden()
     {
         int[] anterior = (int[])ordenActual.Clone();
@@ -200,25 +249,30 @@ public class PreguntasMohan : MonoBehaviour
     private void Responder(int boton)
     {
         if (!PreguntaActiva) return;
-        PreguntaActiva = false;
-
-        foreach (Button b in botones) if (b != null) b.interactable = false;
+        PreguntaActiva = false;   
 
         PreguntaMohan p = preguntas[indicePregunta];
-        int opcionElegida = ordenActual[boton];
+        bool acierto = ordenActual[boton] == p.correcta;
 
-        if (opcionElegida == p.correcta) StartCoroutine(RutinaAcierto(p));
+        
+        PintarBoton(boton, acierto ? colorCorrecto : colorIncorrecto);
+        ReproducirSonido(acierto ? sonidoCorrecto : sonidoIncorrecto);
+
+        if (acierto) StartCoroutine(RutinaAcierto(p));
         else StartCoroutine(RutinaFallo(p));
     }
 
     private IEnumerator RutinaAcierto(PreguntaMohan p)
     {
-        if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = p.textoAcierto;
         if (animatorMohan != null) animatorMohan.Play(animMohanSonrie, 0, 0f);
         if (BarraRio.Instancia != null) BarraRio.Instancia.Sumar(puntosAcierto);
 
-        yield return new WaitForSeconds(esperaTrasAcierto);
+      
+        yield return new WaitForSeconds(tiempoColorBoton);
+        if (panelBotones != null) panelBotones.SetActive(false);
+
+        yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasAcierto - tiempoColorBoton));
 
         if (animatorMohan != null) animatorMohan.Play(animMohanIdle, 0, 0f);
 
@@ -229,33 +283,47 @@ public class PreguntasMohan : MonoBehaviour
 
     private IEnumerator RutinaFallo(PreguntaMohan p)
     {
-        if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = p.textoFallo;
         if (BarraRio.Instancia != null) BarraRio.Instancia.Restar(puntosFallo);
 
-        yield return new WaitForSeconds(esperaTrasFallo);
+      
+        yield return new WaitForSeconds(tiempoColorBoton);
+        if (panelBotones != null) panelBotones.SetActive(false);
 
-        // Reaparecen basuras y se espera a que el jugador las recoja (se desactivan de nuevo)
-        List<GameObject> activadas = ActivarBasuras();
-        if (activadas.Count > 0)
-        {
-            yield return new WaitUntil(() => TodasRecogidas(activadas));
-        }
+        yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasFallo - tiempoColorBoton));
 
-        // Repetir la misma pregunta con las opciones en otro orden
+        
+        basurasPendientes = ActivarBasuras();
+        if (basurasPendientes.Count > 0)
+            yield return new WaitUntil(() => TodasRecogidas(basurasPendientes));
+        basurasPendientes.Clear();
+
+       
         MostrarPregunta(true);
     }
 
-    
+
+    private void PintarBoton(int indice, Color color)
+    {
+        if (botones[indice] == null) return;
+        Image img = botones[indice].image; 
+        if (img != null) img.color = color;
+    }
+
+    private void ReproducirSonido(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+            audioSource.PlayOneShot(clip, volumenSonidos);
+    }
+
+  
 
     private List<GameObject> ActivarBasuras()
     {
-        // Candidatas: las que están desactivadas
         List<GameObject> candidatas = new List<GameObject>();
         foreach (GameObject g in basurasError)
             if (g != null && !g.activeSelf) candidatas.Add(g);
 
-        // Elegir al azar
         List<GameObject> activadas = new List<GameObject>();
         int cantidad = Mathf.Min(basurasPorFallo, candidatas.Count);
         for (int i = 0; i < cantidad; i++)
@@ -275,13 +343,12 @@ public class PreguntasMohan : MonoBehaviour
     private bool TodasRecogidas(List<GameObject> lista)
     {
         foreach (GameObject g in lista)
-            if (g != null && g.activeSelf) return false;   // si fue destruida (null) también cuenta como recogida
+            if (g != null && g.activeSelf) return false;
         return true;
     }
 
     
 
-    // La llama el Duende cuando se presiona Q durante una pregunta
     public void UsarPista()
     {
         if (!PreguntaActiva || pistaUsada) return;
@@ -289,7 +356,6 @@ public class PreguntasMohan : MonoBehaviour
 
         PreguntaMohan p = preguntas[indicePregunta];
 
-        // Buscar en qué botón quedó la opción a descartar y ocultarlo
         for (int b = 0; b < botones.Length; b++)
         {
             if (ordenActual[b] == p.opcionQueDescarta)
@@ -313,7 +379,6 @@ public class PreguntasMohan : MonoBehaviour
         textoDuende.text = "";
     }
 
-    // Oculta/muestra un botón sin desactivarlo (así no se mueve el layout)
     private void MostrarBoton(int indice, bool visible)
     {
         if (botones[indice] == null) return;
@@ -326,7 +391,7 @@ public class PreguntasMohan : MonoBehaviour
         cg.blocksRaycasts = visible;
     }
 
-    // ================== FINAL ==================
+  
 
     private void Terminar()
     {
