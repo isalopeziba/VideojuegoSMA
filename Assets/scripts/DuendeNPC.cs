@@ -36,6 +36,11 @@ public class DuendeNPC : MonoBehaviour
     private Vector3 velSuavizada = Vector3.zero;
     private bool estaCaminando = false;
 
+
+
+    public PreguntasMohan preguntasMohan;
+
+
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
@@ -61,6 +66,13 @@ public class DuendeNPC : MonoBehaviour
 
     private void OnAyuda(InputAction.CallbackContext context)
     {
+       
+        if (preguntasMohan != null && preguntasMohan.PreguntaActiva)
+        {
+            preguntasMohan.UsarPista();
+            return;
+        }
+
         if (panelAyuda != null) panelAyuda.SetActive(!panelAyuda.activeSelf);
     }
 
