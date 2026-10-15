@@ -7304,7 +7304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
   player: {fileID: 373456478}
+  playerRb: {fileID: 373456476}
   smoothTime: 0.1
+  heightOffset: 1.5
+  depthOffset: -3
   lookAheadDistance: 1
   lookAheadSmooth: 3.18
   swayAmount: 0.02
