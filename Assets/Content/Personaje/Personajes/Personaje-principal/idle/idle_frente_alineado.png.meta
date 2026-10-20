@@ -126,10 +126,10 @@ TextureImporter:
       name: idle_frente_alineado_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 640
+        x: 53
+        y: 29
+        width: 288
+        height: 541
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,10 +148,10 @@ TextureImporter:
       name: idle_frente_alineado_1
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 640
+        x: 451
+        y: 29
+        width: 288
+        height: 545
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,10 +170,10 @@ TextureImporter:
       name: idle_frente_alineado_2
       rect:
         serializedVersion: 2
-        x: 800
-        y: 0
-        width: 400
-        height: 640
+        x: 854
+        y: 29
+        width: 287
+        height: 556
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: idle_frente_alineado_3
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 400
-        height: 640
+        x: 1253
+        y: 29
+        width: 288
+        height: 537
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: idle_frente_alineado_4
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 400
-        height: 640
+        x: 1655
+        y: 29
+        width: 284
+        height: 521
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: idle_frente_alineado_5
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 400
-        height: 640
+        x: 2051
+        y: 29
+        width: 288
+        height: 538
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,7 +266,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       idle_frente_alineado_0: 100257243
       idle_frente_alineado_1: -2097996311
