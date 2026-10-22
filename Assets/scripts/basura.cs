@@ -44,7 +44,7 @@ public class basura : MonoBehaviour
             }
 
             // Elimina la basura del mundo
-            Destroy(gameObject);
+            gameObject.SetActive(false);    
         }
         else
         {
@@ -58,7 +58,7 @@ public class basura : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorEnRango = true;
-            Debug.Log("Presiona '1' para recolectar la basura");
+            Debug.Log("Presiona 'e' para recolectar la basura");
         }
     }
 

@@ -3687,7 +3687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d126cf6a2b0104e8be4b21e20b466d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038978007
+      value: -0.021
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d126cf6a2b0104e8be4b21e20b466d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4534,9 +4534,11 @@ GameObject:
   m_Component:
   - component: {fileID: 114480237}
   - component: {fileID: 114480238}
+  - component: {fileID: 114480240}
+  - component: {fileID: 114480239}
   m_Layer: 0
   m_Name: basura_red_pesca (1)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4550,7 +4552,7 @@ Transform:
   m_GameObject: {fileID: 114480236}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087611, z: -0, w: 0.7933537}
-  m_LocalPosition: {x: 2.42, y: 0.509, z: -3.72}
+  m_LocalPosition: {x: 2.491, y: 0.508, z: -3.739}
   m_LocalScale: {x: 0.091474, y: 0.091474, z: 0.091474}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4615,6 +4617,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &114480239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114480236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &114480240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114480236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.0400023, y: 5.76, z: 2.6231918}
+  m_Center: {x: -0.000026730891, y: 0, z: -0.16969435}
 --- !u!1001 &118016707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9764,9 +9802,11 @@ GameObject:
   m_Component:
   - component: {fileID: 260159687}
   - component: {fileID: 260159688}
+  - component: {fileID: 260159690}
+  - component: {fileID: 260159689}
   m_Layer: 0
   m_Name: basura_lata (2)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9780,7 +9820,7 @@ Transform:
   m_GameObject: {fileID: 260159686}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: 0.723, y: 0.374, z: -2.704}
+  m_LocalPosition: {x: 1.036, y: 0.186, z: -2.978}
   m_LocalScale: {x: 0.12429579, y: 0.12429579, z: 0.12429579}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9845,6 +9885,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &260159689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260159686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &260159690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260159686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.042306}
+  m_Center: {x: -0.000019266075, y: 0, z: -0.70908636}
 --- !u!1001 &260535341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10584,9 +10660,11 @@ GameObject:
   m_Component:
   - component: {fileID: 287681850}
   - component: {fileID: 287681851}
+  - component: {fileID: 287681853}
+  - component: {fileID: 287681852}
   m_Layer: 0
   m_Name: basura_botella (4)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10665,6 +10743,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &287681852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287681849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &287681853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287681849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 2.5806224}
+  m_Center: {x: -0.0000033793663, y: 0, z: 0.13811852}
 --- !u!1001 &291563801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12134,9 +12248,11 @@ GameObject:
   m_Component:
   - component: {fileID: 325087260}
   - component: {fileID: 325087261}
+  - component: {fileID: 325087263}
+  - component: {fileID: 325087262}
   m_Layer: 0
   m_Name: basura_lata
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12150,7 +12266,7 @@ Transform:
   m_GameObject: {fileID: 325087259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: -0.0065460205, y: 0.374, z: -6.300873}
+  m_LocalPosition: {x: 1.151, y: 0.374, z: -6.301}
   m_LocalScale: {x: 0.12429579, y: 0.12429579, z: 0.12429579}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12215,6 +12331,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &325087262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325087259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &325087263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325087259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 4.7825856}
+  m_Center: {x: -0.000026546024, y: 0, z: 0.57352597}
 --- !u!1001 &325111043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13209,9 +13361,11 @@ GameObject:
   m_Component:
   - component: {fileID: 347905936}
   - component: {fileID: 347905937}
+  - component: {fileID: 347905939}
+  - component: {fileID: 347905938}
   m_Layer: 0
   m_Name: basura_lata (1)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13290,6 +13444,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &347905938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347905935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &347905939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347905935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 5.448543}
+  m_Center: {x: -0.00003836133, y: 0, z: -1.9965452}
 --- !u!1001 &348329261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13469,9 +13659,11 @@ GameObject:
   m_Component:
   - component: {fileID: 350698581}
   - component: {fileID: 350698582}
+  - component: {fileID: 350698584}
+  - component: {fileID: 350698583}
   m_Layer: 0
   m_Name: basura_botella (3)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13485,7 +13677,7 @@ Transform:
   m_GameObject: {fileID: 350698580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087612, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 0.303, y: 0.305, z: 7.388}
+  m_LocalPosition: {x: 0.76, y: 0.305, z: 9.093}
   m_LocalScale: {x: 0.09691385, y: 0.096913844, z: 0.09691385}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13550,6 +13742,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &350698583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350698580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &350698584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350698580}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 3.4888961}
+  m_Center: {x: -0.000003701955, y: 0, z: -0.45319268}
 --- !u!1001 &351988836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14894,9 +15122,11 @@ GameObject:
   m_Component:
   - component: {fileID: 376443245}
   - component: {fileID: 376443246}
+  - component: {fileID: 376443248}
+  - component: {fileID: 376443247}
   m_Layer: 0
   m_Name: basura_red_pesca
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14975,6 +15205,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &376443247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376443244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &376443248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376443244}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.0400023, y: 5.76, z: 3.5096524}
+  m_Center: {x: -0.000030678788, y: 0, z: -0.5638494}
 --- !u!1001 &378661075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16800,9 +17066,11 @@ GameObject:
   m_Component:
   - component: {fileID: 430587568}
   - component: {fileID: 430587569}
+  - component: {fileID: 430587571}
+  - component: {fileID: 430587570}
   m_Layer: 0
   m_Name: basura_bolsa (4)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16816,7 +17084,7 @@ Transform:
   m_GameObject: {fileID: 430587567}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071071, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: 0.88, y: 0.313, z: -9.24}
+  m_LocalPosition: {x: 0.763, y: 0.313, z: -9.24}
   m_LocalScale: {x: 0.076338686, y: 0.076338686, z: 0.076338686}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16881,6 +17149,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &430587570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430587567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &430587571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430587567}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.4686396}
+  m_Center: {x: -0.00007606289, y: 0, z: 0.54000753}
 --- !u!1 &431288628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 158c2fc606b1766418ac71b11a5af0ef, type: 3}
@@ -26736,9 +27040,11 @@ GameObject:
   m_Component:
   - component: {fileID: 672600075}
   - component: {fileID: 672600076}
+  - component: {fileID: 672600078}
+  - component: {fileID: 672600077}
   m_Layer: 0
   m_Name: basura_botella (2)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26817,6 +27123,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &672600077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672600074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &672600078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672600074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 3.3250127}
+  m_Center: {x: -0.000007674995, y: 0, z: 0.27330488}
 --- !u!1001 &676439836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27443,9 +27785,11 @@ GameObject:
   m_Component:
   - component: {fileID: 696907021}
   - component: {fileID: 696907022}
+  - component: {fileID: 696907024}
+  - component: {fileID: 696907023}
   m_Layer: 0
   m_Name: basura_lata (6)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27524,6 +27868,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &696907023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696907020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &696907024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696907020}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 1.8263862}
+  m_Center: {x: -0.000005751757, y: 0, z: 0.022706784}
 --- !u!1001 &696957076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30875,71 +31255,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c1e55e7d663dd54888747a17a4dc8dc, type: 3}
   m_PrefabInstance: {fileID: 788680740}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &789847872
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: minijuego
-      value: 
-      objectReference: {fileID: 871981611}
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: canvasMinijuego
-      value: 
-      objectReference: {fileID: 1607140909}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.297573
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15394495
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.9027774
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043861912698071092, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_Name
-      value: basura (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
 --- !u!1 &791233809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bb6ef56fc0a66d34ba1197904765a4ea, type: 3}
@@ -30967,71 +31282,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8672258856033842154, guid: bb6ef56fc0a66d34ba1197904765a4ea, type: 3}
---- !u!1001 &794370705
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: minijuego
-      value: 
-      objectReference: {fileID: 871981611}
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: canvasMinijuego
-      value: 
-      objectReference: {fileID: 1607140909}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.1880846
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.153945
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.877662
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043861912698071092, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_Name
-      value: basura (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
 --- !u!1 &795206654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
@@ -36127,9 +36377,12 @@ GameObject:
   m_Component:
   - component: {fileID: 946294710}
   - component: {fileID: 946294711}
+  - component: {fileID: 946294712}
+  - component: {fileID: 946294713}
+  - component: {fileID: 946294714}
   m_Layer: 0
   m_Name: basura_botella (1)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36208,6 +36461,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &946294712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946294709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &946294713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946294709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 4.8575397}
+  m_Center: {x: -0.00000765172, y: 0, z: 0.8583382}
+--- !u!114 &946294714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946294709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 0}
+  minijuego: {fileID: 0}
+  puntosPorBasura: 10
 --- !u!1 &949372014
 GameObject:
   m_ObjectHideFlags: 0
@@ -37018,9 +37322,11 @@ GameObject:
   m_Component:
   - component: {fileID: 971515882}
   - component: {fileID: 971515883}
+  - component: {fileID: 971515885}
+  - component: {fileID: 971515884}
   m_Layer: 0
   m_Name: basura_lata (5)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37099,6 +37405,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &971515884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971515881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &971515885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971515881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 4.2385855}
+  m_Center: {x: 0.000007913337, y: 0, z: 2.0192945}
 --- !u!1001 &971855140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39822,6 +40164,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8672258856033842154, guid: bb6ef56fc0a66d34ba1197904765a4ea, type: 3}
+--- !u!1 &1030271126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030271127}
+  - component: {fileID: 1030271129}
+  - component: {fileID: 1030271128}
+  m_Layer: 0
+  m_Name: barrafondo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1030271127
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030271126}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1230484564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.07385254, y: 0.022979736}
+  m_SizeDelta: {x: 8.76, y: 4.48}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1030271128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030271126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7ff40d80ea58b1042aaebc3e614248b0, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1030271129
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030271126}
+  m_CullTransparentMesh: 1
 --- !u!1 &1030715754 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 058decd13d7f44442ba25e94b9120676, type: 3}
@@ -41152,106 +41569,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
   m_PrefabInstance: {fileID: 1070038307}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1074129364
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2083831214}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.936
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.034
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.15
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9a53e715119014a418fe9ec31f4fe397, type: 2}
-    - target: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_Name
-      value: terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      propertyPath: m_TagString
-      value: terrain
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1074129367}
-  m_SourcePrefab: {fileID: 100100000, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
---- !u!4 &1074129365 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-  m_PrefabInstance: {fileID: 1074129364}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1074129366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
-  m_PrefabInstance: {fileID: 1074129364}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1074129367
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074129366}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6584952474952830179, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
 --- !u!1001 &1080729535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42544,7 +42861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.050087
+      value: -0.036
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43526,6 +43843,108 @@ Transform:
   - {fileID: 544705519}
   m_Father: {fileID: 952933920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1132210966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132210970}
+  - component: {fileID: 1132210969}
+  - component: {fileID: 1132210968}
+  - component: {fileID: 1132210967}
+  m_Layer: 5
+  m_Name: 'barra agua '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1132210967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1132210968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1132210969
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132210966}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1132210970
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132210966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1230484564}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1133091146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44851,6 +45270,54 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6809829068606448028, guid: 158c2fc606b1766418ac71b11a5af0ef, type: 3}
+--- !u!1 &1159603778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159603779}
+  - component: {fileID: 1159603780}
+  m_Layer: 0
+  m_Name: aguaController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1159603779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159603778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.59648, y: 0.09, z: -0.35811}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1159603780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159603778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99a72bf71d9a894b9ece60fc2d4bc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cambiodeagua
+  riverRenderer: {fileID: 1805050940}
+  dirtyColor: {r: 0.45, g: 0.3, b: 0.15, a: 1}
+  cleanColor: {r: 0.2, g: 0.5, b: 0.9, a: 1}
+  trashItems: []
 --- !u!1001 &1162755593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46803,9 +47270,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1222107592}
   - component: {fileID: 1222107593}
+  - component: {fileID: 1222107595}
+  - component: {fileID: 1222107594}
   m_Layer: 0
   m_Name: basura_botella (5)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46819,7 +47288,7 @@ Transform:
   m_GameObject: {fileID: 1222107591}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087612, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 1.933, y: 0.305, z: 4.966}
+  m_LocalPosition: {x: 1.645, y: 0.305, z: 5.043}
   m_LocalScale: {x: 0.09691385, y: 0.096913844, z: 0.09691385}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46884,6 +47353,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1222107594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222107591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1222107595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222107591}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 5.9525323}
+  m_Center: {x: -0.0000017826873, y: 0, z: 2.8762767}
 --- !u!1 &1222966333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
@@ -47208,6 +47713,62 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
   m_PrefabInstance: {fileID: 1609613911}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1230484563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230484564}
+  - component: {fileID: 1230484565}
+  m_Layer: 0
+  m_Name: barra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1230484564
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230484563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 51.5, y: 51.5, z: 51.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1030271127}
+  - {fileID: 1654899684}
+  m_Father: {fileID: 1132210970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 746.19995, y: 419.91504}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1230484565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230484563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404f2b5f6f0bf844c88e15bf235fb094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarraRio
+  relleno: {fileID: 1030271128}
+  velocidadAnimacion: 1
+  valor: 0
+  alLlenarse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1232415454 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 158c2fc606b1766418ac71b11a5af0ef, type: 3}
@@ -47880,9 +48441,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1242583640}
   - component: {fileID: 1242583641}
+  - component: {fileID: 1242583643}
+  - component: {fileID: 1242583642}
   m_Layer: 0
   m_Name: basura_red_pesca (2)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47961,6 +48524,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1242583642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242583639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1242583643
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242583639}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.0400023, y: 5.76, z: 3.4085681}
+  m_Center: {x: -0.000038121336, y: 0, z: -0.023227911}
 --- !u!1 &1242746744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c1e55e7d663dd54888747a17a4dc8dc, type: 3}
@@ -51531,7 +52130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038978003
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.z
@@ -55954,9 +56553,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1486431228}
   - component: {fileID: 1486431229}
+  - component: {fileID: 1486431231}
+  - component: {fileID: 1486431230}
   m_Layer: 0
   m_Name: basura_bolsa
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55970,7 +56571,7 @@ Transform:
   m_GameObject: {fileID: 1486431227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071071, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: 1.873, y: 0.313, z: -1.107}
+  m_LocalPosition: {x: 2.068, y: 0.313, z: -1.357}
   m_LocalScale: {x: 0.076338686, y: 0.076338686, z: 0.076338686}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56035,6 +56636,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1486431230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486431227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1486431231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486431227}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.180747, y: 5.76, z: 3.699867}
+  m_Center: {x: -1.0704101, y: 0, z: -0.81846124}
 --- !u!1001 &1491349335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58506,9 +59143,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1560183680}
   - component: {fileID: 1560183681}
+  - component: {fileID: 1560183683}
+  - component: {fileID: 1560183682}
   m_Layer: 0
   m_Name: basura_bolsa (1)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58587,6 +59226,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1560183682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560183679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1560183683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560183679}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.0330956}
+  m_Center: {x: -0.000011333657, y: 0, z: -0.102067724}
 --- !u!1001 &1560538815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59679,6 +60354,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 484933674825456204, guid: fcd222d232edaab4e857990a77530d00, type: 3}
+      propertyPath: velbasura
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484933674825456204, guid: fcd222d232edaab4e857990a77530d00, type: 3}
+      propertyPath: velcaptura
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2723410835098849442, guid: fcd222d232edaab4e857990a77530d00, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -60960,15 +61643,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.22277832
+      value: -0.185
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038978003
+      value: -0.029
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1212463
+      value: 1.158
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709c37c097b421e43a7fc7ef5e78c551, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62595,9 +63278,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1631815809}
   - component: {fileID: 1631815810}
+  - component: {fileID: 1631815812}
+  - component: {fileID: 1631815811}
   m_Layer: 0
   m_Name: basura_lata (3)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62676,6 +63361,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1631815811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631815808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1631815812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631815808}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.3202417}
+  m_Center: {x: -0.000022770746, y: 0, z: 0.061561134}
 --- !u!1001 &1632465660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62748,9 +63469,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1632755710}
   - component: {fileID: 1632755711}
+  - component: {fileID: 1632755713}
+  - component: {fileID: 1632755712}
   m_Layer: 0
   m_Name: basura_botella
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62764,7 +63487,7 @@ Transform:
   m_GameObject: {fileID: 1632755709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087612, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 0.07, y: 0.305, z: -5.69}
+  m_LocalPosition: {x: 0.676, y: 0.305, z: -5.852}
   m_LocalScale: {x: 0.09691385, y: 0.096913844, z: 0.09691385}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62829,6 +63552,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1632755712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632755709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1632755713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632755709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 3.4985068}
+  m_Center: {x: -0.00003045392, y: 0, z: -0.2210936}
 --- !u!1001 &1638793649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63379,6 +64138,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3654588071529179883, guid: 9c1e55e7d663dd54888747a17a4dc8dc, type: 3}
+--- !u!1 &1654899683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654899684}
+  - component: {fileID: 1654899686}
+  - component: {fileID: 1654899685}
+  m_Layer: 0
+  m_Name: barramarco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1654899684
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654899683}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1230484564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 8.73, y: 4.55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1654899685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654899683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c5fe39f02de7f424facbdeea55ccd209, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1654899686
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654899683}
+  m_CullTransparentMesh: 1
 --- !u!1 &1655004860 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
@@ -64107,9 +64941,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1674129111}
   - component: {fileID: 1674129112}
+  - component: {fileID: 1674129114}
+  - component: {fileID: 1674129113}
   m_Layer: 0
   m_Name: basura_botella (6)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64123,7 +64959,7 @@ Transform:
   m_GameObject: {fileID: 1674129110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087612, z: -0, w: 0.7933535}
-  m_LocalPosition: {x: 1.83, y: 0.305, z: -10.63}
+  m_LocalPosition: {x: 0.43, y: 0.305, z: -10.148}
   m_LocalScale: {x: 0.09691385, y: 0.096913844, z: 0.09691385}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64188,6 +65024,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1674129113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674129110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1674129114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674129110}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040001, y: 5.76, z: 3.5127232}
+  m_Center: {x: -0.000007686031, y: 0, z: 0.058659762}
 --- !u!1 &1674733780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f209d9a1257bb5444b5af6352df29144, type: 3}
@@ -64998,9 +65870,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1697207257}
   - component: {fileID: 1697207258}
+  - component: {fileID: 1697207260}
+  - component: {fileID: 1697207259}
   m_Layer: 0
   m_Name: basura_red_pesca (3)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65014,7 +65888,7 @@ Transform:
   m_GameObject: {fileID: 1697207256}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6087611, z: -0, w: 0.7933537}
-  m_LocalPosition: {x: 4.15, y: 0.509, z: 6.59}
+  m_LocalPosition: {x: 4.932, y: 0.22, z: 6.381}
   m_LocalScale: {x: 0.091474, y: 0.091474, z: 0.091474}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65079,6 +65953,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1697207259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697207256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1697207260
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697207256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.0400023, y: 5.76, z: 4.0038276}
+  m_Center: {x: -0.00000016970797, y: 0, z: -1.9019192}
 --- !u!1001 &1697666957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67208,7 +68118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d126cf6a2b0104e8be4b21e20b466d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.038978007
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05d126cf6a2b0104e8be4b21e20b466d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -68463,9 +69373,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1766198704}
   - component: {fileID: 1766198705}
+  - component: {fileID: 1766198707}
+  - component: {fileID: 1766198706}
   m_Layer: 0
   m_Name: basura_lata (7)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68479,7 +69391,7 @@ Transform:
   m_GameObject: {fileID: 1766198703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: 2.983, y: 0.374, z: -4.39}
+  m_LocalPosition: {x: 2.983, y: 0.28, z: -4.849}
   m_LocalScale: {x: 0.12429579, y: 0.12429579, z: 0.12429579}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68544,6 +69456,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1766198706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766198703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1766198707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766198703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.9862137}
+  m_Center: {x: -0.000022846054, y: 0, z: -0.5701639}
 --- !u!1001 &1766648110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70599,11 +71547,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.9113078
+      value: 8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.0081
+      value: 28.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70651,7 +71603,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9a53e715119014a418fe9ec31f4fe397, type: 2}
     - target: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
       propertyPath: m_Name
-      value: terrain
+      value: aguacambiadora
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
       propertyPath: m_TagString
@@ -70697,6 +71649,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6584952474952830179, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
+--- !u!23 &1805050940 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 3f0f53fe4b53b904e9a783a7b96dcd55, type: 3}
+  m_PrefabInstance: {fileID: 1805050936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1812758749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73039,71 +73996,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9796417a8e04b9341b389110d68c6e9c, type: 3}
   m_PrefabInstance: {fileID: 1877526673}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1878297038
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: minijuego
-      value: 
-      objectReference: {fileID: 871981611}
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: canvasMinijuego
-      value: 
-      objectReference: {fileID: 1607140909}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.4100356
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15394534
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.1728134
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043861912698071092, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_Name
-      value: basura (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
 --- !u!1 &1878679351
 GameObject:
   m_ObjectHideFlags: 0
@@ -74583,9 +75475,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1901466782}
   - component: {fileID: 1901466783}
+  - component: {fileID: 1901466785}
+  - component: {fileID: 1901466784}
   m_Layer: 0
   m_Name: basura_bolsa (3)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74599,7 +75493,7 @@ Transform:
   m_GameObject: {fileID: 1901466781}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071071, z: -0, w: 0.7071065}
-  m_LocalPosition: {x: 2.766, y: 0.36, z: 4.361}
+  m_LocalPosition: {x: 3.37, y: 0.36, z: 3.961}
   m_LocalScale: {x: 0.076338686, y: 0.076338686, z: 0.076338686}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74664,6 +75558,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1901466784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901466781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1901466785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901466781}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 2.9942431}
+  m_Center: {x: -0.000011321578, y: 0, z: -0.00073882483}
 --- !u!1001 &1901954916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75362,7 +76292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c71ea4c9e184bc4cb9071ccdcb3326a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c71ea4c9e184bc4cb9071ccdcb3326a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76556,71 +77486,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d1dc0460e6c40749849274e93032ff3, type: 3}
   m_PrefabInstance: {fileID: 1945824546}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1948907231
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: minijuego
-      value: 
-      objectReference: {fileID: 871981611}
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: canvasMinijuego
-      value: 
-      objectReference: {fileID: 1607140909}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8121028
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15394506
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.055343
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043861912698071092, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_Name
-      value: basura (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
 --- !u!1001 &1949565079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78022,9 +78887,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1986771369}
   - component: {fileID: 1986771370}
+  - component: {fileID: 1986771372}
+  - component: {fileID: 1986771371}
   m_Layer: 0
   m_Name: basura_bolsa (2)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78103,6 +78970,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1986771371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986771368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &1986771372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986771368}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 3.961619}
+  m_Center: {x: -0.000007814605, y: 0, z: -0.056041278}
 --- !u!1 &1986997438 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 058decd13d7f44442ba25e94b9120676, type: 3}
@@ -79161,9 +80064,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2007899830}
   - component: {fileID: 2007899831}
+  - component: {fileID: 2007899833}
+  - component: {fileID: 2007899832}
   m_Layer: 0
   m_Name: basura_lata (4)
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79177,7 +80082,7 @@ Transform:
   m_GameObject: {fileID: 2007899829}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: 0.723, y: 0.374, z: -1.004}
+  m_LocalPosition: {x: 0.377, y: 0.313, z: -1.654}
   m_LocalScale: {x: 0.12429579, y: 0.12429579, z: 0.12429579}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79242,6 +80147,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2007899832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007899829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f96da9d077c724bbe20a80a06e2ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::basura
+  canvasMinijuego: {fileID: 1607140909}
+  minijuego: {fileID: 871981611}
+  puntosPorBasura: 4.16
+--- !u!65 &2007899833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007899829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.040002, y: 5.76, z: 1.5488693}
+  m_Center: {x: -0.000009566988, y: 0, z: 0.19951877}
 --- !u!1001 &2010133289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82266,7 +83207,6 @@ Transform:
   - {fileID: 1589774478}
   - {fileID: 410650918}
   - {fileID: 661537383}
-  - {fileID: 1074129365}
   - {fileID: 1697666958}
   - {fileID: 765935905}
   - {fileID: 661311193}
@@ -84389,71 +85329,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8672258856033842154, guid: bb6ef56fc0a66d34ba1197904765a4ea, type: 3}
---- !u!1001 &5518730043014952810
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: minijuego
-      value: 
-      objectReference: {fileID: 871981611}
-    - target: {fileID: 8470943791731506, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: canvasMinijuego
-      value: 
-      objectReference: {fileID: 1607140909}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906060291510925672, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043861912698071092, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
-      propertyPath: m_Name
-      value: basura
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b85df8f70caf07842a82b02b75c4f43c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -84461,20 +85336,17 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 832575519}
   - {fileID: 373456478}
+  - {fileID: 1132210970}
   - {fileID: 1466685061}
   - {fileID: 1878679354}
   - {fileID: 1703928341}
+  - {fileID: 1584484772}
   - {fileID: 732192702}
   - {fileID: 609824804}
   - {fileID: 1387296249}
   - {fileID: 1702713262}
-  - {fileID: 5518730043014952810}
   - {fileID: 135598713}
-  - {fileID: 1584484772}
-  - {fileID: 794370705}
-  - {fileID: 789847872}
-  - {fileID: 1878297038}
-  - {fileID: 1948907231}
   - {fileID: 952933920}
   - {fileID: 1987544922}
   - {fileID: 54797702}
+  - {fileID: 1159603779}
