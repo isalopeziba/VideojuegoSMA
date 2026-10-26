@@ -28,7 +28,7 @@ public class DuendeNPC : MonoBehaviour
 
     private Vector3 direccionJugador = Vector3.right;
     private Vector3 posAnteriorJugador;
-    private float lado = 1f;            // +1 derecha del niño, -1 izquierda
+    private float lado = 1f;            // +1 derecha del niï¿½o, -1 izquierda
     private float lateralActual = 0f;   // se ajusta suave, sin saltos
     private bool siguiendo = false;
     private string estadoActual = "";
@@ -54,12 +54,19 @@ public class DuendeNPC : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Enable();
+        if (inputActions == null)
+        {
+            inputActions = new InputSystem_Actions();
+        }
+
         inputActions.Player.Ayuda.performed += OnAyuda;
+        inputActions.Player.Enable();
     }
 
     private void OnDisable()
     {
+        if (inputActions == null) return;
+
         inputActions.Player.Ayuda.performed -= OnAyuda;
         inputActions.Player.Disable();
     }
@@ -67,14 +74,23 @@ public class DuendeNPC : MonoBehaviour
     private void OnAyuda(InputAction.CallbackContext context)
     {
        
+        PulsarBotonPista();
+    }
+
+    
+    public void PulsarBotonPista()
+    {
         if (preguntasMohan != null && preguntasMohan.PreguntaActiva)
         {
             preguntasMohan.UsarPista();
             return;
         }
-
-        if (panelAyuda != null) panelAyuda.SetActive(!panelAyuda.activeSelf);
+        if (panelAyuda != null)
+        {
+            panelAyuda.SetActive(!panelAyuda.activeSelf);
+        }
     }
+
 
     private void Update()
     {
@@ -120,7 +136,7 @@ public class DuendeNPC : MonoBehaviour
 
         AjustarAlSuelo();
 
-        // 5. Animación
+        // 5. Animaciï¿½n
         Vector3 movDuende = transform.position - posAntes;
         movDuende.y = 0f;
         ActualizarAnimacion(movDuende);

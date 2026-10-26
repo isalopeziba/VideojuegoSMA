@@ -1,72 +1,116 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class basura : MonoBehaviour
 {
     [Header("Referencias UI")]
-    public GameObject canvasMinijuego;          // Objeto Canvas/Panel que contiene el minijuego
-    public NewMonoBehaviourScript minijuego;     // Referencia al script del minijuego
+    public GameObject canvasMinijuego;
+    public NewMonoBehaviourScript minijuego;
 
-    [Header("Configuración")]
-    public float puntosPorBasura = 10f;         // Puntos que le sumará a BarraRio
+    [Header("Configuracion")]
+    public float puntosPorBasura = 10f;
 
     private bool jugadorEnRango = false;
+    private Transform jugador;
+
+    public static basura BasuraCercana { get; private set; }
 
     private void Update()
     {
-        // Al estar en rango y presionar la tecla 1 (Alpha1)
-        if (jugadorEnRango && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)    
+        if (jugadorEnRango && Keyboard.current != null &&
+            Keyboard.current.eKey.wasPressedThisFrame)
         {
-            IniciarMinijuego();
+            Interactuar();
+        }
+
+        // Limpiar referencia si esta basura ya no esta activa
+        if (BasuraCercana == this && !gameObject.activeInHierarchy)
+        {
+            BasuraCercana = null;
         }
     }
 
-    void IniciarMinijuego()
+    public void Interactuar()
     {
+        if (!jugadorEnRango) return;
+
+        if (canvasMinijuego == null || minijuego == null)
+        {
+            Debug.LogWarning(
+                "Falta asignar Canvas Minijuego o Minijuego en " + name);
+            return;
+        }
+
         canvasMinijuego.SetActive(true);
-        minijuego.IniciarJuego(this); // Pasa la referencia de este objeto al minijuego
+        minijuego.IniciarJuego(this);
     }
 
     public void FinalizarMinijuego(bool ganado)
     {
-        canvasMinijuego.SetActive(false);
+        if (canvasMinijuego != null)
+            canvasMinijuego.SetActive(false);
 
         if (ganado)
         {
-            // Suma los puntos en BarraRio usando su Instancia
             if (BarraRio.Instancia != null)
-            {
                 BarraRio.Instancia.Sumar(puntosPorBasura);
-            }
             else
-            {
-                Debug.LogWarning("No se encontró la instancia de BarraRio en la escena.");
-            }
+                Debug.LogWarning("No se encontro la instancia de BarraRio.");
 
-            // Elimina la basura del mundo
-            gameObject.SetActive(false);    
+            if (BasuraCercana == this)
+                BasuraCercana = null;
+
+            gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("Minijuego no completado. La basura sigue aquí para reintentarlo.");
+            Debug.Log("Minijuego no completado. Puedes intentarlo de nuevo.");
         }
     }
 
-    // Detección de cercanía en 3D (Si tu proyecto es 2D, cambia por OnTriggerEnter2D y OnTriggerExit2D)
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            jugadorEnRango = true;
-            Debug.Log("Presiona 'e' para recolectar la basura");
-        }
+        if (!other.CompareTag("Player")) return;
+
+        jugadorEnRango = true;
+        jugador = other.transform;
+
+        ActualizarBasuraCercana();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        jugadorEnRango = true;
+        jugador = other.transform;
+
+        ActualizarBasuraCercana();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        jugadorEnRango = false;
+
+        if (BasuraCercana == this)
+            BasuraCercana = null;
+    }
+
+    private void ActualizarBasuraCercana()
+    {
+        if (!jugadorEnRango || jugador == null) return;
+
+        if (BasuraCercana == null ||
+            !BasuraCercana.gameObject.activeInHierarchy ||
+            !BasuraCercana.jugadorEnRango ||
+            BasuraCercana.jugador == null ||
+            Vector3.Distance(jugador.position, transform.position) <
+            Vector3.Distance(jugador.position, BasuraCercana.transform.position))
         {
-            jugadorEnRango = false;
+            BasuraCercana = this;
         }
     }
 }

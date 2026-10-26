@@ -1,25 +1,20 @@
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class VirtualJoystick : MonoBehaviour,
     IPointerDownHandler,
-    IPointerUpHandler,
-    IDragHandler
+    IDragHandler,
+    IPointerUpHandler
 {
     public RectTransform background;
     public RectTransform handle;
 
     public Vector2 InputDirection { get; private set; }
 
-    private float radius;
-
-    void Start()
-    {
-        radius = background.sizeDelta.x / 2f;
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Joystick: clic detectado");
         OnDrag(eventData);
     }
 
@@ -27,22 +22,28 @@ public class VirtualJoystick : MonoBehaviour,
     {
         Vector2 position;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             background,
             eventData.position,
             eventData.pressEventCamera,
-            out position
-        );
+            out position))
+        {
+            float radius = background.rect.width / 2f;
 
-        InputDirection = position / radius;
+            if (radius <= 0f) return;
 
-        InputDirection = Vector2.ClampMagnitude(InputDirection, 1f);
+            InputDirection = Vector2.ClampMagnitude(
+                position / radius, 1f);
 
-        handle.anchoredPosition = InputDirection * radius;
+            handle.anchoredPosition = InputDirection * radius;
+
+            Debug.Log("Joystick: " + InputDirection);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        Debug.Log("Joystick: soltado");
         InputDirection = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
     }

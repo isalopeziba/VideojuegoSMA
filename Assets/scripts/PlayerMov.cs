@@ -8,6 +8,7 @@ public class PlayerMov : MonoBehaviour
     private Vector2 moveInput;
     public float speed = 5f;
     public float groundDist = 0.5f;
+    public VirtualJoystick joystick;
 
     public LayerMask terrainLayer;
 
@@ -39,7 +40,7 @@ public class PlayerMov : MonoBehaviour
 
     private void Start()
     {
-        // Buscar cuánto dura el clip de recoger
+        // Buscar cuï¿½nto dura el clip de recoger
         if (animator != null && animator.runtimeAnimatorController != null)
         {
             foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
@@ -55,20 +56,28 @@ public class PlayerMov : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Enable();
+        if (inputActions == null)
+        {
+            inputActions = new InputSystem_Actions();
+        }
+
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
         inputActions.Player.Interact.started += OnRecoger;
+
+        inputActions.Player.Enable();
     }
 
     private void OnDisable()
     {
+        if (inputActions == null) return;
+
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= OnMove;
         inputActions.Player.Interact.started -= OnRecoger;
+
         inputActions.Player.Disable();
     }
-
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -76,7 +85,7 @@ public class PlayerMov : MonoBehaviour
 
     private void OnRecoger(InputAction.CallbackContext context)
     {
-        if (estaRecogiendo) return; // no reiniciar si ya está recogiendo
+        if (estaRecogiendo) return; // no reiniciar si ya estï¿½ recogiendo
 
         estaRecogiendo = true;
         tiempoRecogiendo = 0f;
@@ -89,6 +98,24 @@ public class PlayerMov : MonoBehaviour
     private void Update()
     {
         
+        if (joystick != null)
+        {
+            Vector2 joystickInput = joystick.InputDirection;
+
+            if (joystickInput.sqrMagnitude > 0.01f)
+            {
+                moveInput = joystickInput;
+            }
+            else if (moveInput.sqrMagnitude > 0.01f)
+            {
+                if (Keyboard.current == null ||
+                    !Keyboard.current.anyKey.isPressed)
+                {
+                    moveInput = Vector2.zero;
+                }
+            }
+        }
+
         RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
@@ -99,7 +126,7 @@ public class PlayerMov : MonoBehaviour
             transform.position = movePos;
         }
 
-        // Mientras recoge: esperar a que termine la animación
+        // Mientras recoge: esperar a que termine la animaciï¿½n
         if (estaRecogiendo)
         {
             tiempoRecogiendo += Time.deltaTime;
@@ -111,7 +138,7 @@ public class PlayerMov : MonoBehaviour
             return; 
         }
 
-        // Voltear el sprite según la dirección horizontal
+        // Voltear el sprite segï¿½n la direcciï¿½n horizontal
         if (spriteJugador != null)
         {
             if (moveInput.x < -0.1f) spriteJugador.flipX = true;
