@@ -3,74 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class PreguntaMohan
 {
     [TextArea(2, 4)] public string enunciado;
-    [TextArea(1, 3)] public string[] opciones = new string[3];   
-
+    [TextArea(1, 3)] public string[] opciones = new string[3];   // en orden A, B, C original
+   
     public int correcta;
     [TextArea(2, 4)] public string textoAcierto;
     [TextArea(2, 4)] public string textoFallo;
 
     
-    
     public int opcionQueDescarta;
     [TextArea(1, 3)] public string textoPista;
 }
 
+[System.Serializable]
+public class SeccionRio
+{
+    public string nombre = "Sección";
+
+  
+    public BoxCollider zona;
+    public List<GameObject> basuras = new List<GameObject>();
+    public List<GameObject> basurasError = new List<GameObject>();
+    public GameObject paredNiebla;
+    public ParticleSystem efectoAlAbrir;
+    public UnityEvent alAbrirse;
+}
+
 public class PreguntasMohan : MonoBehaviour
 {
-   
-    public Text textoMohan;                
+    [Header("Mohán")]
+    public Text textoMohan;
     public Animator animatorMohan;
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
 
-
+  
     public GameObject panelBotones;
     public Button[] botones = new Button[3];
 
    
     public Color colorNormal = Color.white;
-    public Color colorCorrecto = new Color(0.35f, 0.85f, 0.35f);   
-    public Color colorIncorrecto = new Color(0.9f, 0.3f, 0.3f);    
-    public float tiempoColorBoton = 1.2f;   
+    public Color colorCorrecto = new Color(0.35f, 0.85f, 0.35f);
+    public Color colorIncorrecto = new Color(0.9f, 0.3f, 0.3f);
+    public float tiempoColorBoton = 1.2f;
 
-    
-    public AudioSource audioSource;        
+    public AudioSource audioSource;
     public AudioClip sonidoCorrecto;
     public AudioClip sonidoIncorrecto;
     [Range(0f, 1f)] public float volumenSonidos = 1f;
 
     [Header("Duende (pista con la Q)")]
-    public Text textoDuende;               
+    public Text textoDuende;
     public float duracionTextoDuende = 4f;
 
-   
-    public List<GameObject> basurasError = new List<GameObject>();
+  
+    public List<SeccionRio> secciones = new List<SeccionRio>();
     public int basurasPorFallo = 2;
+
+    [Header("Niebla")]
+    public float duracionNiebla = 3f;   // segundos que tarda en desaparecer
 
     [Header("Barra del río (puntos fijos sobre 100)")]
     public float puntosAcierto = 4f;
     public float puntosFallo = 8f;
 
-  
+    [Header("Tiempos (segundos)")]
     public float esperaTrasAcierto = 3f;
     public float esperaTrasFallo = 3f;
 
-    [Header("SIMULACIÓN  mecánica de recoger)")]
-    public bool simularRecogerConTecla1 = true;
-   
-    public float puntosSimulacionLlenar = 20f;
-
     [Header("Final")]
-    public string textoFinal = "Gracias, joven. Cuida mi río y cuéntaselo a los demás.";
+    [TextArea(2, 4)] public string textoFinal = "Gracias, joven. Cuida mi río y cuéntaselo a los demás.";
     public UnityEvent alTerminar;
 
-    [Header("Preguntas")]
+    [Header("Preguntas (la 1 va con la sección 1, la 2 con la 2...)")]
     public List<PreguntaMohan> preguntas = new List<PreguntaMohan>
     {
         new PreguntaMohan
@@ -120,15 +129,18 @@ public class PreguntasMohan : MonoBehaviour
         }
     };
 
-   
+    // true mientras los botones están esperando respuesta
     public bool PreguntaActiva { get; private set; }
 
-    private int indicePregunta = 0;
+    private int seccionActual = 0;
+    private bool enPregunta = false;      // desde que sale la pregunta hasta que se acierta
+    private bool terminado = false;
     private int[] ordenActual = { 0, 1, 2 };
     private bool pistaUsada = false;
-    private bool enCurso = false;
     private Coroutine rutinaDuende;
-    private List<GameObject> basurasPendientes = new List<GameObject>(); 
+    private List<GameObject> basurasPendientes = new List<GameObject>();
+
+    private int TotalSecciones => Mathf.Min(secciones.Count, preguntas.Count);
 
     private void Awake()
     {
@@ -152,52 +164,65 @@ public class PreguntasMohan : MonoBehaviour
         if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = "";
         if (textoDuende != null) textoDuende.text = "";
+
+        DetectarBasurasPorZona();
+
+        if (secciones.Count != preguntas.Count)
+            Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
+    }
+
+    // Llena la lista de basuras de cada sección con las que estén dentro de su collider
+    private void DetectarBasurasPorZona()
+    {
+        basura[] todas = FindObjectsByType<basura>(FindObjectsSortMode.None); // solo las activas
+
+        foreach (SeccionRio s in secciones)
+        {
+            if (s.zona == null) continue;
+
+            Bounds limites = s.zona.bounds;   
+            s.zona.enabled = false;          
+
+            if (s.basuras.Count > 0) continue; 
+
+            foreach (basura b in todas)
+                if (limites.Contains(b.transform.position))
+                    s.basuras.Add(b.gameObject);
+
+            if (s.basuras.Count == 0)
+                Debug.LogWarning($"PreguntasMohan: la {s.nombre} no tiene basuras dentro de su zona.");
+            else
+                Debug.Log($"PreguntasMohan: {s.nombre} tiene {s.basuras.Count} basuras.");
+        }
     }
 
     private void Update()
     {
-        if (simularRecogerConTecla1 && Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame);
-            //SimularRecoger();
+        if (terminado || enPregunta || seccionActual >= TotalSecciones) return;
+
+        if (SeccionLimpia(secciones[seccionActual]))
+            IniciarPregunta();
     }
 
-    // SIMULACIÓN DE RECOGER (tecla 1)
-      
-    
-    //private void SimularRecoger()
-    //{
-       
-    //    foreach (GameObject g in basurasPendientes)
-    //    {
-    //        if (g != null && g.activeSelf)
-    //        {
-    //            g.SetActive(false);
-    //            if (BarraRio.Instancia != null)
-    //                BarraRio.Instancia.Sumar(puntosFallo / Mathf.Max(1, basurasPorFallo)); // devuelve lo que se quitó
-    //            return;
-    //        }
-    //    }
-
-      
-    //    if (!enCurso && BarraRio.Instancia != null)
-    //        BarraRio.Instancia.Sumar(puntosSimulacionLlenar);
-    //}
-    
-
-
-    [ContextMenu("Probar: iniciar preguntas")]
-    public void IniciarPreguntas()
+    private bool SeccionLimpia(SeccionRio s)
     {
-        if (enCurso || preguntas.Count == 0) return;
-        enCurso = true;
-        indicePregunta = 0;
+        if (s.basuras.Count == 0) return false;   
+        foreach (GameObject g in s.basuras)
+            if (g != null && g.activeSelf) return false; 
+        return true;
+    }
+
+    // ================== PREGUNTA ==================
+
+    private void IniciarPregunta()
+    {
+        enPregunta = true;
         MostrarPregunta(false);
     }
 
-   
-
     private void MostrarPregunta(bool mezclar)
     {
-        PreguntaMohan p = preguntas[indicePregunta];
+        PreguntaMohan p = preguntas[seccionActual];
 
         if (mezclar) MezclarOrden();
         else ordenActual = new int[] { 0, 1, 2 };
@@ -208,9 +233,8 @@ public class PreguntasMohan : MonoBehaviour
         {
             if (botones[b] == null) continue;
 
-            int opcion = ordenActual[b];
             Text texto = botones[b].GetComponentInChildren<Text>();
-            if (texto != null) texto.text = p.opciones[opcion];
+            if (texto != null) texto.text = p.opciones[ordenActual[b]];
 
             PintarBoton(b, colorNormal);
             MostrarBoton(b, true);
@@ -245,17 +269,16 @@ public class PreguntasMohan : MonoBehaviour
         return true;
     }
 
-    
+    // ================== RESPONDER ==================
 
     private void Responder(int boton)
     {
         if (!PreguntaActiva) return;
-        PreguntaActiva = false;   
+        PreguntaActiva = false;
 
-        PreguntaMohan p = preguntas[indicePregunta];
+        PreguntaMohan p = preguntas[seccionActual];
         bool acierto = ordenActual[boton] == p.correcta;
 
-        
         PintarBoton(boton, acierto ? colorCorrecto : colorIncorrecto);
         ReproducirSonido(acierto ? sonidoCorrecto : sonidoIncorrecto);
 
@@ -269,17 +292,21 @@ public class PreguntasMohan : MonoBehaviour
         if (animatorMohan != null) animatorMohan.Play(animMohanSonrie, 0, 0f);
         if (BarraRio.Instancia != null) BarraRio.Instancia.Sumar(puntosAcierto);
 
-      
         yield return new WaitForSeconds(tiempoColorBoton);
         if (panelBotones != null) panelBotones.SetActive(false);
+
+        // Se disuelve la niebla de esta sección (abre la siguiente)
+        StartCoroutine(DisolverNiebla(secciones[seccionActual]));
 
         yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasAcierto - tiempoColorBoton));
 
         if (animatorMohan != null) animatorMohan.Play(animMohanIdle, 0, 0f);
 
-        indicePregunta++;
-        if (indicePregunta < preguntas.Count) MostrarPregunta(false);
-        else Terminar();
+        seccionActual++;
+        enPregunta = false;
+
+        if (seccionActual >= TotalSecciones) Terminar();
+        else if (textoMohan != null) textoMohan.text = "";
     }
 
     private IEnumerator RutinaFallo(PreguntaMohan p)
@@ -287,27 +314,78 @@ public class PreguntasMohan : MonoBehaviour
         if (textoMohan != null) textoMohan.text = p.textoFallo;
         if (BarraRio.Instancia != null) BarraRio.Instancia.Restar(puntosFallo);
 
-      
         yield return new WaitForSeconds(tiempoColorBoton);
         if (panelBotones != null) panelBotones.SetActive(false);
 
         yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasFallo - tiempoColorBoton));
 
-        
-        basurasPendientes = ActivarBasuras();
+        // Reaparecen basuras de ESTA sección y se espera a que el jugador las recoja
+        basurasPendientes = ActivarBasuras(secciones[seccionActual]);
         if (basurasPendientes.Count > 0)
             yield return new WaitUntil(() => TodasRecogidas(basurasPendientes));
         basurasPendientes.Clear();
 
-       
+        // Repetir la misma pregunta con las opciones en otro orden
         MostrarPregunta(true);
     }
 
+    // ================== NIEBLA ==================
+
+    private IEnumerator DisolverNiebla(SeccionRio s)
+    {
+        s.alAbrirse?.Invoke();
+        if (s.efectoAlAbrir != null) s.efectoAlAbrir.Play();
+
+        GameObject pared = s.paredNiebla;
+        if (pared == null) yield break;
+
+        
+        foreach (Collider c in pared.GetComponentsInChildren<Collider>())
+            c.enabled = false;
+
+       
+        foreach (ParticleSystem ps in pared.GetComponentsInChildren<ParticleSystem>())
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+        
+        List<Material> materiales = new List<Material>();
+        List<Color> coloresIniciales = new List<Color>();
+        foreach (Renderer r in pared.GetComponentsInChildren<Renderer>())
+        {
+            if (r is ParticleSystemRenderer) continue;
+            foreach (Material m in r.materials)
+            {
+                if (m.HasProperty("_BaseColor") || m.HasProperty("_Color"))
+                {
+                    materiales.Add(m);
+                    coloresIniciales.Add(m.color);
+                }
+            }
+        }
+
+        float t = 0f;
+        while (t < duracionNiebla)
+        {
+            t += Time.deltaTime;
+            float factor = 1f - Mathf.Clamp01(t / duracionNiebla);
+            for (int i = 0; i < materiales.Count; i++)
+            {
+                Color c = coloresIniciales[i];
+                c.a *= factor;
+                materiales[i].color = c;
+            }
+            yield return null;
+        }
+
+        pared.SetActive(false);
+    }
+
+    
 
     private void PintarBoton(int indice, Color color)
     {
         if (botones[indice] == null) return;
-        Image img = botones[indice].image; 
+        Image img = botones[indice].image;
         if (img != null) img.color = color;
     }
 
@@ -317,12 +395,12 @@ public class PreguntasMohan : MonoBehaviour
             audioSource.PlayOneShot(clip, volumenSonidos);
     }
 
-  
+   
 
-    private List<GameObject> ActivarBasuras()
+    private List<GameObject> ActivarBasuras(SeccionRio s)
     {
         List<GameObject> candidatas = new List<GameObject>();
-        foreach (GameObject g in basurasError)
+        foreach (GameObject g in s.basurasError)
             if (g != null && !g.activeSelf) candidatas.Add(g);
 
         List<GameObject> activadas = new List<GameObject>();
@@ -336,7 +414,7 @@ public class PreguntasMohan : MonoBehaviour
         }
 
         if (cantidad < basurasPorFallo)
-            Debug.LogWarning("PreguntasMohan: no hay suficientes basuras desactivadas en la lista 'basurasError'.");
+            Debug.LogWarning($"PreguntasMohan: no quedan suficientes basuras de error en la {s.nombre}.");
 
         return activadas;
     }
@@ -348,14 +426,14 @@ public class PreguntasMohan : MonoBehaviour
         return true;
     }
 
-    
+   
 
     public void UsarPista()
     {
         if (!PreguntaActiva || pistaUsada) return;
         pistaUsada = true;
 
-        PreguntaMohan p = preguntas[indicePregunta];
+        PreguntaMohan p = preguntas[seccionActual];
 
         for (int b = 0; b < botones.Length; b++)
         {
@@ -392,14 +470,23 @@ public class PreguntasMohan : MonoBehaviour
         cg.blocksRaycasts = visible;
     }
 
-  
+    // ================== FINAL ==================
 
     private void Terminar()
     {
+        terminado = true;
         PreguntaActiva = false;
-        enCurso = false;
         if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = textoFinal;
         alTerminar?.Invoke();
+    }
+
+    
+    [ContextMenu("Probar: limpiar sección actual")]
+    private void ProbarLimpiarSeccion()
+    {
+        if (seccionActual >= secciones.Count) return;
+        foreach (GameObject g in secciones[seccionActual].basuras)
+            if (g != null) g.SetActive(false);
     }
 }
