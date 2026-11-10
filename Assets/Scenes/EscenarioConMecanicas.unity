@@ -15175,7 +15175,7 @@ GameObject:
   - component: {fileID: 223134501}
   - component: {fileID: 223134500}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: paredNiebla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15392,7 +15392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a200d36ba96fd344c8f57de9465d0497, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.277
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a200d36ba96fd344c8f57de9465d0497, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15400,7 +15400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a200d36ba96fd344c8f57de9465d0497, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.965
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a200d36ba96fd344c8f57de9465d0497, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23768,8 +23768,7 @@ Transform:
   m_LocalPosition: {x: 0.76, y: 0.305, z: 9.093}
   m_LocalScale: {x: 0.09691385, y: 0.096913844, z: 0.09691385}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1703079208}
+  m_Children: []
   m_Father: {fileID: 1884600045}
   m_LocalEulerAnglesHint: {x: 0, y: -75, z: 0}
 --- !u!212 &350698582
@@ -34514,7 +34513,7 @@ GameObject:
   - component: {fileID: 509696616}
   - component: {fileID: 509696615}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: ParedNiebla2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39559,8 +39558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 10}
+  m_AnchoredPosition: {x: -0.00012505, y: 0.000000059605}
+  m_SizeDelta: {x: 22.045, y: 11.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579528581
 MonoBehaviour:
@@ -49698,8 +49697,6 @@ MonoBehaviour:
   sonidoCorrecto: {fileID: 8300000, guid: de6bd8ba20611e34fb2f7ea4ecc3d053, type: 3}
   sonidoIncorrecto: {fileID: 8300000, guid: 7012a6133e8b12e4680909e8e17b425c, type: 3}
   volumenSonidos: 1
-  textoDuende: {fileID: 1235917425}
-  duracionTextoDuende: 4
   secciones:
   - nombre: zon1
     zona: {fileID: 947132914}
@@ -54373,8 +54370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 7.14}
-  m_SizeDelta: {x: 20, y: 10}
+  m_AnchoredPosition: {x: -0.03, y: 7.2}
+  m_SizeDelta: {x: 22.045, y: 11.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819780346
 MonoBehaviour:
@@ -76972,7 +76969,7 @@ GameObject:
   - component: {fileID: 1193114887}
   - component: {fileID: 1193114886}
   m_Layer: 0
-  m_Name: zona1 (2)
+  m_Name: zona3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80299,8 +80296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.217, y: 0.25}
-  m_SizeDelta: {x: 412.175, y: 199.06}
+  m_AnchoredPosition: {x: 0.032, y: -0.076}
+  m_SizeDelta: {x: 441.506, y: 144.875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235917425
 MonoBehaviour:
@@ -80315,7 +80312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -80326,7 +80323,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 48
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 48
     m_Alignment: 4
@@ -93238,8 +93235,29 @@ MonoBehaviour:
   animAtras: duende_detras
   animFrente: duende_frente
   animSenalando: duende_senalando
-  panelAyuda: {fileID: 819780344}
   preguntasMohan: {fileID: 732192703}
+  canvasDialogo: {fileID: 819780344}
+  textoDialogo: {fileID: 1235917425}
+  duracionMinimaFrase: 3
+  segundosPorLetra: 0.06
+  frasesInicio:
+  - "Este r\xEDo lo cuida el Moh\xE1n. Est\xE1 muy sucio. Ay\xFAdalo y quiz\xE1 te
+    escuche."
+  - "Dato curioso: el Moh\xE1n viene de las tradiciones de los r\xEDos Magdalena
+    y Cauca. Se dice que vive en cuevas bajo el agua y que atrae a los pescadores
+    con su m\xFAsica."
+  esperaAntesDeInicio: 2
+  frasePrimerObjeto: "Eso no es del r\xEDo. Gracias por sacarlo."
+  frase25: "\xBFOyes? El r\xEDo empieza a respirar."
+  fraseMohanAparece: No tengas miedo. Escucha bien la pregunta.
+  fraseError: "Casi. Piensa en qu\xE9 le importa al r\xEDo."
+  usosPista: 3
+  duracionBrillo: 5
+  colorBrillo: {r: 0, g: 0.90373087, b: 1, a: 1}
+  efectoBrillo: {fileID: 0}
+  frasePistaBasura: "\xA1Mira! All\xED brilla algo que no es del r\xEDo."
+  fraseNoHayBasura: "Por aqu\xED ya est\xE1 limpio. Sigue adelante."
+  fraseSinPistas: "Ya no me quedan pistas. \xA1T\xFA puedes!"
 --- !u!1001 &1467509856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100728,7 +100746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2723410835098849442, guid: fcd222d232edaab4e857990a77530d00, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3825711118205094662, guid: fcd222d232edaab4e857990a77530d00, type: 3}
       propertyPath: m_Pivot.x
@@ -108669,133 +108687,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b49ad7945efdb60449b7d3a0d743297d, type: 3}
   m_PrefabInstance: {fileID: 1702936759}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1703079207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1703079208}
-  - component: {fileID: 1703079210}
-  - component: {fileID: 1703079209}
-  m_Layer: 0
-  m_Name: Point Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1703079208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703079207}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.61463606, y: 0.34485132, z: -0.3059934, w: 0.64005333}
-  m_LocalPosition: {x: -0.47, y: 10.29, z: -0.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 350698581}
-  m_LocalEulerAnglesHint: {x: 86.237, y: 84.228, z: 29.394}
---- !u!114 &1703079209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703079207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
---- !u!108 &1703079210
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703079207}
-  m_Enabled: 1
-  serializedVersion: 12
-  m_Type: 0
-  m_Color: {r: 0.87169814, g: 0.75644076, b: 0.26150936, a: 1}
-  m_Intensity: 89.33
-  m_Range: 1.8292785
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.43
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
 --- !u!1 &1703928339
 GameObject:
   m_ObjectHideFlags: 0
@@ -110628,7 +110519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73655777574bfeb4795988ecf3e49794, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73655777574bfeb4795988ecf3e49794, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142275,7 +142166,7 @@ GameObject:
   - component: {fileID: 2119995881}
   - component: {fileID: 2119995880}
   m_Layer: 0
-  m_Name: zona1 (1)
+  m_Name: zona2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

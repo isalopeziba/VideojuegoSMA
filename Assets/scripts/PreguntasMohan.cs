@@ -9,12 +9,12 @@ public class PreguntaMohan
 {
     [TextArea(2, 4)] public string enunciado;
     [TextArea(1, 3)] public string[] opciones = new string[3];   // en orden A, B, C original
-   
+    [Tooltip("0 = A, 1 = B, 2 = C (según el orden original)")]
     public int correcta;
     [TextArea(2, 4)] public string textoAcierto;
     [TextArea(2, 4)] public string textoFallo;
 
-    
+    [Tooltip("Opción INCORRECTA que el Duende descarta (0 = A, 1 = B, 2 = C)")]
     public int opcionQueDescarta;
     [TextArea(1, 3)] public string textoPista;
 }
@@ -24,13 +24,26 @@ public class SeccionRio
 {
     public string nombre = "Sección";
 
-  
+    [Tooltip("Collider grande que cubre la sección. Al iniciar, las basuras que estén dentro se agregan solas a la lista.")]
     public BoxCollider zona;
+
+    [Tooltip("Basuras de la sección. Si la dejas vacía y pones una zona, se llena sola.")]
     public List<GameObject> basuras = new List<GameObject>();
+
+    [Tooltip("Basuras DESACTIVADAS que reaparecen en esta sección cuando se falla la pregunta")]
     public List<GameObject> basurasError = new List<GameObject>();
+
+    [Tooltip("Pared de niebla que se disuelve al acertar y abre la siguiente sección (en la última puede quedar vacía)")]
     public GameObject paredNiebla;
+
+    [Tooltip("Efecto opcional que se reproduce cuando empieza a disolverse la niebla")]
     public ParticleSystem efectoAlAbrir;
+
+    [Tooltip("Para conectar otras cosas al abrir la sección (sonido, calmar el agua, etc.)")]
     public UnityEvent alAbrirse;
+
+    [System.NonSerialized] public Bounds limites;      // se guardan al iniciar
+    [System.NonSerialized] public bool tieneLimites;
 }
 
 public class PreguntasMohan : MonoBehaviour
@@ -41,31 +54,28 @@ public class PreguntasMohan : MonoBehaviour
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
 
-  
+    [Header("Botones A, B, C")]
     public GameObject panelBotones;
     public Button[] botones = new Button[3];
 
-   
+    [Header("Retroalimentación del botón")]
     public Color colorNormal = Color.white;
     public Color colorCorrecto = new Color(0.35f, 0.85f, 0.35f);
     public Color colorIncorrecto = new Color(0.9f, 0.3f, 0.3f);
     public float tiempoColorBoton = 1.2f;
 
+    [Header("Sonidos")]
     public AudioSource audioSource;
     public AudioClip sonidoCorrecto;
     public AudioClip sonidoIncorrecto;
     [Range(0f, 1f)] public float volumenSonidos = 1f;
 
-    [Header("Duende (pista con la Q)")]
-    public Text textoDuende;
-    public float duracionTextoDuende = 4f;
-
-  
+    [Header("Secciones del río (una pregunta por sección, en orden)")]
     public List<SeccionRio> secciones = new List<SeccionRio>();
     public int basurasPorFallo = 2;
 
     [Header("Niebla")]
-    public float duracionNiebla = 3f;   // segundos que tarda en desaparecer
+    public float duracionNiebla = 3f;
 
     [Header("Barra del río (puntos fijos sobre 100)")]
     public float puntosAcierto = 4f;
@@ -129,15 +139,31 @@ public class PreguntasMohan : MonoBehaviour
         }
     };
 
+    // ---- Lo que el Duende escucha ----
+    public event System.Action<int> AlIniciarPregunta;   // la primera vez que sale la pregunta de una sección
+    public event System.Action AlFallar;                 // cada respuesta incorrecta
+
     // true mientras los botones están esperando respuesta
     public bool PreguntaActiva { get; private set; }
 
+    // cuántas basuras normales se han recogido en todo el nivel
+    public int BasurasRecogidas
+    {
+        get
+        {
+            int n = 0;
+            foreach (SeccionRio s in secciones)
+                foreach (GameObject g in s.basuras)
+                    if (g == null || !g.activeSelf) n++;
+            return n;
+        }
+    }
+
     private int seccionActual = 0;
-    private bool enPregunta = false;      // desde que sale la pregunta hasta que se acierta
+    private bool enPregunta = false;
     private bool terminado = false;
     private int[] ordenActual = { 0, 1, 2 };
     private bool pistaUsada = false;
-    private Coroutine rutinaDuende;
     private List<GameObject> basurasPendientes = new List<GameObject>();
 
     private int TotalSecciones => Mathf.Min(secciones.Count, preguntas.Count);
@@ -163,7 +189,6 @@ public class PreguntasMohan : MonoBehaviour
     {
         if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = "";
-        if (textoDuende != null) textoDuende.text = "";
 
         DetectarBasurasPorZona();
 
@@ -171,7 +196,6 @@ public class PreguntasMohan : MonoBehaviour
             Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
     }
 
-    // Llena la lista de basuras de cada sección con las que estén dentro de su collider
     private void DetectarBasurasPorZona()
     {
         basura[] todas = FindObjectsByType<basura>(FindObjectsSortMode.None); // solo las activas
@@ -180,13 +204,14 @@ public class PreguntasMohan : MonoBehaviour
         {
             if (s.zona == null) continue;
 
-            Bounds limites = s.zona.bounds;   
-            s.zona.enabled = false;          
+            s.limites = s.zona.bounds;   // leer los límites ANTES de apagar el collider
+            s.tieneLimites = true;
+            s.zona.enabled = false;
 
-            if (s.basuras.Count > 0) continue; 
+            if (s.basuras.Count > 0) continue;
 
             foreach (basura b in todas)
-                if (limites.Contains(b.transform.position))
+                if (s.limites.Contains(b.transform.position))
                     s.basuras.Add(b.gameObject);
 
             if (s.basuras.Count == 0)
@@ -206,10 +231,50 @@ public class PreguntasMohan : MonoBehaviour
 
     private bool SeccionLimpia(SeccionRio s)
     {
-        if (s.basuras.Count == 0) return false;   
+        if (s.basuras.Count == 0) return false;
         foreach (GameObject g in s.basuras)
-            if (g != null && g.activeSelf) return false; 
+            if (g != null && g.activeSelf) return false;
         return true;
+    }
+
+    // ================== PISTA FUERA DE LAS PREGUNTAS ==================
+
+    // Devuelve la basura sin recoger más cercana al jugador, dentro de la sección donde está
+    public GameObject BasuraParaPista(Vector3 posJugador)
+    {
+        SeccionRio s = SeccionDe(posJugador);
+        if (s == null) return null;
+
+        GameObject mejor = null;
+        float mejorDist = float.MaxValue;
+
+        void Revisar(List<GameObject> lista)
+        {
+            foreach (GameObject g in lista)
+            {
+                if (g == null || !g.activeSelf) continue;
+                float d = (g.transform.position - posJugador).sqrMagnitude;
+                if (d < mejorDist) { mejorDist = d; mejor = g; }
+            }
+        }
+
+        Revisar(s.basuras);
+        Revisar(s.basurasError);   // las que reaparecieron por un error también cuentan
+        return mejor;
+    }
+
+    private SeccionRio SeccionDe(Vector3 pos)
+    {
+        foreach (SeccionRio s in secciones)
+        {
+            if (!s.tieneLimites) continue;
+            // solo X y Z, para que la altura del jugador no importe
+            if (pos.x >= s.limites.min.x && pos.x <= s.limites.max.x &&
+                pos.z >= s.limites.min.z && pos.z <= s.limites.max.z)
+                return s;
+        }
+        // si no está dentro de ninguna zona, usar la sección en curso
+        return seccionActual < secciones.Count ? secciones[seccionActual] : null;
     }
 
     // ================== PREGUNTA ==================
@@ -218,6 +283,7 @@ public class PreguntasMohan : MonoBehaviour
     {
         enPregunta = true;
         MostrarPregunta(false);
+        AlIniciarPregunta?.Invoke(seccionActual);
     }
 
     private void MostrarPregunta(bool mezclar)
@@ -283,7 +349,11 @@ public class PreguntasMohan : MonoBehaviour
         ReproducirSonido(acierto ? sonidoCorrecto : sonidoIncorrecto);
 
         if (acierto) StartCoroutine(RutinaAcierto(p));
-        else StartCoroutine(RutinaFallo(p));
+        else
+        {
+            AlFallar?.Invoke();
+            StartCoroutine(RutinaFallo(p));
+        }
     }
 
     private IEnumerator RutinaAcierto(PreguntaMohan p)
@@ -295,7 +365,6 @@ public class PreguntasMohan : MonoBehaviour
         yield return new WaitForSeconds(tiempoColorBoton);
         if (panelBotones != null) panelBotones.SetActive(false);
 
-        // Se disuelve la niebla de esta sección (abre la siguiente)
         StartCoroutine(DisolverNiebla(secciones[seccionActual]));
 
         yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasAcierto - tiempoColorBoton));
@@ -319,13 +388,11 @@ public class PreguntasMohan : MonoBehaviour
 
         yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasFallo - tiempoColorBoton));
 
-        // Reaparecen basuras de ESTA sección y se espera a que el jugador las recoja
         basurasPendientes = ActivarBasuras(secciones[seccionActual]);
         if (basurasPendientes.Count > 0)
             yield return new WaitUntil(() => TodasRecogidas(basurasPendientes));
         basurasPendientes.Clear();
 
-        // Repetir la misma pregunta con las opciones en otro orden
         MostrarPregunta(true);
     }
 
@@ -339,15 +406,12 @@ public class PreguntasMohan : MonoBehaviour
         GameObject pared = s.paredNiebla;
         if (pared == null) yield break;
 
-        
         foreach (Collider c in pared.GetComponentsInChildren<Collider>())
             c.enabled = false;
 
-       
         foreach (ParticleSystem ps in pared.GetComponentsInChildren<ParticleSystem>())
             ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
-        
         List<Material> materiales = new List<Material>();
         List<Color> coloresIniciales = new List<Color>();
         foreach (Renderer r in pared.GetComponentsInChildren<Renderer>())
@@ -380,7 +444,7 @@ public class PreguntasMohan : MonoBehaviour
         pared.SetActive(false);
     }
 
-    
+    // ================== RETROALIMENTACIÓN ==================
 
     private void PintarBoton(int indice, Color color)
     {
@@ -395,7 +459,7 @@ public class PreguntasMohan : MonoBehaviour
             audioSource.PlayOneShot(clip, volumenSonidos);
     }
 
-   
+    // ================== BASURA DE ERROR ==================
 
     private List<GameObject> ActivarBasuras(SeccionRio s)
     {
@@ -426,11 +490,13 @@ public class PreguntasMohan : MonoBehaviour
         return true;
     }
 
-   
+    // ================== PISTA EN LAS PREGUNTAS ==================
 
-    public void UsarPista()
+    // La llama el Duende. Descarta una opción incorrecta y devuelve la frase de pista
+    // (o null si no se pudo usar: no hay pregunta o ya se usó en esta pregunta).
+    public string UsarPista()
     {
-        if (!PreguntaActiva || pistaUsada) return;
+        if (!PreguntaActiva || pistaUsada) return null;
         pistaUsada = true;
 
         PreguntaMohan p = preguntas[seccionActual];
@@ -444,18 +510,7 @@ public class PreguntasMohan : MonoBehaviour
             }
         }
 
-        if (textoDuende != null)
-        {
-            if (rutinaDuende != null) StopCoroutine(rutinaDuende);
-            rutinaDuende = StartCoroutine(RutinaTextoDuende(p.textoPista));
-        }
-    }
-
-    private IEnumerator RutinaTextoDuende(string texto)
-    {
-        textoDuende.text = texto;
-        yield return new WaitForSeconds(duracionTextoDuende);
-        textoDuende.text = "";
+        return p.textoPista;
     }
 
     private void MostrarBoton(int indice, bool visible)
@@ -481,7 +536,8 @@ public class PreguntasMohan : MonoBehaviour
         alTerminar?.Invoke();
     }
 
-    
+    // ================== PRUEBAS ==================
+
     [ContextMenu("Probar: limpiar sección actual")]
     private void ProbarLimpiarSeccion()
     {
