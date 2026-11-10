@@ -1,116 +1,114 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class basura : MonoBehaviour
 {
-    [Header("Referencias UI")]
-    public GameObject canvasMinijuego;
-    public NewMonoBehaviourScript minijuego;
+    // Propiedad estática para que el BotonRecoger sepa qué basura está al alcance del jugador
+    public static basura BasuraCercana { get; private set; }
 
-    [Header("Configuracion")]
-    public float puntosPorBasura = 10f;
+    [Header("Referencias UI")]
+    public GameObject canvasMinijuego;          // Objeto Canvas/Panel que contiene el minijuego
+    public NewMonoBehaviourScript minijuego;     // Referencia al script del minijuego
+
+    [Header("Configuración")]
+    public float puntosPorBasura = 10f;         // Puntos que le sumará a BarraRio
 
     private bool jugadorEnRango = false;
-    private Transform jugador;
-
-    public static basura BasuraCercana { get; private set; }
+    private bool minijuegoEnCurso = false;      // Evita abrir múltiples instancias del minijuego
 
     private void Update()
     {
-        if (jugadorEnRango && Keyboard.current != null &&
-            Keyboard.current.eKey.wasPressedThisFrame)
+        // Permite interactuar con la tecla E si el jugador está en rango y no hay un juego activo
+        if (jugadorEnRango && !minijuegoEnCurso && Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             Interactuar();
         }
-
-        // Limpiar referencia si esta basura ya no esta activa
-        if (BasuraCercana == this && !gameObject.activeInHierarchy)
-        {
-            BasuraCercana = null;
-        }
     }
 
+    // Método público llamado por el teclado o por BotonRecoger.cs
     public void Interactuar()
     {
-        if (!jugadorEnRango) return;
+        if (minijuegoEnCurso) return;
 
-        if (canvasMinijuego == null || minijuego == null)
-        {
-            Debug.LogWarning(
-                "Falta asignar Canvas Minijuego o Minijuego en " + name);
-            return;
-        }
-
+        minijuegoEnCurso = true;
         canvasMinijuego.SetActive(true);
         minijuego.IniciarJuego(this);
     }
 
     public void FinalizarMinijuego(bool ganado)
     {
-        if (canvasMinijuego != null)
-            canvasMinijuego.SetActive(false);
+        canvasMinijuego.SetActive(false);
+        minijuegoEnCurso = false;
 
         if (ganado)
         {
-            if (BarraRio.Instancia != null)
-                BarraRio.Instancia.Sumar(puntosPorBasura);
-            else
-                Debug.LogWarning("No se encontro la instancia de BarraRio.");
-
+            // Si la basura destruida era la registrada como cercana, limpia la referencia estática
             if (BasuraCercana == this)
+            {
                 BasuraCercana = null;
+            }
 
-            gameObject.SetActive(false);
+            if (BarraRio.Instancia != null)
+            {
+                BarraRio.Instancia.Sumar(puntosPorBasura);
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró la instancia de BarraRio en la escena.");
+            }
+
+            Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Minijuego no completado. Puedes intentarlo de nuevo.");
+            Debug.Log("Minijuego no completado. La basura sigue aquí para reintentarlo.");
         }
     }
 
+    // Detección de cercanía (3D)
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
-        jugadorEnRango = true;
-        jugador = other.transform;
-
-        ActualizarBasuraCercana();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        jugadorEnRango = true;
-        jugador = other.transform;
-
-        ActualizarBasuraCercana();
+        if (other.CompareTag("Player"))
+        {
+            jugadorEnRango = true;
+            BasuraCercana = this; // Registra esta basura como la más cercana
+            Debug.Log("Presiona 'E' o el botón en pantalla para recolectar la basura");
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
-        jugadorEnRango = false;
-
-        if (BasuraCercana == this)
-            BasuraCercana = null;
+        if (other.CompareTag("Player"))
+        {
+            jugadorEnRango = false;
+            if (BasuraCercana == this)
+            {
+                BasuraCercana = null; // Quita el registro al alejarse
+            }
+        }
     }
 
-    private void ActualizarBasuraCercana()
+    // Detección de cercanía (2D) - Descomenta estas líneas si tu juego es en 2D:
+    /*
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!jugadorEnRango || jugador == null) return;
-
-        if (BasuraCercana == null ||
-            !BasuraCercana.gameObject.activeInHierarchy ||
-            !BasuraCercana.jugadorEnRango ||
-            BasuraCercana.jugador == null ||
-            Vector3.Distance(jugador.position, transform.position) <
-            Vector3.Distance(jugador.position, BasuraCercana.transform.position))
+        if (other.CompareTag("Player"))
         {
+            jugadorEnRango = true;
             BasuraCercana = this;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jugadorEnRango = false;
+            if (BasuraCercana == this)
+            {
+                BasuraCercana = null;
+            }
+        }
+    }
+    */
 }
