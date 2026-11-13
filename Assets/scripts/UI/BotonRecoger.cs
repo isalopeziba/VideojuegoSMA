@@ -13,12 +13,6 @@ public class BotonRecoger : MonoBehaviour
 
     private void Update()
     {
-        // Solo habilitar el boton si hay basura cercana
-        bool hayBasura = basura.BasuraCercana != null &&
-                         basura.BasuraCercana.gameObject.activeInHierarchy;
-
-        if (boton != null)
-            boton.interactable = hayBasura;
     }
 
     public void PulsarBoton()
