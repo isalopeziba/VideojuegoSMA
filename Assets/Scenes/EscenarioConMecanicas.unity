@@ -9161,6 +9161,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 49991075251a0dd45b053cd236d6cb40, type: 3}
   m_PrefabInstance: {fileID: 137468641}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &140734221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140734222}
+  - component: {fileID: 140734223}
+  m_Layer: 0
+  m_Name: Collider Inside Cueva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &140734222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140734221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.343534, y: 0.605, z: -4.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &140734223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140734221}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.4910545, y: 1, z: 0.7725837}
+  m_Center: {x: 0.29854584, y: 0, z: -0.11370814}
 --- !u!1001 &140971281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22804,6 +22857,9 @@ MonoBehaviour:
   lookAheadSmooth: 3.18
   swayAmount: 0.02
   swaySpeed: 3.72
+  zoomHeightOffset: 1.5
+  zoomDepthOffset: -1.7
+  zoomSmooth: 3
 --- !u!1 &332213016
 GameObject:
   m_ObjectHideFlags: 0
@@ -25786,7 +25842,7 @@ Transform:
   m_GameObject: {fileID: 373456474}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.94, y: -0.013, z: -4.81083}
+  m_LocalPosition: {x: -5.58, y: -0.013, z: -4.65}
   m_LocalScale: {x: 0.17192213, y: 0.17192213, z: 0.17192213}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37870,6 +37926,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08d6c808e7b8e1f4a92edc3e5cd67b99, type: 3}
   m_PrefabInstance: {fileID: 542433790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &543340685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543340686}
+  - component: {fileID: 543340688}
+  - component: {fileID: 543340687}
+  m_Layer: 0
+  m_Name: ZoomTrigger Cueva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543340686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543340685}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.343534, y: 0.10100014, z: -1.2726917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543340687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543340685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101869895481a5641b666e9024780765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraZoomTrigger
+  cameraFollow: {fileID: 330585548}
+  triggerID: ZoomTrigger
+--- !u!65 &543340688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543340685}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.6934643, y: 1, z: 6.590749}
+  m_Center: {x: -0.7211008, y: 0, z: -0.5055237}
 --- !u!1001 &543925180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92407,6 +92531,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
       propertyPath: m_Name
       value: cliff_block_stone (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -148051,7 +148179,9 @@ SceneRoots:
   - {fileID: 223134503}
   - {fileID: 509696618}
   - {fileID: 556726187}
+  - {fileID: 543340686}
   - {fileID: 1227207756}
+  - {fileID: 140734222}
   - {fileID: 2133101099}
   - {fileID: 598271043}
   - {fileID: 1423444871}
