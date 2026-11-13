@@ -2,7 +2,7 @@
 - Project name: VideojuegoSMA
 - Unity version: Unity 6000.3.7f1
 - Active game object:
-  - Name: cueva_piedra_lisa
+  - Name: zona3
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
