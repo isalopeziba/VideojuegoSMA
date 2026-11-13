@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-// Cuando el jugador entra por primera vez, lleva al Mohán a la cueva y avisa a los demás.
 [RequireComponent(typeof(Collider))]
 public class EntradaCueva : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class EntradaCueva : MonoBehaviour
         yaEntro = true;
 
         if (mohan != null) mohan.IrALaCueva();
+        else Debug.LogWarning("EntradaCueva: falta arrastrar el Mohán al campo 'Mohan'.");
         if (canvasMochila != null) canvasMochila.SetActive(true);
 
         alEntrar?.Invoke();

@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Va en el MOHÁN (el mismo del río). Se encarga de llevarlo a la cueva
-// y de sus reacciones a lo que hace el joven con la mochila.
+
 public class MohanCueva : MonoBehaviour
 {
     [Header("Referencias")]
@@ -25,6 +24,8 @@ public class MohanCueva : MonoBehaviour
     [Header("Frases")]
     [TextArea(1, 3)] public string fraseSabio = "Sabio es quien toma lo necesario.";
     [TextArea(1, 3)] public string fraseMochilaLlena = "Tu mochila ya está llena.";
+    [Tooltip("Mientras no exista la animación de asentir, este texto muestra que lo deja pasar")]
+    [TextArea(1, 3)] public string fraseAsentir = "Puedes pasar, joven.";
 
     private Coroutine rutinaReaccion;
 
@@ -46,10 +47,14 @@ public class MohanCueva : MonoBehaviour
 
     public void IrALaCueva()
     {
-        if (puntoEnCueva != null)
+        if (puntoEnCueva == null)
+        {
+            Debug.LogWarning("MohanCueva: falta asignar 'Punto En Cueva', el Mohán no se puede mover.");
+        }
+        else
         {
             transform.position = puntoEnCueva.position;
-            transform.rotation = puntoEnCueva.rotation;
+            Debug.Log($"MohanCueva: '{name}' movido a la cueva en {puntoEnCueva.position}");
         }
         Decir("");                       // al entrar solo observa
         Reproducir(animIdle);
@@ -67,7 +72,7 @@ public class MohanCueva : MonoBehaviour
 
     public void Asentir()
     {
-        Reaccionar(animAsentir, "");
+        Reaccionar(animAsentir, fraseAsentir);
     }
 
     public void LevantarMano()

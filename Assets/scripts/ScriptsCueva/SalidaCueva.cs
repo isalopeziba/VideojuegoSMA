@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-// Va en la CASCADA DE LUZ (con un Collider "Is Trigger"). Al tocar Acción,
-// revisa qué lleva el joven y decide si puede salir.
+
 [RequireComponent(typeof(Collider))]
 public class SalidaCueva : MonoBehaviour, IInteractuable
 {
@@ -64,6 +63,9 @@ public class SalidaCueva : MonoBehaviour, IInteractuable
 
         if (!string.IsNullOrEmpty(escenaSiguiente))
             SceneManager.LoadScene(escenaSiguiente);
+        else
+            Debug.Log($"SalidaCueva: el jugador salió (solo semillas: {SalioSoloConSemillas}). " +
+                      "No hay 'Escena Siguiente' asignada, así que no se cambia de escena.");
     }
 
     private void GuardarResultado()

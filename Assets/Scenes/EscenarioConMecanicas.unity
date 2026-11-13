@@ -29311,7 +29311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b23cf35b7f05144b3358dc322396fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntradaCueva
-  mohan: {fileID: 1703928343}
+  mohan: {fileID: 757298077}
   canvasMochila: {fileID: 1423444867}
   alEntrar:
     m_PersistentCalls:
@@ -29350,7 +29350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SalidaCueva
   mochila: {fileID: 373456480}
-  mohan: {fileID: 1703928343}
+  mohan: {fileID: 757298077}
   esperaAntesDeSalir: 3
   escenaSiguiente: 
   alSalir:
@@ -52182,6 +52182,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 79b616fbb5a78b94caf503a1cd5fce7c, type: 3}
   m_PrefabInstance: {fileID: 757195627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &757298075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 757298076}
+  - component: {fileID: 757298077}
+  m_Layer: 0
+  m_Name: Mohan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &757298076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757298075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.78, y: 0.06, z: -4.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1703928341}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757298077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757298075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17372805dba24a4fad48fc81988b96e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MohanCueva
+  mochila: {fileID: 373456480}
+  textoMohan: {fileID: 2010372341}
+  animator: {fileID: 1703928342}
+  puntoEnCueva: {fileID: 556726187}
+  animIdle: idle_mohan
+  animSonrie: mohan_sonriendo
+  animAsentir: 
+  animLevantarMano: 
+  duracionReaccion: 2
+  fraseSabio: Sabio es quien toma lo necesario.
+  fraseMochilaLlena: "Tu mochila ya est\xE1 llena."
+  fraseAsentir: Puedes pasar, joven.
 --- !u!1001 &759830660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57635,7 +57692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoCueva
   nombre: Semilla
-  tipo: 1
+  tipo: 0
   icono: {fileID: 21300000, guid: e59f69beaa5b5dc4e8b2ee6abdc18470, type: 3}
   pedestalInicial: {fileID: 1733173532}
 --- !u!65 &858381623
@@ -111145,7 +111202,6 @@ GameObject:
   - component: {fileID: 1703928341}
   - component: {fileID: 1703928340}
   - component: {fileID: 1703928342}
-  - component: {fileID: 1703928343}
   m_Layer: 0
   m_Name: mohan_idle_0
   m_TagString: Untagged
@@ -111220,13 +111276,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703928339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.78, y: 0.06, z: -4.76}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25477776, y: 0.25477776, z: 0.25477776}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1397010989}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 757298076}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1703928342
 Animator:
@@ -111250,29 +111306,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1703928343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703928339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a17372805dba24a4fad48fc81988b96e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MohanCueva
-  mochila: {fileID: 373456480}
-  textoMohan: {fileID: 2010372341}
-  animator: {fileID: 1703928342}
-  puntoEnCueva: {fileID: 556726187}
-  animIdle: idle_mohan
-  animSonrie: mohan_sonriendo
-  animAsentir: 
-  animLevantarMano: 
-  duracionReaccion: 2
-  fraseSabio: Sabio es quien toma lo necesario.
-  fraseMochilaLlena: "Tu mochila ya est\xE1 llena."
 --- !u!1001 &1704173396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147378,7 +147411,7 @@ SceneRoots:
   - {fileID: 1125238040}
   - {fileID: 1466685061}
   - {fileID: 1878679354}
-  - {fileID: 1703928341}
+  - {fileID: 757298076}
   - {fileID: 1584484772}
   - {fileID: 732192702}
   - {fileID: 609824804}
