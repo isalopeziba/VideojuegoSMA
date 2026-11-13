@@ -159,6 +159,10 @@ public class PreguntasMohan : MonoBehaviour
         }
     }
 
+    // Para las estrellas: preguntas respondidas bien sin haber fallado antes
+    public int AciertosALaPrimera { get; private set; }
+    private bool falloEnEstaPregunta = false;
+
     private int seccionActual = 0;
     private bool enPregunta = false;
     private bool terminado = false;
@@ -282,6 +286,7 @@ public class PreguntasMohan : MonoBehaviour
     private void IniciarPregunta()
     {
         enPregunta = true;
+        falloEnEstaPregunta = false;
         MostrarPregunta(false);
         AlIniciarPregunta?.Invoke(seccionActual);
     }
@@ -348,9 +353,14 @@ public class PreguntasMohan : MonoBehaviour
         PintarBoton(boton, acierto ? colorCorrecto : colorIncorrecto);
         ReproducirSonido(acierto ? sonidoCorrecto : sonidoIncorrecto);
 
-        if (acierto) StartCoroutine(RutinaAcierto(p));
+        if (acierto)
+        {
+            if (!falloEnEstaPregunta) AciertosALaPrimera++;
+            StartCoroutine(RutinaAcierto(p));
+        }
         else
         {
+            falloEnEstaPregunta = true;
             AlFallar?.Invoke();
             StartCoroutine(RutinaFallo(p));
         }
