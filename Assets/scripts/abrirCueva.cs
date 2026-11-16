@@ -1,132 +1,148 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; // Necesario para la lectura de teclas en el nuevo Input System
+using UnityEngine.InputSystem;
 
+
+[DefaultExecutionOrder(10000)]
 public class abrirCueva : MonoBehaviour
 {
-    [Header("Referencias de Objetos (Pared / Escenario)")]
-    [Tooltip("Lista de GameObjects que se moverán en el eje -Z (ej: Paredes, rocas, etc.)")]
+    [Header("Objetos de la puerta")]
+    [Tooltip("Paredes, rocas, etc. que se mueven. Deben empezar en su posición CERRADA.")]
     public List<Transform> objetosAMover = new List<Transform>();
-
-    [Tooltip("Distancia que se desplazarán los objetos hacia atrás en el eje Z (valor positivo)")]
+    [Tooltip("Cuánto se mueven hacia atrás en Z al abrir")]
     public float distanciaZ = 5f;
-
-    [Tooltip("Tiempo en segundos que tardará en completarse el movimiento")]
     public float duracionMovimiento = 2.5f;
 
-    [Header("Configuración de Temblor de Cámara")]
-    [Tooltip("Cámara principal que temblará (Si se deja vacía, usará Camera.main)")]
+    [Header("Temblor de cámara")]
     public Transform camaraTransform;
+    [Tooltip("0.1 a 0.3 se nota bien")]
+    public float fuerzaTemblor = 0.15f;
 
-    [Tooltip("Intensidad o fuerza del temblor")]
-    public float fuerzaTemblor = 0.003f;
-
-    [Header("Sonido Opcional")]
+    [Header("Sonido opcional")]
     public AudioSource audioSource;
-    public AudioClip sonidoDerrumbeOMovimiento;
+    public AudioClip sonidoMovimiento;
 
-    private Vector3 posicionOriginalCamara;
-    private bool enMovimiento = false;
+    [Header("Pruebas")]
+    [Tooltip("La tecla N abre o cierra para probar")]
+    public bool probarConTeclaN = true;
+
+    public bool EstaAbierta { get; private set; } = false;
+
+    private readonly List<Vector3> posCerradas = new List<Vector3>();
+    private Coroutine rutina;
+
+    private bool temblando = false;
+    private Vector3 offsetTemblor = Vector3.zero;
 
     private void Start()
     {
-        // Si no asignaste una cámara en el Inspector, busca la MainCamera automáticamente
         if (camaraTransform == null && Camera.main != null)
-        {
             camaraTransform = Camera.main.transform;
-        }
 
-        if (camaraTransform != null)
+        foreach (Transform obj in objetosAMover)
         {
-            posicionOriginalCamara = camaraTransform.localPosition;
+            posCerradas.Add(obj != null ? obj.position : Vector3.zero);
+            if (obj != null && obj.gameObject.isStatic)
+                Debug.LogWarning($"abrirCueva: '{obj.name}' está marcado como Static y no se verá moverse.");
         }
     }
 
     private void Update()
     {
-        // Tecla N para pruebas rápidas en el editor
-        if (Keyboard.current != null && Keyboard.current.nKey.wasPressedThisFrame)
+        // Quitar el temblor del frame anterior ANTES de que el script de la cámara la mueva
+        QuitarTemblor();
+
+        if (probarConTeclaN && Keyboard.current != null && Keyboard.current.nKey.wasPressedThisFrame)
         {
-            Debug.Log("Prueba manual activada con tecla N");
-            ActivarEfectoFinal();
+            if (EstaAbierta) Cerrar(); else Abrir();
         }
     }
 
-    // Este método PÚBLICO se conecta al evento alTerminar del Mohán
-    public void ActivarEfectoFinal()
+    private void LateUpdate()
     {
-        if (!enMovimiento)
+        // Sumar el temblor DESPUÉS de que el script de la cámara la movió
+        if (temblando && camaraTransform != null)
         {
-            StartCoroutine(RutinaMovimientoYTemblor());
+            offsetTemblor = (Vector3)(Random.insideUnitCircle * fuerzaTemblor);
+            camaraTransform.position += offsetTemblor;
         }
     }
 
-    private IEnumerator RutinaMovimientoYTemblor()
+    private void QuitarTemblor()
     {
-        enMovimiento = true;
-
-        // Reproduce sonido de derrumbe/vibración si está asignado
-        if (audioSource != null && sonidoDerrumbeOMovimiento != null)
+        if (camaraTransform != null && offsetTemblor != Vector3.zero)
         {
-            audioSource.PlayOneShot(sonidoDerrumbeOMovimiento);
+            camaraTransform.position -= offsetTemblor;
+            offsetTemblor = Vector3.zero;
         }
+    }
 
-        // Guardar posiciones iniciales y calcular destino final en -Z de cada objeto
-        List<Vector3> posIniciales = new List<Vector3>();
-        List<Vector3> posFinales = new List<Vector3>();
+    // Se deja con este nombre porque ya está conectado al "Al Terminar" de PreguntasMohan
+    public void ActivarEfectoFinal() { Abrir(); }
 
+    public void Abrir()
+    {
+        if (EstaAbierta) return;
+        EstaAbierta = true;
+        Mover(abrir: true);
+        Debug.Log("abrirCueva: abriendo");
+    }
+
+    public void Cerrar()
+    {
+        if (!EstaAbierta) return;
+        EstaAbierta = false;
+        Mover(abrir: false);
+        Debug.Log("abrirCueva: cerrando");
+    }
+
+    private void Mover(bool abrir)
+    {
+        if (rutina != null) StopCoroutine(rutina);
+
+        List<Vector3> destinos = new List<Vector3>();
+        for (int i = 0; i < posCerradas.Count; i++)
+            destinos.Add(abrir ? posCerradas[i] - new Vector3(0f, 0f, distanciaZ) : posCerradas[i]);
+
+        rutina = StartCoroutine(RutinaMover(destinos));
+    }
+
+    private IEnumerator RutinaMover(List<Vector3> destinos)
+    {
+        if (audioSource != null && sonidoMovimiento != null)
+            audioSource.PlayOneShot(sonidoMovimiento);
+
+        List<Vector3> inicios = new List<Vector3>();
         foreach (Transform obj in objetosAMover)
-        {
-            if (obj != null)
-            {
-                posIniciales.Add(obj.position);
-                // Calcula el movimiento al restar distanciaZ sobre el eje Z global
-                posFinales.Add(obj.position - new Vector3(0, 0, distanciaZ));
-            }
-        }
+            inicios.Add(obj != null ? obj.position : Vector3.zero);
 
+        temblando = true;
         float tiempo = 0f;
 
         while (tiempo < duracionMovimiento)
         {
             tiempo += Time.deltaTime;
-            float porcentaje = Mathf.Clamp01(tiempo / duracionMovimiento);
+            float p = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(tiempo / duracionMovimiento));
 
-            // 1. Mover suavemente los objetos en -Z
             for (int i = 0; i < objetosAMover.Count; i++)
-            {
                 if (objetosAMover[i] != null)
-                {
-                    objetosAMover[i].position = Vector3.Lerp(posIniciales[i], posFinales[i], porcentaje);
-                }
-            }
-
-            // 2. Aplicar el temblor (Shake) aleatorio en la cámara
-            if (camaraTransform != null)
-            {
-                Vector3 puntoAleatorio = posicionOriginalCamara + (Vector3)Random.insideUnitCircle * fuerzaTemblor;
-                camaraTransform.localPosition = puntoAleatorio;
-            }
+                    objetosAMover[i].position = Vector3.Lerp(inicios[i], destinos[i], p);
 
             yield return null;
         }
 
-        // Asegurar que queden en su posición final exacta al terminar
         for (int i = 0; i < objetosAMover.Count; i++)
-        {
             if (objetosAMover[i] != null)
-            {
-                objetosAMover[i].position = posFinales[i];
-            }
-        }
+                objetosAMover[i].position = destinos[i];
 
-        // Regresar la cámara a su posición original
-        if (camaraTransform != null)
-        {
-            camaraTransform.localPosition = posicionOriginalCamara;
-        }
+        temblando = false;
+        rutina = null;
+    }
 
-        enMovimiento = false;
+    private void OnDisable()
+    {
+        temblando = false;
+        QuitarTemblor();
     }
 }

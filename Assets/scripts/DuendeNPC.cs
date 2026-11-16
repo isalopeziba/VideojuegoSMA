@@ -69,6 +69,7 @@ public class DuendeNPC : MonoBehaviour
 
     private Queue<string> colaFrases = new Queue<string>();
     private Coroutine rutinaDialogo;
+    public bool EstaHablando => rutinaDialogo != null || colaFrases.Count > 0;
 
     private bool estaSenalando = false;
     private Transform objetivoSenalado;
