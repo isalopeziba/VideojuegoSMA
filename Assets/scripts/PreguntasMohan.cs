@@ -44,12 +44,15 @@ public class SeccionRio
 
     [System.NonSerialized] public Bounds limites;      // se guardan al iniciar
     [System.NonSerialized] public bool tieneLimites;
+
+    public Transform puntoMohan;
 }
 
 public class PreguntasMohan : MonoBehaviour
 {
     [Header("Mohán")]
     public Text textoMohan;
+    public Transform mohan;
     public Animator animatorMohan;
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
@@ -198,6 +201,8 @@ public class PreguntasMohan : MonoBehaviour
 
         if (secciones.Count != preguntas.Count)
             Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
+
+        UbicarMohan(0);
     }
 
     private void DetectarBasurasPorZona()
@@ -281,10 +286,20 @@ public class PreguntasMohan : MonoBehaviour
         return seccionActual < secciones.Count ? secciones[seccionActual] : null;
     }
 
+    private void UbicarMohan(int indiceSeccion)
+    {
+        if (mohan == null || indiceSeccion >= secciones.Count) return;
+
+        Transform punto = secciones[indiceSeccion].puntoMohan;
+        if (punto != null) mohan.position = punto.position;
+        else Debug.LogWarning($"PreguntasMohan: la {secciones[indiceSeccion].nombre} no tiene 'Punto Mohan'.");
+    }
+
     // ================== PREGUNTA ==================
 
     private void IniciarPregunta()
     {
+        UbicarMohan(seccionActual);
         enPregunta = true;
         falloEnEstaPregunta = false;
         MostrarPregunta(false);
