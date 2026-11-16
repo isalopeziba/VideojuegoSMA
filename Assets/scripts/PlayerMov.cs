@@ -115,8 +115,19 @@ public class PlayerMov : MonoBehaviour
                 }
             }
         }
+        bool estaCaminando = moveInput.sqrMagnitude > 0.01f;
 
-        RaycastHit hit;
+
+        if (audio1gestor.Instancia != null)
+        {
+            audio1gestor.Instancia.GestionarPasos(estaCaminando);
+        }
+    
+
+
+
+
+    RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
         if (Physics.Raycast(castPos, Vector3.down, out hit, Mathf.Infinity, terrainLayer))

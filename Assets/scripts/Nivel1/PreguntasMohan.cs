@@ -71,7 +71,10 @@ public class PreguntasMohan : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip sonidoCorrecto;
     public AudioClip sonidoIncorrecto;
+    public AudioClip sonidoNuevaPregunta; 
     [Range(0f, 1f)] public float volumenSonidos = 1f;
+
+
 
     [Header("Secciones del río (una pregunta por sección, en orden)")]
     public List<SeccionRio> secciones = new List<SeccionRio>();
@@ -330,6 +333,7 @@ public class PreguntasMohan : MonoBehaviour
         if (panelBotones != null) panelBotones.SetActive(true);
         pistaUsada = false;
         PreguntaActiva = true;
+        ReproducirSonido(sonidoNuevaPregunta);
     }
 
     private void MezclarOrden()
