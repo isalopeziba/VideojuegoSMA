@@ -191,7 +191,14 @@ public class cierreNivel1 : MonoBehaviour
 
     private void BloquearJugador(bool bloquear)
     {
-        if (movimientoJugador != null) movimientoJugador.enabled = !bloquear;
+        if (movimientoJugador != null)
+        {
+            movimientoJugador.enabled = !bloquear;
+
+            // Quieto en idle mientras dura la ceremonia
+            if (bloquear && movimientoJugador.animator != null)
+                movimientoJugador.animator.Play(movimientoJugador.animIdle, 0, 0f);
+        }
 
         if (bloquear && jugador != null)
         {

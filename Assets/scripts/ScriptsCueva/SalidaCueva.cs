@@ -1,9 +1,9 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-
+// Va en la ENTRADA de la cueva (mismo objeto y collider "Is Trigger" que EntradaCueva).
+// Al presionar Acción, revisa qué lleva el joven y decide si puede salir.
 [RequireComponent(typeof(Collider))]
 public class SalidaCueva : MonoBehaviour, IInteractuable
 {
@@ -12,9 +12,9 @@ public class SalidaCueva : MonoBehaviour, IInteractuable
     public MohanCueva mohan;
 
     [Header("Salida")]
-    public float esperaAntesDeSalir = 3f;
-    [Tooltip("Nombre de la escena del Nivel 2 (déjalo vacío mientras no exista)")]
+    [Tooltip("Normalmente vacío: el cambio de escena lo hace el portal")]
     public string escenaSiguiente = "";
+    [Tooltip("Abrir la puerta, preparar la ceremonia...")]
     public UnityEvent alSalir;
 
     public event System.Action AlIntentarSalirSinSemillas;   // lo escucha el Duende
@@ -24,48 +24,48 @@ public class SalidaCueva : MonoBehaviour, IInteractuable
     public const string ClaveSoloSemillas = "Nivel1_SoloSemillas";
     public bool SalioSoloConSemillas { get; private set; }
 
-    private bool saliendo = false;
+    private bool salio = false;
 
-    public bool PuedeInteractuar => !saliendo;
+    public bool PuedeInteractuar => !salio;
 
     private void Reset()
     {
         GetComponent<Collider>().isTrigger = true;
     }
 
+    private void Start()
+    {
+        if (mochila == null)
+            Debug.LogWarning("SalidaCueva: falta arrastrar el jugador al campo 'Mochila'. Sin eso no se puede salir.");
+    }
+
     public void Interactuar(InteraccionJugador jugador)
     {
-        if (saliendo || mochila == null) return;
+        if (salio) return;
+        if (mochila == null) { Debug.LogWarning("SalidaCueva: falta la referencia 'Mochila'."); return; }
 
-        // Sin semillas: la cascada lo detiene
+        // Sin semillas: no puede salir
         if (!mochila.TieneSemillas)
         {
+            Debug.Log("SalidaCueva: intentó salir SIN semillas.");
             AlIntentarSalirSinSemillas?.Invoke();
             return;
         }
 
-        StartCoroutine(RutinaSalir());
-    }
-
-    private IEnumerator RutinaSalir()
-    {
-        saliendo = true;
+        salio = true;
         SalioSoloConSemillas = mochila.SoloSemillas;
+        Debug.Log($"SalidaCueva: sale con semillas (solo semillas: {SalioSoloConSemillas}).");
 
         if (SalioSoloConSemillas) mohan?.Sonreir();   // "Sabio es quien toma lo necesario."
-        else mohan?.Asentir();                         // lo deja pasar sin la estrella
+        else mohan?.Asentir();
 
         GuardarResultado();
 
-        yield return new WaitForSeconds(esperaAntesDeSalir);
-
+        // Se abre la puerta enseguida, para que el joven no quede trabado esperando
         alSalir?.Invoke();
 
         if (!string.IsNullOrEmpty(escenaSiguiente))
             SceneManager.LoadScene(escenaSiguiente);
-        else
-            Debug.Log($"SalidaCueva: el jugador salió (solo semillas: {SalioSoloConSemillas}). " +
-                      "No hay 'Escena Siguiente' asignada, así que no se cambia de escena.");
     }
 
     private void GuardarResultado()

@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.64
+  m_AmbientIntensity: 0.43
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.3114062, g: 0.4980852, b: 0.690566, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: b4f152e0498484391a9f0d5a1facf03b, type: 2}
@@ -2797,7 +2797,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 0.42068347, g: 0.56089205, b: 0.735849, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.88
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2840,7 +2840,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 2464
+  m_ColorTemperature: 2093
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -8418,59 +8418,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 49991075251a0dd45b053cd236d6cb40, type: 3}
   m_PrefabInstance: {fileID: 137468641}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &140734221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 140734222}
-  - component: {fileID: 140734223}
-  m_Layer: 0
-  m_Name: Collider Inside Cueva
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &140734222
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140734221}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.343534, y: 0.605, z: -4.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &140734223
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140734221}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.4910545, y: 1, z: 0.7725837}
-  m_Center: {x: 0.29854584, y: 0, z: -0.11370814}
 --- !u!1001 &140971281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11881,6 +11828,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -13037,6 +12988,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14596,6 +14551,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -15374,6 +15333,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -16309,23 +16272,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.023347855
+      value: -3.9569998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.019999564
+      value: 0.269
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2014451
+      value: 1.3906505
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.018996894
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.9998196
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -16337,7 +16300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 182.177
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -16415,8 +16378,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0, g: 0.068440914, b: 1, a: 1}
-  m_Intensity: 5
-  m_Range: 0.8
+  m_Intensity: 6.18
+  m_Range: 0.79
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -16457,7 +16420,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 4.75
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -16898,6 +16861,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -18109,6 +18076,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -23236,6 +23207,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -23874,6 +23849,7 @@ GameObject:
   - component: {fileID: 373456479}
   - component: {fileID: 373456481}
   - component: {fileID: 373456480}
+  - component: {fileID: 373456482}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -23894,7 +23870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMov
   speed: 2
-  groundDist: -0.1
+  groundDist: -0.02
   joystick: {fileID: 299207521}
   terrainLayer:
     serializedVersion: 2
@@ -24019,6 +23995,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b115fcbcab169bb499a6502bf7f73e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteraccionJugador
+--- !u!114 &373456482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373456474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72670f9bba9ba6c488df72724da1e515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::debug
 --- !u!1001 &374305251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26969,6 +26957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27273,7 +27265,7 @@ Transform:
   m_GameObject: {fileID: 429576025}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15.909003, y: 0.109999776, z: -3.4099987}
+  m_LocalPosition: {x: 15.78, y: 0.109999776, z: -3.4099987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27339,8 +27331,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4299257, y: 3.236524, z: 1.0595868}
-  m_Center: {x: 0.2634548, y: 1.118262, z: 0.029793382}
+  m_Size: {x: 4.127896, y: 3.236524, z: 0.91544485}
+  m_Center: {x: -0.5855305, y: 1.118262, z: -0.027495936}
 --- !u!114 &429576029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27355,23 +27347,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SalidaCueva
   mochila: {fileID: 373456480}
   mohan: {fileID: 757298077}
-  esperaAntesDeSalir: 1
   escenaSiguiente: 
   alSalir:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1837120977}
-        m_TargetAssemblyTypeName: EstrellasNivel1, Assembly-CSharp
-        m_MethodName: TerminarNivel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 947020393}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -32021,6 +32000,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -36362,7 +36345,7 @@ Transform:
   m_GameObject: {fileID: 556726186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.179, y: 0.566, z: 0.746}
+  m_LocalPosition: {x: 18.389, y: 0.566, z: 0.746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36654,6 +36637,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -37800,6 +37787,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39098,9 +39089,9 @@ MonoBehaviour:
   objetosAMover:
   - {fileID: 598271043}
   distanciaZ: 1.6
-  duracionMovimiento: 3
+  duracionMovimiento: 2
   camaraTransform: {fileID: 330585546}
-  fuerzaTemblor: 0.0001
+  fuerzaTemblor: 0.03
   audioSource: {fileID: 0}
   sonidoMovimiento: {fileID: 0}
   probarConTeclaN: 1
@@ -41031,6 +41022,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44326,6 +44321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44553,6 +44552,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45638,6 +45641,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45773,6 +45780,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -46836,6 +46847,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -48791,6 +48806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49763,6 +49782,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -50798,6 +50821,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55022,6 +55049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57848,6 +57879,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -58434,6 +58469,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
       propertyPath: m_Name
       value: cliff_blockQuarter_stone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60193,7 +60232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &952139286
 Animator:
   serializedVersion: 7
@@ -60774,6 +60813,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1eb5ca2ffc8662345a82bc9390d965b0, type: 3}
       propertyPath: m_Name
       value: bridge_center_stone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1eb5ca2ffc8662345a82bc9390d965b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61393,6 +61436,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -62757,6 +62804,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
       propertyPath: m_Name
       value: cliff_blockQuarter_stone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -64289,6 +64340,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -69715,6 +69770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -70982,6 +71041,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 675ef473b1d09ad4995850e1df41b025, type: 3}
       propertyPath: m_Name
       value: terrain (112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 675ef473b1d09ad4995850e1df41b025, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 675ef473b1d09ad4995850e1df41b025, type: 3}
       propertyPath: m_TagString
@@ -75228,6 +75291,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -79538,6 +79605,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
       propertyPath: m_Name
       value: cliff_block_stone (90)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -86441,6 +86512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cliff_blockQuarter_stone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88361,6 +88436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88426,6 +88505,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -90200,8 +90283,10 @@ MonoBehaviour:
   duende: {fileID: 1466685062}
   mochila: {fileID: 373456480}
   entrada: {fileID: 429576027}
-  salida: {fileID: 0}
+  salida: {fileID: 429576029}
   fraseEntrar: "Mucho brillo, \xBFverdad? Piensa: \xBFqu\xE9 necesitas de verdad?"
+  fraseComoSalir: "Cuando creas que tienes lo necesario, ve a la puerta y presiona
+    Acci\xF3n."
   fraseAlgoTeFalta: Algo te falta...
   fraseRecordarSemillas: "\xBFY las semillas? Las vas a necesitar en el bosque."
 --- !u!1001 &1467509856
@@ -90498,6 +90583,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
       propertyPath: m_Name
       value: cliff_blockQuarter_stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a06bb80ff3107de459062264fb093ea0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98040,7 +98129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6d2ceeabfcf9ce94aaa1fc7138f4f84a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5289986
+      value: -1.427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6d2ceeabfcf9ce94aaa1fc7138f4f84a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -103338,6 +103427,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -103567,6 +103660,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1eb5ca2ffc8662345a82bc9390d965b0, type: 3}
       propertyPath: m_Name
       value: bridge_center_stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1eb5ca2ffc8662345a82bc9390d965b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -104211,6 +104308,7 @@ Transform:
   m_Children:
   - {fileID: 952139288}
   - {fileID: 2106899862}
+  - {fileID: 2059116106}
   - {fileID: 1260575644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104234,13 +104332,13 @@ MonoBehaviour:
   puntoMohanRio: {fileID: 2106899862}
   animReverencia: mohan_reverencia
   animIdle: idle_mohan
-  duracionReverencia: 2
+  duracionReverencia: 3
   profundidadAgua: 2
   duracionSalirHundirse: 2
   gota: {fileID: 952139288}
   origenGota: {fileID: 1260575644}
-  duracionViajeGota: 1.5
-  alturaArco: 1.5
+  duracionViajeGota: 3
+  alturaArco: 1
   gotaEnHUD: {fileID: 1165481181}
   duende: {fileID: 1466685062}
   fraseMohan: "El r\xEDo da lo que se necesita. Quien toma de m\xE1s, un d\xEDa se
@@ -104274,8 +104372,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4374853, y: 0.9999998, z: 1.8563433}
-  m_Center: {x: -0.21874323, y: 0, z: -0.22821075}
+  m_Size: {x: 1.0327709, y: 0.9999998, z: 3.3519135}
+  m_Center: {x: -0.42109948, y: 0, z: 0.41598433}
 --- !u!1001 &1684091127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107725,6 +107823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -108234,6 +108336,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -109641,6 +109747,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -110423,6 +110533,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -111923,6 +112037,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
       propertyPath: m_Name
       value: cliff_block_stone (86)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5d48d3e99bf25049a1fe518101751a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -113832,6 +113950,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -114488,6 +114610,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_Name
       value: terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
@@ -115356,6 +115482,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -116973,7 +117103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.008073807
+      value: 0.256
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116981,7 +117111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.240806
+      value: 5.657
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -121767,6 +121897,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -123328,6 +123462,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
       propertyPath: m_Name
       value: ground_riverSide (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -130427,6 +130565,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02edd2e238fbd9e4b86e2fac2e9de641, type: 3}
       propertyPath: m_TagString
       value: terrain
       objectReference: {fileID: 0}
@@ -132075,7 +132217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.115
+      value: 0.021
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fffafb38020d526438d4a0a1ac38af4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -135101,31 +135243,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1681987776}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalScale.x
-      value: 25.672102
+      value: 7.8342643
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.442602
+      value: 5.322897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalScale.z
-      value: 26.184141
+      value: 7.9905214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.91
+      value: -0.84225947
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.12
+      value: 0.26244313
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.32
+      value: 0.64312303
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
       propertyPath: m_LocalRotation.w
@@ -135213,6 +135355,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.096344784, y: 0.052985195, z: 0.10317165}
   m_Center: {x: -0.03563585, y: 0.01341517, z: -0.0028829838}
+--- !u!4 &2059116106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 55317fe818a99e24c953a161cd983d30, type: 3}
+  m_PrefabInstance: {fileID: 2059116100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2064358308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137628,6 +137775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -139227,6 +139378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_riverSide (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8345cd3103bdbc54782b533d974570e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -140302,10 +140457,8 @@ SceneRoots:
   - {fileID: 556726187}
   - {fileID: 543340686}
   - {fileID: 1227207756}
-  - {fileID: 140734222}
   - {fileID: 2133101099}
   - {fileID: 598271043}
   - {fileID: 1423444871}
   - {fileID: 1837120976}
   - {fileID: 1681987776}
-  - {fileID: 2059116100}
