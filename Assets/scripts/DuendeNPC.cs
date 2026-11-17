@@ -27,7 +27,12 @@ public class DuendeNPC : MonoBehaviour
     public string animSenalando = "duende_senalando";
 
     [Header("Referencias")]
+    [Tooltip("Solo Nivel 1: para las frases del Mohán y las basuras recogidas")]
     public PreguntasMohan preguntasMohan;
+
+    [Header("Fuentes de pista")]
+    [Tooltip("Scripts que dan pistas. Nivel 1: PreguntasMohan. Nivel 2: ControlNivel2 y PreguntasGuardian")]
+    public MonoBehaviour[] fuentesPista;
 
     [Header("Diálogo (canvas sobre la cabeza)")]
     public GameObject canvasDialogo;      // el canvas desactivado del Duende
@@ -195,14 +200,27 @@ public class DuendeNPC : MonoBehaviour
 
     // ================== PISTA ==================
 
+    // Todas las fuentes de pista de este nivel
+    private IEnumerable<IFuentePista> Fuentes()
+    {
+        if (fuentesPista != null)
+            foreach (MonoBehaviour m in fuentesPista)
+                if (m is IFuentePista f) yield return f;
+
+        // compatibilidad con el Nivel 1 si no se llenó la lista
+        if (preguntasMohan != null) yield return preguntasMohan;
+    }
+
     public void PulsarBotonPista()
     {
         // 1. Durante una pregunta: descartar una opción
-        if (preguntasMohan != null && preguntasMohan.PreguntaActiva)
+        foreach (IFuentePista f in Fuentes())
         {
+            if (!f.PreguntaActiva) continue;
+
             if (usosPista <= 0) { Decir(fraseSinPistas, true); return; }
 
-            string pista = preguntasMohan.UsarPista();
+            string pista = f.UsarPista();
             if (pista != null)
             {
                 usosPista--;
@@ -211,13 +229,19 @@ public class DuendeNPC : MonoBehaviour
             return;
         }
 
-        // 2. Recolectando: iluminar una basura de la zona del jugador
-        if (rutinaBrillo != null) return;   // ya hay una iluminada
+        // 2. Fuera de las preguntas: iluminar el objetivo más cercano (basura, parche...)
+        if (rutinaBrillo != null) return;   // ya hay uno iluminado
         if (usosPista <= 0) { Decir(fraseSinPistas, true); return; }
 
-        GameObject objetivo = (preguntasMohan != null && jugador != null)
-            ? preguntasMohan.BasuraParaPista(jugador.position)
-            : null;
+        GameObject objetivo = null;
+        if (jugador != null)
+        {
+            foreach (IFuentePista f in Fuentes())
+            {
+                objetivo = f.ObjetivoParaPista(jugador.position);
+                if (objetivo != null) break;
+            }
+        }
 
         if (objetivo == null)
         {

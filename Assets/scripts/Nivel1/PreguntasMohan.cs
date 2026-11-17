@@ -44,15 +44,12 @@ public class SeccionRio
 
     [System.NonSerialized] public Bounds limites;      // se guardan al iniciar
     [System.NonSerialized] public bool tieneLimites;
-
-    public Transform puntoMohan;
 }
 
-public class PreguntasMohan : MonoBehaviour
+public class PreguntasMohan : MonoBehaviour, IFuentePista
 {
     [Header("Mohán")]
     public Text textoMohan;
-    public Transform mohan;
     public Animator animatorMohan;
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
@@ -71,10 +68,7 @@ public class PreguntasMohan : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip sonidoCorrecto;
     public AudioClip sonidoIncorrecto;
-    public AudioClip sonidoNuevaPregunta; 
     [Range(0f, 1f)] public float volumenSonidos = 1f;
-
-
 
     [Header("Secciones del río (una pregunta por sección, en orden)")]
     public List<SeccionRio> secciones = new List<SeccionRio>();
@@ -204,8 +198,6 @@ public class PreguntasMohan : MonoBehaviour
 
         if (secciones.Count != preguntas.Count)
             Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
-
-        UbicarMohan(0);
     }
 
     private void DetectarBasurasPorZona()
@@ -275,6 +267,9 @@ public class PreguntasMohan : MonoBehaviour
         return mejor;
     }
 
+    // Para el Duende (IFuentePista)
+    public GameObject ObjetivoParaPista(Vector3 posJugador) => BasuraParaPista(posJugador);
+
     private SeccionRio SeccionDe(Vector3 pos)
     {
         foreach (SeccionRio s in secciones)
@@ -289,20 +284,10 @@ public class PreguntasMohan : MonoBehaviour
         return seccionActual < secciones.Count ? secciones[seccionActual] : null;
     }
 
-    private void UbicarMohan(int indiceSeccion)
-    {
-        if (mohan == null || indiceSeccion >= secciones.Count) return;
-
-        Transform punto = secciones[indiceSeccion].puntoMohan;
-        if (punto != null) mohan.position = punto.position;
-        else Debug.LogWarning($"PreguntasMohan: la {secciones[indiceSeccion].nombre} no tiene 'Punto Mohan'.");
-    }
-
     // ================== PREGUNTA ==================
 
     private void IniciarPregunta()
     {
-        UbicarMohan(seccionActual);
         enPregunta = true;
         falloEnEstaPregunta = false;
         MostrarPregunta(false);
@@ -333,7 +318,6 @@ public class PreguntasMohan : MonoBehaviour
         if (panelBotones != null) panelBotones.SetActive(true);
         pistaUsada = false;
         PreguntaActiva = true;
-        ReproducirSonido(sonidoNuevaPregunta);
     }
 
     private void MezclarOrden()

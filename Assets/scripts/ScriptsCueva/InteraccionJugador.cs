@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Todo lo que el jugador puede usar con la tecla E / botón de la manito
-// (objetos de los pedestales, la cascada de salida...) implementa esta interfaz.
+
 public interface IInteractuable
 {
     Transform transform { get; }
@@ -12,10 +11,16 @@ public interface IInteractuable
 }
 
 // Va en el JUGADOR. Detecta qué cosas interactuables tiene cerca y,
-// al presionar E (o el botón de la manito), usa la más cercana.
+
 public class InteraccionJugador : MonoBehaviour
 {
     public MochilaJugador Mochila { get; private set; }
+
+    // true mientras se mantiene E o el botón de la manito
+    public bool AccionMantenida => teclaMantenida || botonUIMantenido;
+
+    private bool teclaMantenida = false;
+    private bool botonUIMantenido = false;
 
     private InputSystem_Actions inputActions;
     private readonly List<IInteractuable> cercanos = new List<IInteractuable>();
@@ -28,26 +33,49 @@ public class InteraccionJugador : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Interact.started += OnInteract;
+        inputActions.Player.Interact.started += OnInteractInicio;
+        inputActions.Player.Interact.canceled += OnInteractFin;
         inputActions.Player.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.Player.Interact.started -= OnInteract;
+        inputActions.Player.Interact.started -= OnInteractInicio;
+        inputActions.Player.Interact.canceled -= OnInteractFin;
         inputActions.Player.Disable();
+        teclaMantenida = false;
+        botonUIMantenido = false;
     }
 
-    private void OnInteract(InputAction.CallbackContext context)
+    private void Update()
     {
+        // Respaldo: si la acción tiene una interacción "Hold", 'canceled' puede no llegar igual
+        if (teclaMantenida && Keyboard.current != null && !Keyboard.current.eKey.isPressed)
+            teclaMantenida = false;
+    }
+
+    private void OnInteractInicio(InputAction.CallbackContext context)
+    {
+        teclaMantenida = true;
         PulsarAccion();
     }
 
-    // Conecta aquí el OnClick del botón de la manito (celular)
+    private void OnInteractFin(InputAction.CallbackContext context)
+    {
+        teclaMantenida = false;
+    }
+
+    // Botón de la manito en celular. Lo usa BotonMantenerAccion (o un OnClick para un toque simple)
     public void PulsarAccion()
     {
         IInteractuable objetivo = MasCercano();
         if (objetivo != null) objetivo.Interactuar(this);
+    }
+
+    public void AccionUI(bool presionada)
+    {
+        botonUIMantenido = presionada;
+        if (presionada) PulsarAccion();
     }
 
     public void Registrar(IInteractuable i)
@@ -60,9 +88,10 @@ public class InteraccionJugador : MonoBehaviour
         cercanos.Remove(i);
     }
 
+    public bool EstaCercaDe(IInteractuable i) => cercanos.Contains(i);
+
     private IInteractuable MasCercano()
     {
-        // limpiar los que se destruyeron
         cercanos.RemoveAll(i => (i as Object) == null);
 
         IInteractuable mejor = null;
@@ -76,7 +105,6 @@ public class InteraccionJugador : MonoBehaviour
         return mejor;
     }
 
-    // Ayuda para que cada interactuable se registre con su trigger
     public static void AlEntrarTrigger(IInteractuable i, Collider other)
     {
         if (!other.CompareTag("Player")) return;
