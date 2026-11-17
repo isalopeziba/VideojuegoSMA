@@ -311,35 +311,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 629604654}
+    m_TransformParent: {fileID: 1249898868}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.48383
+      value: 3.3356853
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.48383
+      value: 3.3587685
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.0652
+      value: 3.5838208
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -248.29523
+      value: 195.92024
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 79.89422
+      value: 180.33768
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.651764
+      value: 428.78537
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.76021546
+      value: 0.99647605
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalRotation.x
@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.649671
+      value: 0.08387798
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6eaf385bea6c0a4db1f1bf95b6a7938, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7638,7 +7638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 117473773}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 2119995882}
 --- !u!65 &117473775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43768,7 +43768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 531810757}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 1193114888}
 --- !u!65 &531810759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51403,7 +51403,6 @@ Transform:
   - {fileID: 2098664063}
   - {fileID: 755982663}
   - {fileID: 911788737}
-  - {fileID: 3649367}
   - {fileID: 486114856}
   - {fileID: 390169005}
   - {fileID: 1421630637}
@@ -65684,7 +65683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 811807929}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 2119995882}
 --- !u!65 &811807931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98813,7 +98812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 1185516482}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 947132915}
 --- !u!65 &1185516484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102150,6 +102149,7 @@ Transform:
   - {fileID: 1032504623}
   - {fileID: 949912032}
   - {fileID: 2025723050}
+  - {fileID: 3649367}
   m_Father: {fileID: 947132913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1249898869
@@ -104343,7 +104343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 1299250733}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 1193114888}
 --- !u!65 &1299250735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132187,7 +132187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 1688689259}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 1193114888}
 --- !u!65 &1688689261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146575,7 +146575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 1895780962}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 2119995882}
 --- !u!65 &1895780964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152533,7 +152533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 1979702702}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 947132915}
 --- !u!65 &1979702704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168326,7 +168326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlantingSpot
   arbolPrefab: {fileID: 6574168962891549174, guid: 8ab1bc9699f21f8459c5860b9e2129fc, type: 3}
   puntoDeSiembra: {fileID: 2147158210}
-  counterManager: {fileID: 0}
+  counterManager: {fileID: 1193114888}
 --- !u!65 &2147158212
 BoxCollider:
   m_ObjectHideFlags: 0
