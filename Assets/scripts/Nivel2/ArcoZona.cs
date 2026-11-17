@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Va en el ARCO  (con un Collider "Is Trigger").
+
 
 [RequireComponent(typeof(Collider))]
 public class ArcoZona : MonoBehaviour

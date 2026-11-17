@@ -61701,7 +61701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PreguntasMohan
   textoMohan: {fileID: 2010372341}
-  mohan: {fileID: 757298076}
   animatorMohan: {fileID: 1703928342}
   animMohanIdle: idle_mohan
   animMohanSonrie: mohan_sonriendo
@@ -61717,7 +61716,6 @@ MonoBehaviour:
   audioSource: {fileID: 135598712}
   sonidoCorrecto: {fileID: 8300000, guid: de6bd8ba20611e34fb2f7ea4ecc3d053, type: 3}
   sonidoIncorrecto: {fileID: 8300000, guid: 7012a6133e8b12e4680909e8e17b425c, type: 3}
-  sonidoNuevaPregunta: {fileID: 8300000, guid: e5ac416b22ec743428c41eb2e6d35f43, type: 3}
   volumenSonidos: 1
   secciones:
   - nombre: zon1
@@ -61739,7 +61737,6 @@ MonoBehaviour:
     alAbrirse:
       m_PersistentCalls:
         m_Calls: []
-    puntoMohan: {fileID: 1623073525}
   - nombre: zona2
     zona: {fileID: 2119995880}
     basuras:
@@ -61759,7 +61756,6 @@ MonoBehaviour:
     alAbrirse:
       m_PersistentCalls:
         m_Calls: []
-    puntoMohan: {fileID: 1929526126}
   - nombre: zona3
     zona: {fileID: 1193114886}
     basuras:
@@ -61779,7 +61775,6 @@ MonoBehaviour:
     alAbrirse:
       m_PersistentCalls:
         m_Calls: []
-    puntoMohan: {fileID: 1959184486}
   basurasPorFallo: 2
   duracionNiebla: 3
   puntosAcierto: 10
@@ -141068,7 +141063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1952863716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -159680,6 +159675,7 @@ MonoBehaviour:
   animFrente: duende_frente
   animSenalando: duende_senalando
   preguntasMohan: {fileID: 732192703}
+  fuentesPista: []
   canvasDialogo: {fileID: 1964605436214002172}
   textoDialogo: {fileID: 2145626505966594737}
   duracionMinimaFrase: 3
@@ -159924,6 +159920,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
+  tiempoParaSembrar: 2
   spriteJugador: {fileID: 9095876061849766554}
   animator: {fileID: 3313009630890928286}
   animIdle: idle

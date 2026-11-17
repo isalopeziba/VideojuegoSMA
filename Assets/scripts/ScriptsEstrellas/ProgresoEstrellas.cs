@@ -1,7 +1,6 @@
 using UnityEngine;
 
-// Guarda las estrellas de TODO el juego 
-// Se usa desde cualquier escena:
+
 
 public static class ProgresoEstrellas
 {

@@ -9,8 +9,7 @@ public class FichaEnHUD
     public GameObject icono;
 }
 
-// Va en el HUD de CADA nivel. Al iniciar muestra las fichas que ya se ganaron
-// y se actualiza sola cuando se gana una nueva.
+
 public class FichasHUD : MonoBehaviour
 {
     public FichaEnHUD[] fichas =
@@ -35,5 +34,11 @@ public class FichasHUD : MonoBehaviour
     {
         foreach (FichaEnHUD f in fichas)
             if (f.icono != null) f.icono.SetActive(ColeccionFichas.Tiene(f.id));
+    }
+
+    [ContextMenu("Probar: dar ficha del Mohán")]
+    private void DarFichaMohan()
+    {
+        ColeccionFichas.Obtener(ColeccionFichas.Mohan);
     }
 }

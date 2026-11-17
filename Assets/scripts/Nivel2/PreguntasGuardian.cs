@@ -4,11 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-// Preguntas de un guardián del bosque (Patasola, y sirve para el siguiente nivel).
-// Se hacen seguidas al final del nivel. No hay castigo:
-//   - Acierto: el guardián asiente, el bosque brilla un poco más y pasa a la siguiente.
-//   - Fallo: explica el error, las luces del bosque bajan unos segundos y la pregunta
-//            se repite con las opciones en otro orden.
+
 public class PreguntasGuardian : MonoBehaviour, IFuentePista
 {
     [Header("Guardián")]
@@ -16,6 +12,10 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
     public Transform guardian;
     [Tooltip("Dónde se para para hacer las preguntas (centro del claro)")]
     public Transform puntoPreguntas;
+    [Tooltip("Opcional: para que llegue saltando antes de preguntar")]
+    public PatasolaSaltos saltos;
+    [Tooltip("Desde dónde empieza a saltar para llegar al centro del claro")]
+    public Transform puntoEntrada;
     public Text textoGuardian;
     public Animator animator;
     public string animIdle = "";
@@ -145,14 +145,28 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
         if (enCurso || preguntas.Count == 0) return;
         enCurso = true;
         indice = 0;
+        StartCoroutine(RutinaEntrada());
+    }
 
-        if (guardian != null)
+    private IEnumerator RutinaEntrada()
+    {
+        if (guardian == null && saltos != null) guardian = saltos.transform;
+
+        if (saltos != null && puntoEntrada != null && puntoPreguntas != null)
+        {
+            // Llega saltando al centro del claro y se queda ahí
+            yield return saltos.Saltar(puntoEntrada, puntoPreguntas);
+        }
+        else if (guardian != null)
         {
             guardian.gameObject.SetActive(true);
             if (puntoPreguntas != null) guardian.position = puntoPreguntas.position;
         }
-        Reproducir(animIdle);
 
+        if (guardian == null)
+            Debug.LogWarning("PreguntasGuardian: falta asignar 'Guardian' (la Patasola).");
+
+        Reproducir(animIdle);
         MostrarPregunta(false, nueva: true);
     }
 
