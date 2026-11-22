@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-// Va en la ENTRADA de la cueva (mismo objeto y collider "Is Trigger" que EntradaCueva).
-// Al presionar Acción, revisa qué lleva el joven y decide si puede salir.
+
 [RequireComponent(typeof(Collider))]
 public class SalidaCueva : MonoBehaviour, IInteractuable
 {

@@ -44,18 +44,22 @@ public class SeccionRio
 
     [System.NonSerialized] public Bounds limites;      // se guardan al iniciar
     [System.NonSerialized] public bool tieneLimites;
-
-    public Transform puntoMohan;
 }
 
-public class PreguntasMohan : MonoBehaviour
+public class PreguntasMohan : MonoBehaviour, IFuentePista
 {
     [Header("Mohán")]
     public Text textoMohan;
-    public Transform mohan;
     public Animator animatorMohan;
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
+
+    [Header("Posición del Mohán al preguntar")]
+    [Tooltip("El objeto PADRE del Mohán (el que se mueve)")]
+    public Transform mohan;
+    [Tooltip("Objeto vacío HIJO del jugador, a un lado de él. " +
+             "Cuando sale cada pregunta, el Mohán aparece en ese punto, así siempre queda en cámara.")]
+    public Transform puntoJuntoAlJugador;
 
     [Header("Botones A, B, C")]
     public GameObject panelBotones;
@@ -202,7 +206,10 @@ public class PreguntasMohan : MonoBehaviour
         if (secciones.Count != preguntas.Count)
             Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
 
-        UbicarMohan(0);
+        if (mohan == null)
+            Debug.LogWarning("PreguntasMohan: falta asignar 'Mohan' (el padre del Mohán).");
+        if (puntoJuntoAlJugador == null)
+            Debug.LogWarning("PreguntasMohan: falta asignar 'Punto Junto Al Jugador'.");
     }
 
     private void DetectarBasurasPorZona()
@@ -246,6 +253,16 @@ public class PreguntasMohan : MonoBehaviour
         return true;
     }
 
+    // ================== POSICIÓN DEL MOHÁN ==================
+
+    // Pone al Mohán en el punto junto al jugador (el Mohán NO queda como hijo del jugador,
+    // así no lo sigue al caminar ni se rompe cuando lo llevan a la cueva)
+    private void UbicarMohanJuntoAlJugador()
+    {
+        if (mohan == null || puntoJuntoAlJugador == null) return;
+        mohan.position = puntoJuntoAlJugador.position;
+    }
+
     // ================== PISTA FUERA DE LAS PREGUNTAS ==================
 
     // Devuelve la basura sin recoger más cercana al jugador, dentro de la sección donde está
@@ -272,6 +289,9 @@ public class PreguntasMohan : MonoBehaviour
         return mejor;
     }
 
+    // Para el Duende (IFuentePista)
+    public GameObject ObjetivoParaPista(Vector3 posJugador) => BasuraParaPista(posJugador);
+
     private SeccionRio SeccionDe(Vector3 pos)
     {
         foreach (SeccionRio s in secciones)
@@ -286,20 +306,11 @@ public class PreguntasMohan : MonoBehaviour
         return seccionActual < secciones.Count ? secciones[seccionActual] : null;
     }
 
-    private void UbicarMohan(int indiceSeccion)
-    {
-        if (mohan == null || indiceSeccion >= secciones.Count) return;
-
-        Transform punto = secciones[indiceSeccion].puntoMohan;
-        if (punto != null) mohan.position = punto.position;
-        else Debug.LogWarning($"PreguntasMohan: la {secciones[indiceSeccion].nombre} no tiene 'Punto Mohan'.");
-    }
-
     // ================== PREGUNTA ==================
 
     private void IniciarPregunta()
     {
-        UbicarMohan(seccionActual);
+        UbicarMohanJuntoAlJugador();
         enPregunta = true;
         falloEnEstaPregunta = false;
         MostrarPregunta(false);
@@ -418,6 +429,8 @@ public class PreguntasMohan : MonoBehaviour
             yield return new WaitUntil(() => TodasRecogidas(basurasPendientes));
         basurasPendientes.Clear();
 
+        // Cuando vuelve a preguntar, aparece otra vez junto al jugador
+        UbicarMohanJuntoAlJugador();
         MostrarPregunta(true);
     }
 

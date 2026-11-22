@@ -12,6 +12,13 @@ public class PlayerMov : MonoBehaviour
 
     public LayerMask terrainLayer;
 
+    [Header("Sistema de siembra")]
+    public float tiempoParaSembrar = 2f;
+
+    private bool estaSembrando = false;
+    private float tiempoSembrando = 0f;
+    private PlantingSpot parcheActual;
+
    
     public SpriteRenderer spriteJugador; 
     public Animator animator;          
@@ -64,6 +71,8 @@ public class PlayerMov : MonoBehaviour
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
         inputActions.Player.Interact.started += OnRecoger;
+        inputActions.Player.Interact.started += OnRecoger;
+        inputActions.Player.Interact.canceled += OnSoltarAccion;
 
         inputActions.Player.Enable();
     }
@@ -75,6 +84,8 @@ public class PlayerMov : MonoBehaviour
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= OnMove;
         inputActions.Player.Interact.started -= OnRecoger;
+        inputActions.Player.Interact.started -= OnRecoger;
+        inputActions.Player.Interact.canceled -= OnSoltarAccion;
 
         inputActions.Player.Disable();
     }
@@ -85,14 +96,34 @@ public class PlayerMov : MonoBehaviour
 
     private void OnRecoger(InputAction.CallbackContext context)
     {
-        if (estaRecogiendo) return; // no reiniciar si ya est� recogiendo
+        if (estaRecogiendo || estaSembrando) return;
 
+        // Si estamos cerca de un parche, comenzamos a sembrar.
+        if (parcheActual != null)
+        {
+            if (parcheActual.PuedeSembrar())
+            {
+                estaSembrando = true;
+                tiempoSembrando = 0f;
+                return;
+            }
+        }
+
+        // Si no hay parche, ejecutamos la acción de recoger.
         estaRecogiendo = true;
         tiempoRecogiendo = 0f;
+
         animator.Play(animRecoger, 0, 0f);
         estadoActual = animRecoger;
+    }
 
-        
+    private void OnSoltarAccion(InputAction.CallbackContext context)
+    {
+        if (estaSembrando)
+        {
+            estaSembrando = false;
+            tiempoSembrando = 0f;
+        }
     }
 
     private void Update()
@@ -115,8 +146,19 @@ public class PlayerMov : MonoBehaviour
                 }
             }
         }
+        bool estaCaminando = moveInput.sqrMagnitude > 0.01f;
 
-        RaycastHit hit;
+
+        if (audio1gestor.Instancia != null)
+        {
+            audio1gestor.Instancia.GestionarPasos(estaCaminando);
+        }
+    
+
+
+
+
+    RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
         if (Physics.Raycast(castPos, Vector3.down, out hit, Mathf.Infinity, terrainLayer))
@@ -124,6 +166,25 @@ public class PlayerMov : MonoBehaviour
             Vector3 movePos = transform.position;
             movePos.y = hit.point.y + groundDist;
             transform.position = movePos;
+        }
+
+        // Sistema de mantener presionado para sembrar
+        if (estaSembrando)
+        {
+            tiempoSembrando += Time.deltaTime;
+
+            if (tiempoSembrando >= tiempoParaSembrar)
+            {
+                estaSembrando = false;
+                tiempoSembrando = 0f;
+
+                if (parcheActual != null)
+                {
+                    parcheActual.Sembrar();
+                }
+            }
+
+            return;
         }
 
         // Mientras recoge: esperar a que termine la animaci�n
@@ -177,7 +238,7 @@ public class PlayerMov : MonoBehaviour
     private void FixedUpdate()
     {
         // Quieto mientras recoge
-        if (estaRecogiendo)
+        if (estaRecogiendo || estaSembrando)
         {
             rb.linearVelocity = Vector3.zero;
             return;
@@ -185,5 +246,21 @@ public class PlayerMov : MonoBehaviour
 
         Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
         rb.linearVelocity = movement * speed;
+    }
+
+    public void EntrarParche(PlantingSpot parche)
+    {
+        parcheActual = parche;
+    }
+
+    public void SalirParche(PlantingSpot parche)
+    {
+        if (parcheActual == parche)
+        {
+            parcheActual = null;
+
+            estaSembrando = false;
+            tiempoSembrando = 0f;
+        }
     }
 }

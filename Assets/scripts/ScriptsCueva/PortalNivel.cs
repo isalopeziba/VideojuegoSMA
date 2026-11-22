@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Va en la PUERTA DE NIEBLA VERDE (con un Collider "Is Trigger").
-// Déjalo desactivado en la escena: CierreNivel1 lo activa al final.
-// Cuando el jugador lo atraviesa, carga el siguiente nivel.
+
 [RequireComponent(typeof(Collider))]
 public class PortalNivel : MonoBehaviour
 {
