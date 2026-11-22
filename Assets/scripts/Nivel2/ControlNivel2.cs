@@ -19,7 +19,8 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
     public float factorReintento = 0.5f;
 
     [Header("Sonido de saltos que se acercan (opcional)")]
-    public AudioSource sonidoSaltos;   // en loop
+    [Tooltip("AudioSource en este objeto, con el clip de saltos y Spatial Blend en 0 (2D)")]
+    public AudioSource sonidoSaltos;
     public float volumenMinimo = 0.05f;
     public float volumenMaximo = 1f;
 
@@ -33,24 +34,34 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
     [Tooltip("Segundos para que el joven camine a la zona nueva antes de que empiece el tiempo")]
     public float esperaEntreZonas = 3f;
 
+    [Header("Aviso de que la Patasola está cerca")]
+    [Tooltip("A qué parte del tiempo se avisa que falta poco (0.75 = cuando pasó el 75 %)")]
+    [Range(0.1f, 0.99f)] public float umbralCerca = 0.75f;
+
     [Header("Final")]
     [Tooltip("Conectar: PreguntasGuardian ? IniciarPreguntas")]
     public UnityEvent alCompletarNivel;
 
-    // Para diálogos del Duende más adelante
+    // Para los diálogos (DuendeNivel2)
     public event System.Action<TreeCountingManager> AlEntrarZona;
     public event System.Action<TreeCountingManager> AlCompletarZona;
     public event System.Action<TreeCountingManager> AlFallarZona;
+    public event System.Action<TreeCountingManager> AlSembrarArbol;
+    public event System.Action<TreeCountingManager> AlPatasolaCerca;
 
     public TreeCountingManager ZonaActual { get; private set; }
     public float PuntosPorArbol { get; private set; }
     public bool HaySemillas => semillas == null || semillas.Cantidad > 0;
+
+    // 0 = recién empezó la zona, 1 = llegó la Patasola
+    public float ProgresoTiempo { get; private set; }
 
     private int indiceZona = 0;
     private float tiempo = 0f;
     private int semillasAlEntrar;
     private float barraAlEntrar;
     private bool resolviendo = false;
+    private bool avisoCercaDado = false;
 
     private BarraRio Barra => BarraRio.Instancia;
 
@@ -71,7 +82,18 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
             Debug.LogWarning($"ControlNivel2: se necesitan {totalArboles} árboles y hay {semillas.semillasIniciales} semillas. " +
                              "Ajusta 'Semillas Iniciales' en InventarioSemillas.");
 
-        if (sonidoSaltos != null) sonidoSaltos.Stop();
+        if (sonidoSaltos != null)
+        {
+            sonidoSaltos.playOnAwake = false;
+            sonidoSaltos.loop = true;
+            sonidoSaltos.Stop();
+            if (sonidoSaltos.clip == null)
+                Debug.LogWarning("ControlNivel2: el AudioSource de 'Sonido Saltos' no tiene AudioClip.");
+        }
+        else
+        {
+            Debug.Log("ControlNivel2: no hay 'Sonido Saltos' asignado, no sonarán los saltos que se acercan.");
+        }
     }
 
     // ================== ZONAS ==================
@@ -88,6 +110,8 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
         ZonaActual = zona;
         zona.EnCurso = true;
         tiempo = 0f;
+        ProgresoTiempo = 0f;
+        avisoCercaDado = false;
         semillasAlEntrar = semillas != null ? semillas.Cantidad : 0;
         barraAlEntrar = Barra != null ? Barra.Valor : 0f;
 
@@ -104,6 +128,13 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
 
         tiempo += Time.deltaTime;
         float progreso = Mathf.Clamp01(tiempo / Mathf.Max(0.01f, ZonaActual.tiempoLimite));
+        ProgresoTiempo = progreso;
+
+        if (!avisoCercaDado && progreso >= umbralCerca)
+        {
+            avisoCercaDado = true;
+            AlPatasolaCerca?.Invoke(ZonaActual);
+        }
 
         if (huellas != null) huellas.Actualizar(progreso);
         if (sonidoSaltos != null) sonidoSaltos.volume = Mathf.Lerp(volumenMinimo, volumenMaximo, progreso);
@@ -119,6 +150,9 @@ public class ControlNivel2 : MonoBehaviour, IFuentePista
 
         float puntos = PuntosPorArbol * (zona.Intentos > 0 ? factorReintento : 1f);
         if (Barra != null) Barra.Sumar(puntos);
+        else Debug.LogWarning("ControlNivel2: no hay ninguna BarraRio activa en la escena.");
+
+        AlSembrarArbol?.Invoke(zona);
     }
 
     public void ZonaCompletada(TreeCountingManager zona)
