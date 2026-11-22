@@ -54,6 +54,13 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
     public string animMohanIdle = "idle_mohan";
     public string animMohanSonrie = "mohan_sonriendo";
 
+    [Header("Posición del Mohán al preguntar")]
+    [Tooltip("El objeto PADRE del Mohán (el que se mueve)")]
+    public Transform mohan;
+    [Tooltip("Objeto vacío HIJO del jugador, a un lado de él. " +
+             "Cuando sale cada pregunta, el Mohán aparece en ese punto, así siempre queda en cámara.")]
+    public Transform puntoJuntoAlJugador;
+
     [Header("Botones A, B, C")]
     public GameObject panelBotones;
     public Button[] botones = new Button[3];
@@ -198,6 +205,11 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
 
         if (secciones.Count != preguntas.Count)
             Debug.LogWarning($"PreguntasMohan: hay {secciones.Count} secciones y {preguntas.Count} preguntas. Deberían ser iguales.");
+
+        if (mohan == null)
+            Debug.LogWarning("PreguntasMohan: falta asignar 'Mohan' (el padre del Mohán).");
+        if (puntoJuntoAlJugador == null)
+            Debug.LogWarning("PreguntasMohan: falta asignar 'Punto Junto Al Jugador'.");
     }
 
     private void DetectarBasurasPorZona()
@@ -239,6 +251,16 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
         foreach (GameObject g in s.basuras)
             if (g != null && g.activeSelf) return false;
         return true;
+    }
+
+    // ================== POSICIÓN DEL MOHÁN ==================
+
+    // Pone al Mohán en el punto junto al jugador (el Mohán NO queda como hijo del jugador,
+    // así no lo sigue al caminar ni se rompe cuando lo llevan a la cueva)
+    private void UbicarMohanJuntoAlJugador()
+    {
+        if (mohan == null || puntoJuntoAlJugador == null) return;
+        mohan.position = puntoJuntoAlJugador.position;
     }
 
     // ================== PISTA FUERA DE LAS PREGUNTAS ==================
@@ -288,6 +310,7 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
 
     private void IniciarPregunta()
     {
+        UbicarMohanJuntoAlJugador();
         enPregunta = true;
         falloEnEstaPregunta = false;
         MostrarPregunta(false);
@@ -406,6 +429,8 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
             yield return new WaitUntil(() => TodasRecogidas(basurasPendientes));
         basurasPendientes.Clear();
 
+        // Cuando vuelve a preguntar, aparece otra vez junto al jugador
+        UbicarMohanJuntoAlJugador();
         MostrarPregunta(true);
     }
 
