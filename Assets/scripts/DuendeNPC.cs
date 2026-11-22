@@ -287,7 +287,7 @@ public class DuendeNPC : MonoBehaviour
 
         GameObject efecto = null;
         if (efectoBrillo != null)
-            efecto = Instantiate(efectoBrillo, objetivo.transform.position, Quaternion.identity, objetivo.transform);
+            efecto = Instantiate(efectoBrillo, objetivo.transform.position, efectoBrillo.transform.rotation, objetivo.transform);
 
         // Parpadeo verde durante unos segundos (o hasta que la recojan)
         float t = 0f;
