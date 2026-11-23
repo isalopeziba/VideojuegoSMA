@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class BotonRecoger : MonoBehaviour
 {
     private Button boton;
+    public PlayerMov jugador;
 
     private void Awake()
     {
@@ -21,5 +22,13 @@ public class BotonRecoger : MonoBehaviour
 
         if (objetivo != null)
             objetivo.Interactuar();
+    }
+
+    public void Interact()
+    {
+        if (jugador != null)
+        {
+            jugador.Interactuar();
+        }
     }
 }

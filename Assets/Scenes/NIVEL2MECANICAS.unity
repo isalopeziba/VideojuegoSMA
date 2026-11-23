@@ -32797,6 +32797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87a682da8f529e4baaf7d268db40adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonRecoger
+  jugador: {fileID: 0}
 --- !u!114 &378677625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97442,7 +97443,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 987319450}
         m_TargetAssemblyTypeName: BotonRecoger, Assembly-CSharp
-        m_MethodName: PulsarBoton
+        m_MethodName: Interact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -97514,6 +97515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87a682da8f529e4baaf7d268db40adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonRecoger
+  jugador: {fileID: 7483362969832427847}
 --- !u!1001 &987597614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195093,6 +195095,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   tiempoParaSembrar: 1
+  altarActual: {fileID: 0}
   spriteJugador: {fileID: 9095876061849766554}
   animator: {fileID: 3313009630890928286}
   animIdle: idle
