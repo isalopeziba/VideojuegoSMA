@@ -19,6 +19,9 @@ public class PlayerMov : MonoBehaviour
     private float tiempoSembrando = 0f;
     private PlantingSpot parcheActual;
 
+    [Header("Sistema de altares")]
+    public Altar altarActual;
+
    
     public SpriteRenderer spriteJugador; 
     public Animator animator;          
@@ -98,7 +101,14 @@ public class PlayerMov : MonoBehaviour
     {
         if (estaRecogiendo || estaSembrando) return;
 
-        // Si estamos cerca de un parche, comenzamos a sembrar.
+        // PRIORIDAD 1: Interactuar con un altar
+        if (altarActual != null)
+        {
+            altarActual.ColocarOfrenda();
+            return;
+        }
+
+        // PRIORIDAD 2: Sembrar
         if (parcheActual != null)
         {
             if (parcheActual.PuedeSembrar())
@@ -109,7 +119,7 @@ public class PlayerMov : MonoBehaviour
             }
         }
 
-        // Si no hay parche, ejecutamos la acción de recoger.
+        // PRIORIDAD 3: Recoger
         estaRecogiendo = true;
         tiempoRecogiendo = 0f;
 
@@ -262,5 +272,44 @@ public class PlayerMov : MonoBehaviour
             estaSembrando = false;
             tiempoSembrando = 0f;
         }
+    }
+
+    public void Interactuar()
+    {
+        if (estaRecogiendo || estaSembrando) return;
+
+        // PRIORIDAD 1: Altar
+        if (altarActual != null)
+        {
+            altarActual.ColocarOfrenda();
+            return;
+        }
+
+        // PRIORIDAD 2: Parche
+        if (parcheActual != null)
+        {
+            if (parcheActual.PuedeSembrar())
+            {
+                estaSembrando = true;
+                tiempoSembrando = 0f;
+                return;
+            }
+        }
+
+        // PRIORIDAD 3: Basura
+        basura objetivo = basura.BasuraCercana;
+
+        if (objetivo != null)
+        {
+            objetivo.Interactuar();
+            return;
+        }
+
+        // PRIORIDAD 4: Recoger
+        estaRecogiendo = true;
+        tiempoRecogiendo = 0f;
+
+        animator.Play(animRecoger, 0, 0f);
+        estadoActual = animRecoger;
     }
 }

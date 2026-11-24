@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NIVEL1FINAL.unity
     guid: 2262e9c663ec7054e85e8d692921bfe3
+  - enabled: 1
+    path: Assets/Scenes/videoInicio.unity
+    guid: a5013ca6904374240842deb4dcd77a77
   - enabled: 0
     path: Assets/Scenes/NIVEL2ESCENARIO.unity
     guid: 32bc86d31e32314428f3fa4771c28232
