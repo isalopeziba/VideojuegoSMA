@@ -57795,7 +57795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &672600075
 Transform:
   m_ObjectHideFlags: 0
@@ -114927,8 +114927,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.353434, y: 2.3303227, z: 0.3185943}
-  m_Center: {x: -0.0728141, y: 0.665159, z: 0.34070477}
+  m_Size: {x: 1.353434, y: 2.7145684, z: 0.3185943}
+  m_Center: {x: -0.0728141, y: 0.85728174, z: 0.34070477}
 --- !u!114 &1562077111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114941,7 +114941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd503350d260cb34495f79129aa5c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalNivel
-  escenaSiguiente: NIVEL2MECANICAS
+  escenaSiguiente: NIVEL2FINAL
   sonidos: {fileID: 150314696}
 --- !u!1001 &1562211832
 PrefabInstance:
