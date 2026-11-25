@@ -2,7 +2,7 @@
 - Project name: VideojuegoSMA
 - Unity version: Unity 6000.3.7f1
 - Active game object:
-  - Name: Arco_Portal
+  - Name: pot_large
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

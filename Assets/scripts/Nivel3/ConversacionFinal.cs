@@ -1,7 +1,7 @@
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ConversacionFinal : MonoBehaviour
 {
@@ -38,9 +38,18 @@ public class ConversacionFinal : MonoBehaviour
     [TextArea(2, 5)]
     public string dialogoDuende2;
 
+    [TextArea(2, 5)]
+    public string dialogoDuende3;
+
     [Header("Duración de los diálogos")]
     public float duracionMinima = 2f;
     public float segundosPorLetra = 0.06f;
+
+    [Header("Al terminar")]
+    [Tooltip("Portal hacia la cinemática final. Empieza oculto y aparece SOLO al terminar la conversación.")]
+    public GameObject portal;
+    [Tooltip("Para conectar otras cosas al final (guardar ficha, estrellas, etc.)")]
+    public UnityEvent alTerminar;
 
     private Coroutine rutinaConversacion;
     private bool conversacionTerminada = false;
@@ -48,6 +57,7 @@ public class ConversacionFinal : MonoBehaviour
     private void Start()
     {
         OcultarGlobos();
+        if (portal != null) portal.SetActive(false);   // el portal empieza oculto
     }
 
     // ================== INICIAR ==================
@@ -56,6 +66,8 @@ public class ConversacionFinal : MonoBehaviour
     {
         if (rutinaConversacion != null || conversacionTerminada)
             return;
+
+        if (portal != null) portal.SetActive(false);
 
         rutinaConversacion = StartCoroutine(RutinaConversacion());
     }
@@ -82,11 +94,20 @@ public class ConversacionFinal : MonoBehaviour
         // 6. Duende
         yield return MostrarDialogo(globoDuende, dialogoDuende2);
 
+        // 7. Duende
+        yield return MostrarDialogo(globoDuende, dialogoDuende3);
+
         // Finalizar conversación
         OcultarGlobos();
 
         conversacionTerminada = true;
         rutinaConversacion = null;
+
+        
+        if (portal != null) portal.SetActive(true);
+        
+
+        alTerminar?.Invoke();
     }
 
     // ================== MOSTRAR DIÁLOGO ==================
@@ -95,7 +116,7 @@ public class ConversacionFinal : MonoBehaviour
     {
         OcultarGlobos();
 
-        if (globo == null || globo.canvas == null || globo.texto == null)
+        if (globo == null || globo.canvas == null || globo.texto == null || string.IsNullOrEmpty(frase))
             yield break;
 
         globo.texto.text = frase;
@@ -112,8 +133,7 @@ public class ConversacionFinal : MonoBehaviour
         globo.texto.text = "";
     }
 
-    // ================== AYUDANTES ==================
-
+   
     private void OcultarGlobos()
     {
         Ocultar(globoJugador);
