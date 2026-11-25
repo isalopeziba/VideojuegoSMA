@@ -53063,7 +53063,8 @@ MonoBehaviour:
   fuerzaTemblor: 0.03
   audioSource: {fileID: 598271045}
   sonidoMovimiento: {fileID: 8300000, guid: 7aab41ba8aa92c54783b54264f386a06, type: 3}
-  probarConTeclaN: 1
+  permitirToqueYTecla: 0
+  ignorarToquesEnUI: 1
 --- !u!82 &598271045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -116488,6 +116489,10 @@ PrefabInstance:
       propertyPath: velbasura
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 484933674825456204, guid: fcd222d232edaab4e857990a77530d00, type: 3}
+      propertyPath: botonUnico
+      value: 
+      objectReference: {fileID: 987319447}
     - target: {fileID: 484933674825456204, guid: fcd222d232edaab4e857990a77530d00, type: 3}
       propertyPath: velcaptura
       value: 0.5

@@ -1,33 +1,83 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    [Header("Referencias del Minijuego")]
     public RectTransform barraverde;
     public RectTransform basura;
     public Image barraCaptura;
+
+    [Header("Botón Único (Recoger / Jugar)")]
+    [Tooltip("Arrastra aquí tu mismo botón de Recoger")]
+    public Button botonUnico;
+
+    [Header("Velocidades")]
     public float velbasura = 200f;
     public float velbarra = 300f;
     public float velcaptura = 0.5f;
 
+    [Header("Límites de Movimiento")]
     public float limiteBasura = 150f;
     public float limitebarraverde = 150f;
 
-    float direccionbasura = 1;
-    float tiempoCambio;
+    [Header("Movimiento de la Basura")]
     public float intervaloDireccionMin = 0.5f;
     public float intervaloDireccionMax = 1.5f;
 
-    float capturaProgreso;
+    private float direccionbasura = 1;
+    private float tiempoCambio;
+    private float capturaProgreso;
     private basura basuraActual;
 
-    // Método público que inicia el minijuego desde el script basura.cs
+    private bool botonPresionado = false;
+    private bool juegoActivo = false;
+    private bool ignorarPrimerSoltar = false;
+
+    private void Awake()
+    {
+        if (botonUnico != null)
+        {
+            EventTrigger trigger = botonUnico.gameObject.GetComponent<EventTrigger>();
+            if (trigger == null)
+            {
+                trigger = botonUnico.gameObject.AddComponent<EventTrigger>();
+            }
+
+            // Al presionar el botón -> sube (solo si el juego ya inició)
+            EventTrigger.Entry entradaPresionar = new EventTrigger.Entry();
+            entradaPresionar.eventID = EventTriggerType.PointerDown;
+            entradaPresionar.callback.AddListener((data) => { AlPresionarBoton(); });
+            trigger.triggers.Add(entradaPresionar);
+
+            // Al soltar el botón -> baja
+            EventTrigger.Entry entradaSoltar = new EventTrigger.Entry();
+            entradaSoltar.eventID = EventTriggerType.PointerUp;
+            entradaSoltar.callback.AddListener((data) => { AlSoltarBoton(); });
+            trigger.triggers.Add(entradaSoltar);
+
+            // Si el dedo/cursor sale del botón -> baja
+            EventTrigger.Entry entradaSalir = new EventTrigger.Entry();
+            entradaSalir.eventID = EventTriggerType.PointerExit;
+            entradaSalir.callback.AddListener((data) => { AlSoltarBoton(); });
+            trigger.triggers.Add(entradaSalir);
+        }
+    }
+
+    // Método público que inicia el minijuego desde basura.cs
     public void IniciarJuego(basura interactuable)
     {
-        basuraActual = interactuable;
+        // Si ya estamos jugando, evita que el botón vuelva a reiniciar el minijuego
+        if (juegoActivo) return;
 
-        // Reinicio de barra y posiciones al comenzar
+        basuraActual = interactuable;
+        juegoActivo = true;
+        botonPresionado = false;
+
+        // Evita que el mismo clic con el que pulsaste "Recoger" deje la barra pegada arriba
+        ignorarPrimerSoltar = true;
+
         capturaProgreso = 0.2f;
         barraCaptura.fillAmount = capturaProgreso;
 
@@ -44,9 +94,29 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Update()
     {
+        if (!juegoActivo) return;
+
         moverPez();
         controlBarraVerde();
         actualizaCaptura();
+    }
+
+    public void AlPresionarBoton()
+    {
+        if (!juegoActivo) return;
+        ignorarPrimerSoltar = false;
+        botonPresionado = true;
+    }
+
+    public void AlSoltarBoton()
+    {
+        if (!juegoActivo) return;
+        if (ignorarPrimerSoltar)
+        {
+            ignorarPrimerSoltar = false;
+            return;
+        }
+        botonPresionado = false;
     }
 
     void moverPez()
@@ -68,7 +138,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         Vector2 posicionBarraVerde = barraverde.anchoredPosition;
 
-        if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+        if (botonPresionado)
         {
             posicionBarraVerde.y += velbarra * Time.deltaTime;
         }
@@ -109,21 +179,24 @@ public class NewMonoBehaviourScript : MonoBehaviour
         capturaProgreso = Mathf.Clamp01(capturaProgreso);
         barraCaptura.fillAmount = capturaProgreso;
 
-        // Victoria
         if (capturaProgreso >= 1f)
         {
-            if (basuraActual != null)
-            {
-                basuraActual.FinalizarMinijuego(true);
-            }
+            Finalizar(true);
         }
-        // Derrota
         else if (capturaProgreso <= 0f)
         {
-            if (basuraActual != null)
-            {
-                basuraActual.FinalizarMinijuego(false);
-            }
+            Finalizar(false);
+        }
+    }
+
+    void Finalizar(bool victoria)
+    {
+        juegoActivo = false;
+        botonPresionado = false;
+
+        if (basuraActual != null)
+        {
+            basuraActual.FinalizarMinijuego(victoria);
         }
     }
 
