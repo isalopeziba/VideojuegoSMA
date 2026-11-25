@@ -54,6 +54,8 @@ public class ConversacionFinal : MonoBehaviour
     private Coroutine rutinaConversacion;
     private bool conversacionTerminada = false;
 
+    public AudioClip sonidoPortal;
+    public AudioSource audioSourcePortal;
     private void Start()
     {
         OcultarGlobos();
@@ -103,9 +105,14 @@ public class ConversacionFinal : MonoBehaviour
         conversacionTerminada = true;
         rutinaConversacion = null;
 
-        
-        if (portal != null) portal.SetActive(true);
-        
+
+        if (portal != null)
+        {
+            portal.SetActive(true);
+            SonarPortal();
+        }
+
+
 
         alTerminar?.Invoke();
     }
@@ -150,5 +157,21 @@ public class ConversacionFinal : MonoBehaviour
 
         if (globo.texto != null)
             globo.texto.text = "";
+    }
+
+    private void SonarPortal()
+    {
+        if (sonidoPortal == null) return;
+
+        AudioSource fuente = audioSourcePortal;
+        if (fuente == null) fuente = portal.GetComponent<AudioSource>();
+        if (fuente == null)
+        {
+            fuente = portal.AddComponent<AudioSource>();
+            fuente.playOnAwake = false;
+            fuente.spatialBlend = 0f;  
+        }
+
+        fuente.PlayOneShot(sonidoPortal);
     }
 }
