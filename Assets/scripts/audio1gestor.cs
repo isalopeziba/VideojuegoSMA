@@ -1,8 +1,9 @@
 using UnityEngine;
 
+
 public class audio1gestor : MonoBehaviour
 {
-    // Patrón Singleton para llamarlo desde cualquier script (ej: AudioManager.Instancia.ReproducirRecoger())
+    // Patrón Singleton para llamarlo desde cualquier script (ej: audio1gestor.Instancia.ReproducirRecoger())
     public static audio1gestor Instancia { get; private set; }
 
     [Header("Canales de Audio (Se crean solos si los dejas vacíos)")]
@@ -31,16 +32,24 @@ public class audio1gestor : MonoBehaviour
 
     private void Awake()
     {
-        // Configuración del Singleton
+        // Configuración del Singleton (solo dentro de esta escena)
         if (Instancia != null && Instancia != this)
         {
             Destroy(gameObject);
             return;
         }
         Instancia = this;
-        DontDestroyOnLoad(gameObject); // Mantiene el audio vivo si cambias de escena
+
+        // Antes aquí estaba DontDestroyOnLoad(gameObject): eso hacía que la música
+        // del Nivel 1 siguiera sonando en los demás niveles. Se quitó a propósito.
 
         ConfigurarCanales();
+    }
+
+    private void OnDestroy()
+    {
+        // Al cambiar de escena, liberar el singleton para que el sistema del siguiente nivel funcione
+        if (Instancia == this) Instancia = null;
     }
 
     private void Start()
@@ -79,10 +88,10 @@ public class audio1gestor : MonoBehaviour
 
     // ================== MÉTODOS PARA LLAMAR DESDE OTROS SCRIPTS ==================
 
-    // Llamar en el FixedUpdate/Update de PlayerMov.cs mientras el niño se mueva
+    // Llamar en el Update de PlayerMov.cs mientras el niño se mueva
     public void GestionarPasos(bool estaCaminando)
     {
-        if (!estaCaminando || sonidosCaminar.Length == 0)
+        if (!estaCaminando || sonidosCaminar == null || sonidosCaminar.Length == 0)
         {
             temporizadorPasos = 0f;
             return;
