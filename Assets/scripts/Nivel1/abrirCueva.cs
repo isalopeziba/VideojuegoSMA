@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.EventSystems;
 
 [DefaultExecutionOrder(10000)]
 public class abrirCueva : MonoBehaviour
@@ -23,9 +23,11 @@ public class abrirCueva : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip sonidoMovimiento;
 
-    [Header("Pruebas")]
-    [Tooltip("La tecla N abre o cierra para probar")]
-    public bool probarConTeclaN = true;
+    [Header("Controles / Pruebas")]
+    [Tooltip("Permite abrir o cerrar con la tecla N (PC) o tocando la pantalla (Celular)")]
+    public bool permitirToqueYTecla = true;
+    [Tooltip("Evita que se abra/cierre si tocas un botón de la UI o el Joystick")]
+    public bool ignorarToquesEnUI = true;
 
     public bool EstaAbierta { get; private set; } = false;
 
@@ -40,6 +42,9 @@ public class abrirCueva : MonoBehaviour
         if (camaraTransform == null && Camera.main != null)
             camaraTransform = Camera.main.transform;
 
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
         foreach (Transform obj in objetosAMover)
         {
             posCerradas.Add(obj != null ? obj.position : Vector3.zero);
@@ -53,7 +58,23 @@ public class abrirCueva : MonoBehaviour
         // Quitar el temblor del frame anterior ANTES de que el script de la cámara la mueva
         QuitarTemblor();
 
-        if (probarConTeclaN && Keyboard.current != null && Keyboard.current.nKey.wasPressedThisFrame)
+        if (!permitirToqueYTecla) return;
+
+        // 1. Entrada por teclado (PC)
+        bool presionoTecla = Keyboard.current != null && Keyboard.current.nKey.wasPressedThisFrame;
+
+        // 2. Entrada táctil (Celular)
+        bool tocoPantalla = false;
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            int touchId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            bool sobreUI = ignorarToquesEnUI && EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId);
+
+            if (!sobreUI)
+                tocoPantalla = true;
+        }
+
+        if (presionoTecla || tocoPantalla)
         {
             if (EstaAbierta) Cerrar(); else Abrir();
         }
