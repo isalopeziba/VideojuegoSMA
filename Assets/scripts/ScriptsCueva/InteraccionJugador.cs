@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+// Todo lo que el jugador puede usar con la tecla E / botón de la manito implementa esta interfaz.
 public interface IInteractuable
 {
     Transform transform { get; }
@@ -11,13 +11,17 @@ public interface IInteractuable
 }
 
 // Va en el JUGADOR. Detecta qué cosas interactuables tiene cerca y,
-
+// al presionar E (o la manito), usa la más cercana.
+// También sabe si la acción se está MANTENIENDO (para sembrar).
 public class InteraccionJugador : MonoBehaviour
 {
     public MochilaJugador Mochila { get; private set; }
 
     // true mientras se mantiene E o el botón de la manito
     public bool AccionMantenida => teclaMantenida || botonUIMantenido;
+
+    // true solo mientras se mantiene el botón de la manito (celular)
+    public bool BotonUIMantenido => botonUIMantenido;
 
     private bool teclaMantenida = false;
     private bool botonUIMantenido = false;
@@ -66,10 +70,41 @@ public class InteraccionJugador : MonoBehaviour
     }
 
     // Botón de la manito en celular. Lo usa BotonMantenerAccion (o un OnClick para un toque simple)
+    [Header("Devolver objetos de la cueva")]
+    [Tooltip("Distancia máxima a un pedestal vacío para devolver el último objeto con E / manito")]
+    public float distanciaDevolver = 2.5f;
+
     public void PulsarAccion()
     {
         IInteractuable objetivo = MasCercano();
-        if (objetivo != null) objetivo.Interactuar(this);
+        if (objetivo != null)
+        {
+            objetivo.Interactuar(this);
+            return;
+        }
+
+        // No hay nada que tomar cerca: si lleva objetos y hay un pedestal vacío cerca, devolver el último
+        if (Mochila != null && Mochila.Cantidad > 0)
+        {
+            PedestalCueva p = PedestalCueva.MasCercanoLibre(transform.position);
+            if (p != null && DistanciaPlana(p.transform.position) <= distanciaDevolver)
+            {
+                Mochila.SoltarUltimoEn(p);
+                Debug.Log($"InteraccionJugador: objeto devuelto al pedestal '{p.name}'.");
+            }
+            else
+            {
+                Debug.Log("InteraccionJugador: no hay un pedestal vacío cerca para devolver el objeto.");
+            }
+        }
+    }
+
+    // Distancia sin contar la altura
+    private float DistanciaPlana(Vector3 otro)
+    {
+        Vector3 a = transform.position; a.y = 0f;
+        otro.y = 0f;
+        return Vector3.Distance(a, otro);
     }
 
     public void AccionUI(bool presionada)

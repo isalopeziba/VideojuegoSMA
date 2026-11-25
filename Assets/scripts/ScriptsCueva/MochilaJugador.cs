@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Va en el JUGADOR. Guarda los objetos que lleva (máximo 3) y avisa a los
-// demás scripts cuando algo cambia. No sabe nada de UI ni de diálogos.
 public class MochilaJugador : MonoBehaviour
 {
     public int capacidad = 3;
@@ -37,17 +35,27 @@ public class MochilaJugador : MonoBehaviour
         return true;
     }
 
-    // Suelta el objeto de esa casilla en el pedestal libre más cercano al jugador
+    // Tocar una casilla de la mochila: suelta ese objeto en el pedestal libre más cercano
     public void Soltar(int indice)
     {
-        if (indice < 0 || indice >= objetos.Count) return;
-
         PedestalCueva pedestal = PedestalCueva.MasCercanoLibre(transform.position);
         if (pedestal == null)
         {
             Debug.LogWarning("MochilaJugador: no hay pedestales libres para soltar el objeto.");
             return;
         }
+        SoltarEn(indice, pedestal);
+    }
+
+    // E junto a un pedestal vacío: deja ahí el último objeto que se tomó
+    public void SoltarUltimoEn(PedestalCueva pedestal)
+    {
+        SoltarEn(objetos.Count - 1, pedestal);
+    }
+
+    private void SoltarEn(int indice, PedestalCueva pedestal)
+    {
+        if (indice < 0 || indice >= objetos.Count || pedestal == null || !pedestal.Libre) return;
 
         ObjetoCueva obj = objetos[indice];
         objetos.RemoveAt(indice);

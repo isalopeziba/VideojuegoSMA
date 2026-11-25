@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
+
 public class PlantingSpot : MonoBehaviour
 {
     [Header("Configuración")]
@@ -12,13 +13,14 @@ public class PlantingSpot : MonoBehaviour
     public TreeCountingManager counterManager;
 
     [Header("Luz mientras se mantiene Acción")]
+    [Tooltip("El rayo/luz del lote, desactivado al inicio")]
     public GameObject luzSiembra;
 
     private bool yaSembrado = false;
     private GameObject arbolSembrado;
 
     private bool jugadorDentro = false;
-    private InteraccionJugador interaccion;   // para el botón de la manito en celular
+    private InteraccionJugador interaccion;
 
     public bool YaSembrado => yaSembrado;
 
@@ -109,4 +111,4 @@ public class PlantingSpot : MonoBehaviour
         yaSembrado = false;
         if (luzSiembra != null) luzSiembra.SetActive(false);
     }
-}
+} 

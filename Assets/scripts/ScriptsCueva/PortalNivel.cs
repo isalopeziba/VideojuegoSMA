@@ -10,6 +10,8 @@ public class PortalNivel : MonoBehaviour
 
     private bool cargando = false;
 
+    public GameObject sonidos;
+
     private void Reset()
     {
         GetComponent<Collider>().isTrigger = true;
@@ -26,6 +28,7 @@ public class PortalNivel : MonoBehaviour
         }
 
         cargando = true;
+        sonidos.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(escenaSiguiente);
     }

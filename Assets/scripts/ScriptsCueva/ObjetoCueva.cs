@@ -7,8 +7,7 @@ public enum TipoObjetoCueva
     SinValor    // concha, piedra lisa
 }
 
-// Va en cada OBJETO de la cueva. Necesita un Collider marcado como "Is Trigger"
-// un poco más grande que el objeto, para que el jugador pueda tomarlo al acercarse.
+
 [RequireComponent(typeof(Collider))]
 public class ObjetoCueva : MonoBehaviour, IInteractuable
 {

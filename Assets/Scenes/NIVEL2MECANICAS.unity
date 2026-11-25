@@ -52578,7 +52578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d479c8b8142f0084c80970f774b7f8ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -245.5
+      value: -245.634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d479c8b8142f0084c80970f774b7f8ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52586,7 +52586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d479c8b8142f0084c80970f774b7f8ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 92.19
+      value: 92.192
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d479c8b8142f0084c80970f774b7f8ff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97440,31 +97440,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 987319448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 987319450}
-        m_TargetAssemblyTypeName: BotonRecoger, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5118985119460477053}
-        m_TargetAssemblyTypeName: InteraccionJugador, Assembly-CSharp
-        m_MethodName: PulsarAccion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &987319448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97512,10 +97488,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 987319445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87a682da8f529e4baaf7d268db40adc, type: 3}
+  m_Script: {fileID: 11500000, guid: 39218794c03026345b17fa0fa08a8889, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonRecoger
-  jugador: {fileID: 7483362969832427847}
+  m_EditorClassIdentifier: Assembly-CSharp::BotonSembrar
+  jugador: {fileID: 3441413888767154400}
+  interaccion: {fileID: 5118985119460477053}
+  tiempoMantener: 2
+  progreso: {fileID: 0}
 --- !u!1001 &987597614
 PrefabInstance:
   m_ObjectHideFlags: 0
