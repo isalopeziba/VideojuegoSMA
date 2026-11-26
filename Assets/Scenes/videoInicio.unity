@@ -281,9 +281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControladorVideoEscena
   listaVideos:
   - {fileID: 32900000, guid: a92b035f6406beb418891893abfbbcd7, type: 3}
-  - {fileID: 32900000, guid: 4ddd4b0986aea3645af98b64349dd942, type: 3}
+  - {fileID: 32900000, guid: 8cdf81e18836a4846aa80900e8ca869e, type: 3}
   nombreSiguienteEscena: Tutorial
-  permitirSaltarConClic: 0
+  permitirSaltarConClic: 1
 --- !u!1 &532575749
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

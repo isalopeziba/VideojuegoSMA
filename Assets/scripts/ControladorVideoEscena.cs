@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(VideoPlayer))]
 public class ControladorSecuenciaVideos : MonoBehaviour
 {
     [Header("Lista de Videos en Orden")]
-    [Tooltip("Arrastra aquí escena_0_v2 en el elemento 0 y escena_1_v2 en el elemento 1")]
+    [Tooltip("Arrastra aquï¿½ escena_0_v2 en el elemento 0 y escena_1_v2 en el elemento 1")]
     public VideoClip[] listaVideos;
 
-    [Header("Configuración de Escena")]
-    [Tooltip("Nombre exacto de la escena a cargar tras el último video")]
+    [Header("Configuraciï¿½n de Escena")]
+    [Tooltip("Nombre exacto de la escena a cargar tras el ï¿½ltimo video")]
     public string nombreSiguienteEscena;
 
     [Header("Opcional: Saltar video actual")]
@@ -52,12 +53,22 @@ public class ControladorSecuenciaVideos : MonoBehaviour
     }
 
     private void Update()
+{
+    if (permitirSaltarConClic && !cambioIniciado)
     {
-        if (permitirSaltarConClic && !cambioIniciado && Input.GetMouseButtonDown(0))
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            AvanzarSiguientePaso();
+        }
+
+        // TambiÃ©n permite saltar tocando la pantalla en Android
+        if (Touchscreen.current != null &&
+            Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             AvanzarSiguientePaso();
         }
     }
+}
 
     private void ReproducirVideo(int indice)
     {
@@ -75,14 +86,14 @@ public class ControladorSecuenciaVideos : MonoBehaviour
     {
         int siguienteIndice = indiceActual + 1;
 
-        // Si todavía quedan videos en la lista, reproduce el siguiente
+        // Si todavï¿½a quedan videos en la lista, reproduce el siguiente
         if (siguienteIndice < listaVideos.Length)
         {
             ReproducirVideo(siguienteIndice);
         }
         else
         {
-            // Ya terminó el último video de la lista
+            // Ya terminï¿½ el ï¿½ltimo video de la lista
             CargarSiguienteEscena();
         }
     }
