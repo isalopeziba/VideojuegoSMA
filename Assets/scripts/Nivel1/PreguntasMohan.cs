@@ -61,6 +61,10 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
              "Cuando sale cada pregunta, el Mohán aparece en ese punto, así siempre queda en cámara.")]
     public Transform puntoJuntoAlJugador;
 
+    [Header("Jugador")]
+    [Tooltip("Se bloquea mientras hay una pregunta en pantalla (y se libera si debe recoger basura)")]
+    public PlayerMov movimientoJugador;
+
     [Header("Botones A, B, C")]
     public GameObject panelBotones;
     public Button[] botones = new Button[3];
@@ -341,6 +345,8 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
         if (panelBotones != null) panelBotones.SetActive(true);
         pistaUsada = false;
         PreguntaActiva = true;
+
+        BloqueoJugador.Aplicar(movimientoJugador, true);
     }
 
     private void MezclarOrden()
@@ -407,6 +413,8 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
 
         if (animatorMohan != null) animatorMohan.Play(animMohanIdle, 0, 0f);
 
+        BloqueoJugador.Aplicar(movimientoJugador, false);   // puede seguir a la siguiente sección
+
         seccionActual++;
         enPregunta = false;
 
@@ -423,6 +431,9 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
         if (panelBotones != null) panelBotones.SetActive(false);
 
         yield return new WaitForSeconds(Mathf.Max(0f, esperaTrasFallo - tiempoColorBoton));
+
+        // Tiene que ir a recoger la basura que reapareció: se libera el movimiento
+        BloqueoJugador.Aplicar(movimientoJugador, false);
 
         basurasPendientes = ActivarBasuras(secciones[seccionActual]);
         if (basurasPendientes.Count > 0)
@@ -569,6 +580,7 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
     {
         terminado = true;
         PreguntaActiva = false;
+        BloqueoJugador.Aplicar(movimientoJugador, false);
         if (panelBotones != null) panelBotones.SetActive(false);
         if (textoMohan != null) textoMohan.text = textoFinal;
         alTerminar?.Invoke();
