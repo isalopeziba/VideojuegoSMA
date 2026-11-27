@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-
+// Preguntas de un guardián del bosque (Patasola, y sirve para el siguiente nivel).
+// Se hacen seguidas al final del nivel. No hay castigo:
+//   - Acierto: el guardián asiente, el bosque brilla un poco más y pasa a la siguiente.
+//   - Fallo: explica el error, las luces del bosque bajan unos segundos y la pregunta
+//            se repite con las opciones en otro orden.
 public class PreguntasGuardian : MonoBehaviour, IFuentePista
 {
     [Header("Guardián")]
@@ -20,6 +24,10 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
     public Animator animator;
     public string animIdle = "";
     public string animAsentir = "";
+
+    [Header("Jugador")]
+    [Tooltip("Se bloquea mientras dura la ronda de preguntas")]
+    public PlayerMov movimientoJugador;
 
     [Header("Botones A, B, C")]
     public GameObject panelBotones;
@@ -145,6 +153,7 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
         if (enCurso || preguntas.Count == 0) return;
         enCurso = true;
         indice = 0;
+        BloqueoJugador.Aplicar(movimientoJugador, true);
         StartCoroutine(RutinaEntrada());
     }
 
@@ -167,7 +176,7 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
             Debug.LogWarning("PreguntasGuardian: falta asignar 'Guardian' (la Patasola).");
 
         Reproducir(animIdle);
-        MostrarPregunta(false, nueva: true);
+        MostrarPregunta(true, nueva: true);
     }
 
     private void MostrarPregunta(bool mezclar, bool nueva)
@@ -265,7 +274,7 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
         Reproducir(animIdle);
         indice++;
 
-        if (indice < preguntas.Count) MostrarPregunta(false, nueva: true);
+        if (indice < preguntas.Count) MostrarPregunta(true, nueva: true);
         else Terminar();
     }
 
@@ -288,6 +297,7 @@ public class PreguntasGuardian : MonoBehaviour, IFuentePista
     {
         enCurso = false;
         PreguntaActiva = false;
+        BloqueoJugador.Aplicar(movimientoJugador, false);
         if (panelBotones != null) panelBotones.SetActive(false);
         if (textoGuardian != null) textoGuardian.text = textoFinal;
         alTerminar?.Invoke();

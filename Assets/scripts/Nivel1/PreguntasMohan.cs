@@ -317,7 +317,7 @@ public class PreguntasMohan : MonoBehaviour, IFuentePista
         UbicarMohanJuntoAlJugador();
         enPregunta = true;
         falloEnEstaPregunta = false;
-        MostrarPregunta(false);
+        MostrarPregunta(true);
         AlIniciarPregunta?.Invoke(seccionActual);
     }
 
