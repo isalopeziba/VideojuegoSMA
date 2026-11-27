@@ -76,6 +76,8 @@ public class DuendeNPC : MonoBehaviour
     private Coroutine rutinaDialogo;
     public bool EstaHablando => rutinaDialogo != null || colaFrases.Count > 0;
 
+    public System.Func<string> ObtenerFraseSinObjetivo;
+
     private bool estaSenalando = false;
     private Transform objetivoSenalado;
     private Coroutine rutinaBrillo;
@@ -245,7 +247,8 @@ public class DuendeNPC : MonoBehaviour
 
         if (objetivo == null)
         {
-            Decir(fraseNoHayBasura, true);   // no se gasta la pista
+            string frase = ObtenerFraseSinObjetivo != null ? ObtenerFraseSinObjetivo() : null;
+            Decir(string.IsNullOrEmpty(frase) ? fraseNoHayBasura : frase, true);   // no se gasta la pista
             return;
         }
 
